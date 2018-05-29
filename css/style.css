@@ -1,0 +1,49 @@
+body{
+    /* background: black; */
+    background-color: hsla(129, 50%, 0%,1);
+    color: hsla(129, 50%, 82%,0.8);
+    /* background-color: rgb(28, 84, 36); */
+    /* color: hsla(129, 50%, 82%, 1); */
+    /* color: #bae8c1; */
+    text-align: center;
+}
+div{text-align: left;display: inline-block;}
+div.commission{
+    background-color:hsla(129, 50%, 82%,0.4);
+    color:hsla(129, 50%, 82%,0.8);
+    width:100%;}
+div.undefined{
+    /* background-color:hsla(32, 50%, 82%,0.4); */
+    color:hsla(32, 50%, 82%,0.8);
+    width:100%;}
+div.regular{
+    /* background-color:hsla(64, 50%, 82%,0.4); */
+    color:hsla(64, 50%, 82%,0.8);
+    width:100%;}
+div.decor{
+    background-color: hsla(129, 50%, 82%,0.8);
+    background-color: hsla(129, 0%, 0%,0);
+    /* display:inline-blocklex ; */
+    text-align: justify;
+    width:720px;
+    height:360px;
+}
+img.decor{
+    position:absolute;
+    position:fixed;
+}
+
+img.artistlink{ height:36px; margin-right:10px; }
+text.artistname{ margin-right:10px; }
+a{
+    color: hsla(180, 50%, 82%,0.8);
+}
+a.no_{
+    text-decoration: none;
+}
+p { margin-left: 2em; 
+    text-indent: -2em 
+    }
+p1 {
+    color: hsla(180, 50%, 82%,0.8);
+}
