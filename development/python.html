@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>python syntax</title>
+        <title>python3 syntax</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
@@ -13,7 +13,7 @@
     </head>
     <body>
             <script src="css/switchfont/switchfont.js"></script><br>
-    <a class="up" id="c0" href="index.html">development &lt;&lt;&lt; python syntax</a>
+    <a class="up" id="c0" href="index.html">development &lt;&lt;&lt; python3 syntax</a>
     
     <br><br>
     <ol>
@@ -37,9 +37,9 @@ x.insert(len(x)-1,x.pop(2)) # x==[2,0,3,1]</code></pre>
     <hr><li id="c4"><a href="#c0">open URL in webbrowser</a></li><a href="https://docs.python.org/3.4/library/webbrowser.html" target="_blank">doc link</a><pre><code class="python">import webbrowser<br>webbrowser.open("http://helpmedraw.pythonanywhere.com/")</code></pre>
     
     <hr><li id="c5"><a href="#c0">pyinstaller create onefile exe</a></li><a href="http://www.pyinstaller.org/" target="_blank">PyInstaller official website</a><br>move to target path(with source code) and open console/terminal<pre><code class="bash">pyinstaller --onefile --noconsole pythoncode.py</code></pre>create onefile executable programm pythoncode.exe. Console/terminal will be hidden.<br>Supported gui:
-    <br>- tkinter (close to crossplatform... little difference with style and size of widgets, and need different events at least for mouse scroll for linux and windows/osx variants... windows/osx event "&lt;MouseWheel&gt;", linux event "&lt;Button-4&gt;" and "&lt;Button-5&gt;" for widget.bind_all("&lt;Eventname&gt;",callbackfunction) syntax)
-    <br>- wxPython (not crossplatform code syntax... linux addon gui elements every next to top, windows - every next to back)
-    <br>PyQt not supported ... after creating when try to run create errors.
+    <br><br>- tkinter (close to crossplatform... little difference with style and size of widgets, and need different events at least for mouse scroll for linux and windows/osx variants... windows/osx event "&lt;MouseWheel&gt;", linux event "&lt;Button-4&gt;" and "&lt;Button-5&gt;" for widget.bind_all("&lt;Eventname&gt;",callbackfunction) syntax)
+    <br><br>- wxPython (not crossplatform code syntax... linux addon gui elements every next to top, windows - every next to back)
+    <br><br>PyQt not supported ... after creating when try to run create errors.
     <br>Django (version 1.8) not supported(2017 tried few times with help/cheats from official pyinstaller site, but no result... the images not reading from sources)
     
     <hr><li id="c6"><a href="#c0">string - save only numbers and letters</a></li><a href="https://docs.python.org/3.4/library/re.html" target="_blank">re - Regular expression operations</a><pre><code class="python">import re<br>x="test@gmail.com"<br>regexp=re.compile(r'[a-zA-Z0-9]')<br>a="".join(re.findall(regexp,x))<br>b=re.sub(r"[^a-zA-Z0-9]", "", x)<br>c="".join(filter(str.isalnum, x))<br>a==b==c=="testgmailcom" # true</code></pre>All ways work for english letters and numbers. Last "c" way save numbers and not only english letters, but other language too.

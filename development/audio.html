@@ -19,10 +19,10 @@
     <ol>
         <li><a class="up" href="#c1" >short names</a></li>
         <li><a class="up" href="#c2" >LMMS - AppImage package theming</a></li>
-        <li><a class="up" href="#c3" >LMMS - save/load presets for prebuild synthesizers, which gui have only <codebox>save</codebox> button, but have not <codebox>load</codebox> button</a></li>
-        <li><a class="up" href="#c4" >audacity UG - microphone not work, but tested and work on windows etc</a></li>
-        <li><a class="up" href="#c5" >audacity UG - Effect - Noise Reduction</a></li>
-        <li><a class="up" href="#c6" >LMMS - use vst created for windows</a></li>
+        <li><a class="up" href="#c3" >LMMS | save/load presets for prebuild synthesizers, which gui have only <codebox>save</codebox> button, but have not <codebox>load</codebox> button</a></li>
+        <li><a class="up" href="#c4" >audacity UG | microphone not work, but tested and work on windows etc</a></li>
+        <li><a class="up" href="#c5" >audacity UG &rarr; Effect &rarr; Noise Reduction</a></li>
+        <li><a class="up" href="#c6" >LMMS | use vst created for windows</a></li>
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
@@ -33,41 +33,41 @@
     that use own theme, for appimage build you need
     <br>-- run lmms appimage
     <br>-- nautilus open <codebox>/tmp</codebox>
-    <br>-- nautilus -&gt; view -&gt; show hidden files
+    <br>-- nautilus &rarr; view &rarr; show hidden files
     <br>-- open <codebox>.mount_lmms-someletters</codebox>
     <br>-- copy <codebox>/tmp/.mount_lmms.../usr/share/lmms/themes/default</codebox> folder to new themes directory
     <br>-- edit <codebox>style.css</codebox> as you need
-    <br>-- set lmms <codebox>edit -&gt; settings -&gt; paths -&gt; themes directory</codebox> to your theme folder, placed earlier
+    <br>-- set lmms <codebox>edit &rarr; settings &rarr; paths &rarr; themes directory</codebox> to your theme folder, placed earlier
     <br>-- restart lmms appimage
     <br>now themes will be yours, edited
     
-    <hr><li id="c3"><a href="#c0">LMMS - save/load presets for prebuild synthesizers, which gui have only save button, but have not load button</a></li>
+    <hr><li id="c3"><a href="#c0">LMMS | save/load presets for prebuild synthesizers, which gui have only save button, but have not load button</a></li>
     Example with using sfxr synthesizer:
     <br>-- save preset, with comfort name
     <br>-- select target track in <codebox>song editor</codebox> (lmouse and appear gui, not matter which track you select)
     <br>-- open side bar <codebox>my presets</codebox> tab
-    <br>-- choose your earlier saved preset(push it lmouse to test), rmouse -&gt; <codebox>send to active instrument-track</codebox>
+    <br>-- choose your earlier saved preset(push it lmouse to test), rmouse &rarr; <codebox>send to active instrument-track</codebox>
     <br>The instrument track will be rewritten with preset settings (new instrument / synthesizer + your preset for this synthesizer)
     
-    <hr><li id="c4"><a href="#c0">audacity UG - microphone not work, but tested and work on windows etc</a></li>
+    <hr><li id="c4"><a href="#c0">audacity UG | microphone not work, but tested and work on windows etc</a></li>
     <a href="https://askubuntu.com/questions/895397/microphone-is-not-working-on-ubuntu-16-04" target="blank">weblink</a>
     <br>-- <codebox>sudo apt-get install alsa-tools-gui</codebox>
     <br>-- <codebox>hdajackretask</codebox>
     <br>-- change driver to <codebox>realtek</codebox>
     <br>-- press <codebox>apply now</codebox> button
     
-    <hr><li id="c5"><a href="#c0">audacity UG - Effect - Noise Reduction</a></li>
+    <hr><li id="c5"><a href="#c0">audacity UG &rarr; Effect &rarr; Noise Reduction</a></li>
     <br>-- select audio with noise only
-    <br>-- Effect -&gt; Noise Reduction -&gt; Get Noise Profile
+    <br>-- Effect &rarr; Noise Reduction &rarr; Get Noise Profile
     <br>-- select audio that decrease noise
-    <br>-- Effect -&gt; Noise Reduction -&gt; ok (before this you can <codebox>Preview</codebox> result and play with some parameters)
+    <br>-- Effect &rarr; Noise Reduction &rarr; ok (before this you can <codebox>Preview</codebox> result and play with some parameters)
     
     <hr><li id="c6"><a href="#c0">LMMS - use vst created for windows</a></li>
     Vst created for windows, often have form of dll libs. That use with LMMS on UG usually enough install Wine. After this, without any manual settings vst start working from LMMS internal menu, as windows case.
     <br>Installing Wine <a href="http://help.ubuntu.ru/wiki/wine_установка" target="_blank">weblink</a>
-    <br>-- terminal <codebox>sudo dpkg --add-architecture i386</codebox> -&gt; Enter
-    <br>-- terminal <codebox>sudo add-apt-repository ppa:wine/wine-builds &amp;&amp; sudo apt-get update</codebox> -&gt; Enter
-    <br>-- terminal <codebox>sudo apt-get install --install-recommends winehq-devel</codebox> -&gt; Enter
+    <br>-- terminal <codebox>sudo dpkg --add-architecture i386</codebox> &rarr; Enter
+    <br>-- terminal <codebox>sudo add-apt-repository ppa:wine/wine-builds &amp;&amp; sudo apt-get update</codebox> &rarr; Enter
+    <br>-- terminal <codebox>sudo apt-get install --install-recommends winehq-devel</codebox> &rarr; Enter
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>

@@ -1,7 +1,8 @@
 function switchfont(){
     // document.body.style.fontFamily = "RBM";
     document.body.style.color = "hsla(129, 50%, 82%,0.5)";
-    Array.from(document.body.querySelectorAll("code"), e => e.style.fontFamily="RBM");
+    Array.from(document.body.querySelectorAll("a"), e => e.style.color="hsla(180, 50%, 82%,0.5)");
+    Array.from(document.body.querySelectorAll("p1"), e => e.style.color="hsla(180, 50%, 82%,0.5)");
     var b=document.getElementById("myeyes");
     document.body.removeChild(b);
 }

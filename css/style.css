@@ -1,3 +1,43 @@
+@font-face {
+    font-family: "body";
+    src: url("Comfortaa-Bold.ttf");
+    }
+@font-face {
+    font-family: "header1";
+    src: url("FrederickatheGreat-Regular.ttf");
+    }
+@font-face {
+    font-family: "header";
+    src: url("Overlock-Black.ttf");
+    }
+
+h1 {
+    font-family: "header1";
+    font-weight: normal;
+    /* font-size: 24; */
+}
+    
+h2,h3 {
+    font-family: "header";
+    font-weight: normal;
+    /* font-size: 24; */
+}
+
+h4,h5,h6{
+    font-family: "body";
+    font-weight: normal;
+}
+h4{margin:-3px;}
+h5{margin:-3px;}
+h6{margin:-3px;}
+
+text.artistname {
+    font-family: "header";
+    font-weight: normal;
+    /* padding: 10px; */
+    /* font-size: 24; */
+}
+
 body{
     /* background: black; */
     background-color: hsla(129, 50%, 0%,1);
@@ -6,20 +46,27 @@ body{
     /* color: hsla(129, 50%, 82%, 1); */
     /* color: #bae8c1; */
     text-align: center;
+    font-family: 'body';
 }
 div{text-align: left;display: inline-block;}
 div.commission{
     background-color:hsla(129, 50%, 82%,0.4);
     color:hsla(129, 50%, 82%,0.8);
-    width:100%;}
+    width:100%;
+    padding:10px;
+}
 div.undefined{
     /* background-color:hsla(32, 50%, 82%,0.4); */
     color:hsla(32, 50%, 82%,0.8);
-    width:100%;}
+    width:100%;
+    padding:10px;
+}
 div.regular{
     /* background-color:hsla(64, 50%, 82%,0.4); */
     color:hsla(64, 50%, 82%,0.8);
-    width:100%;}
+    width:100%;
+    padding:10px;
+}
 div.decor{
     background-color: hsla(129, 50%, 82%,0.8);
     background-color: hsla(129, 0%, 0%,0);
