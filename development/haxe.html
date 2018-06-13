@@ -29,6 +29,7 @@
         <li><a class="up" href="#c11" >Array move slice сдвинуть срез</a></li>
         <li><a class="up" href="#c12" >Array move element сдвинуть элемент</a></li>
         <li><a class="up" href="#c13" >for loop</a></li>
+        <li><a class="up" href="#c14" >haxeflixel button callback with parameters</a></li>
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
@@ -204,6 +205,22 @@ x.insert(0,x.splice(4,1)[0]); // -> x=[1,2,3,4,5]</code></pre>
     
     <hr><li id="c13"><a href="#c0">for loop</a></li><pre><code class="haxe">for (i in 0 ... 3) //0 1 2
 for (i in [1,3,2]) //1 3 2</code></pre>
+    
+    <hr><li id="c14"><a href="#c0">haxeflixel button callback with parameters</a></li><pre><code class="haxe">    var abtn_auto:Array<FlxButton> = []; //array for keep buttons, can be good
+    var ax_auto:Array<Int> = [...];
+    var ay_auto:Array<Int> = [...];
+    var w_auto:Int = 240;
+    var h_auto:Int = 128;
+    private function auto_callback(x):Void{ trace(x); }
+    private function create_auto():Void{
+        for (i in 0...9){
+            var b:FlxButton = new FlxButton(ax_auto[i], ay_auto[i], "",function():Void{auto_callback(i);});
+            b.loadGraphic("assets/images/calc/240128glass_calc_auto.png", false,w_auto,h_auto);
+            abtn_auto.push(b);
+            add(abtn_auto[i]);
+        }
+    }
+    </code></pre>
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>
