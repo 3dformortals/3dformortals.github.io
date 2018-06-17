@@ -1,0 +1,84 @@
+<!DOCTYPE>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>git syntax</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        
+        <link rel="stylesheet" href="css/highlight/styles/zenburn.css">
+        <script src="css/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+    </head>
+    <body>
+    <script src="css/switchfont/switchfont.js"></script><br>
+    <a class="up" id="c0" href="index.html">development &lt;&lt;&lt; git sytnax</a>
+    
+    <ol>
+        <li><a class="up" href="#c1" >summary</a></li>
+        <li><a class="up" href="#c2" >installation on UG</a></li>
+        <li><a class="up" href="#c3" >setup</a></li>
+        <li><a class="up" href="#c4" >setup repo</a></li>
+        <li><a class="up" href="#c5" >clone repo</a></li>
+        <!--<li><a class="up" href="#c" ></a></li>-->
+    </ol>
+    <ol class="cover">
+    <hr><li id="c"><a href="#c0">summary</a></li>
+    UG - ubuntu gnome (16.04)
+    <br>OS - operation system (unix, windows, etc)
+    <br>repo == repository(GitHub)/project(GitLab).
+    <br>gui/GUI == graphical user interface.
+    <br>VCS == version control system.
+    <br>The easy way to create and work with repo is create it on web side, uses hoster web service gui + some instructions.
+    <br>In time of create repo (GitHub way), click checkbox to add <codebox>readme.md</codebox> file, or add it after creating repo (GitLab way) uses special button.
+    <hr>
+    <br>Configure git for each repo separately.
+    <br>Don't use <codebox>--global</codebox> key unnecessarily. This style prevent you from upload with wrong <codebox>user.name</codebox> and <codebox>user.email</codebox>.
+    <hr>
+    <br><codebox>Visual Studio Code</codebox> or <codebox>vscode</codebox>, or <codebox>code</codebox> (linux way) have prebuilded VCS, which can make beginner level manipulation with repositories/projects(uses internal GUI), cloned from GitHub/GitLab, uses web service GUI.
+    
+    <hr><li id="c2"><a href="#c0">installation on UG</a></li>
+    <br>-terminal <terminal>sudo su</terminal> , Enter
+    <br>-enter the root password, Enter
+    <br>-Now you have super user permissions inside terminal
+    <br>-terminal <terminal>apt-get update</terminal> , Enter
+    <br>-terminal <terminal>apt-get install git -y</terminal> , Enter (<codebox>-y</codebox> == answer yes to all prompts)
+    <br>-terminal <terminal>exit</terminal> , Enter. Now you again have usual user permissions inside terminal
+    
+    <hr><li id="c3"><a href="#c0">setup</a></li>
+    Line endings configuration.
+    <br>If you use files, which have CRLF strings ending, then <codebox>DON'T EXECUTE THESE COMMANDS</codebox>, or, before upload repo changes uses git, you will be must recode all files with <codebox>CRLF</codebox> to <codebox>LF</codebox> for example uses, <codebox>vscode</codebox>. This not hard, but if you have few files. If you have thousand files this handmaded process will be kill you.
+    <br>-terminal <terminal>git config --global core.autocrlf input</terminal> , Enter
+    <br>-terminal <terminal>git config --global core.safecrlf true</terminal> , Enter
+    <br>Windows syntax is different and can be found at this <a href="https://githowto.com/setup" target="_blank">weblink</a>
+    <hr>
+    -terminal <terminal>git config --global color.ui true</terminal> , Enter. Coloring of output. Default auto. true false
+    <br>-terminal <terminal>git config --global submodule.recurse true</terminal> , Enter. Description <a href="https://git-scm.com/docs/git-config#git-config-submodulerecurse" target="_blank">weblink</a>
+    <!-- <br>terminal <terminal></terminal> -->
+    
+    <hr><li id="c4"><a href="#c0">setup repo</a></li>
+    -open terminal into repo folder(hidden <codebox>.git</codebox> folder level)
+    <br>-terminal <terminal>git config user.name "Your Name"</terminal> , Enter. Name which will be displayed with your commits
+    <br>-terminal <terminal>git config user.email youremail@example.com</terminal> , Enter. Email which will be displayed with your commits
+    <br>-terminal <terminal>git config credential.helper "cache --timeout=86400"</terminal> , Enter. Save password 24h(60*60*24 seconds) , or before OS rebooting.
+    <hr>Additional commands.
+    <br>-terminal <terminal>git config --unset credential.helper</terminal> , Enter. Stop cashing of your repo password data.
+    <br>-terminal <terminal>git credential-cache exit</terminal> , Enter. Clear the cash immediately, but continue collect and save new incoming password data(in case of credential.helper is used).
+    <br>-terminal <terminal>git config --unset-all user.name</terminal> , Enter. Delete user name from repo configuration data.
+    <br>-terminal <terminal>git config --unset-all user.email</terminal> , Enter. Delete user email from repo configuration data.
+    <br>-terminal <terminal>git config --add user.name "Your Name"</terminal> , Enter. Add user name into repo configuration data.
+    <br>-terminal <terminal>git config user.name "Your Name"</terminal> , Enter. Add user name into repo configuration data.
+    <br>-terminal <terminal>git config user.email youremail@example.com</terminal> , Enter. Add user email into repo configuration data.
+    
+    <hr><li id="c5"><a href="#c0">clone repo</a></li>
+    -open terminlal inside folder prepared for repo cloning
+    <br>-terminal <terminal>git clone -b 2.9.1 --recurse-submodules https://github.com/openfl/lime.git openfl_lime</terminal>. Clone repo with submodules, with tag 2.9.1 version of this repo(in this case lime 2.9.1).
+    <br>But if you set <terminal>git config --global submodule.recurse true</terminal> earlier, then <terminal>git clone -b 2.9.1 https://github.com/openfl/lime.git openfl_lime</terminal> must do same (not tested personally).
+    <br>An <codebox>openfl_lime</codebox> is folder name , that will be used for cloning repo. If you inside target folder, just cut it from terminal syntax like this <terminal>git clone -b 2.9.1 https://github.com/openfl/lime.git</terminal> , and cloned repo will be placed inside target folder.
+    
+    <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
+    </ol>
+    </body>
+</html>
