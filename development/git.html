@@ -25,7 +25,7 @@
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
-    <hr><li id="c"><a href="#c0">summary</a></li>
+    <hr><li id="c1"><a href="#c0">summary</a></li>
     UG - ubuntu gnome (16.04)
     <br>OS - operation system (unix, windows, etc)
     <br>repo == repository(GitHub)/project(GitLab).
@@ -37,7 +37,10 @@
     <br>Configure git for each repo separately.
     <br>Don't use <codebox>--global</codebox> key unnecessarily. This style prevent you from upload with wrong <codebox>user.name</codebox> and <codebox>user.email</codebox>.
     <hr>
-    <br><codebox>Visual Studio Code</codebox> or <codebox>vscode</codebox>, or <codebox>code</codebox> (linux way) have prebuilded VCS, which can make beginner level manipulation with repositories/projects(uses internal GUI), cloned from GitHub/GitLab, uses web service GUI.
+    if you want that git ignore for example folder <codebox>export</codebox> , add to <codebox>.gitingnore</codebox> file inside <codebox>.git</codebox> hidden folder syntax <codebox>**/export</codebox> , and git will ignore file or directory <codebox>export</codebox> anywhere into repo.
+    <br><a href="https://git-scm.com/docs/gitignore#_pattern_format" target="_blank">Weblink</a> to <codebox>.gitignore</codebox> pattern description.
+    <br>To stop tracking a file that is currently tracked, use terminal <terminal>git rm --cached</terminal> , Enter.
+    <hr><codebox>Visual Studio Code</codebox> or <codebox>vscode</codebox>, or <codebox>code</codebox> (linux way) have prebuilded VCS, which can make beginner level manipulation with repositories/projects(uses internal GUI), cloned from GitHub/GitLab, uses web service GUI.
     
     <hr><li id="c2"><a href="#c0">installation on UG</a></li>
     <br>-terminal <terminal>sudo su</terminal> , Enter
