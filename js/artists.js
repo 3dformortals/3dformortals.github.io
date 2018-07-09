@@ -8,6 +8,52 @@ var data;
 // data=[];db.push(data);
 data=[];db.push(data);
 data=[
+    [false,"gtunver / Chen Gart"],
+    ["pixiv","https://www.pixiv.net/member.php?id=1793569"],
+    ["facebook","https://www.facebook.com/gtunver"],
+    ["facebook","https://www.facebook.com/Gtunver.Unlimited/"],
+    ["deviantart","https://www.deviantart.com/gtunver"],
+    ["twitter","https://twitter.com/suntea30259"],
+    ["tumblr","https://www.tumblr.com/dashboard/blog/gtunver"],
+    ["patreon","https://www.patreon.com/gtunver"],
+    ["instagram","https://www.instagram.com/Gtunver_chan/"],
+    ["web","https://www.twitch.tv/gtunver"]
+];db.push(data);
+data=[
+    [false,"bison / Bison倉鼠"],
+    ["web","http://weibo.com/bisonbison"],
+    ["twitter","https://twitter.com/bison1bison"],
+    ["pixiv","https://www.pixiv.net/member.php?id=333556"],
+    ["email","mailto:bisonbison@foxmail.com"]
+];db.push(data);
+data=[
+    [false,"zukky / Zukky＠三日目東ツ21a"],
+    ["pixiv","https://www.pixiv.net/member.php?id=1450385"],
+    ["twitter","https://twitter.com/zukky33"],
+    ["email","mailto:zukky.ambition33@gmail.com"]
+];db.push(data);
+data=[
+    [false,"lasterk / LasterKing"],
+    ["hentai-foundry","https://www.hentai-foundry.com/pictures/user/lasterk"],
+    ["email","mailto:laster9999@hotmail.com"],
+    ["pixiv","https://www.pixiv.net/member.php?id=198128"],
+    ["patreon","https://www.patreon.com/lasterk"],
+    ["twitter","https://twitter.com/LasterK"],
+    ["facebook","https://www.facebook.com/Lasterstation/"],
+    ["picarto","https://picarto.tv/Lasterk"]
+];db.push(data);
+data=[
+    [true,"evulart (Max) / evulchibi / evul art / evul"],
+    ["email","mailto:evulart@gmail.com"],
+    ["tumblr","https://evulchibi.tumblr.com/"],
+    ["hentai-foundry","https://www.hentai-foundry.com/user/Evulchibi/profile"],
+    ["twitter","https://twitter.com/evulart"],
+    ["artstation","https://www.artstation.com/evulart"],
+    ["artstation","https://evulart.artstation.com/"],
+    ["deviantart","https://www.deviantart.com/evulart"],
+    ["patreon","https://www.patreon.com/evulchibi"]
+];db.push(data);
+data=[
     [false,"shadman / shadbase / Shädbase"],
     ["web","http://www.shadbase.com/"]
 ];db.push(data);
