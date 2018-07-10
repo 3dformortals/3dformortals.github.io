@@ -6,7 +6,73 @@ var data;
 //     ["icons artstation / deviantart / dropbox / email / facebook / flickr / github / hentai-foundry / instagram / linkedin / patreon / picarto / pinterest / pixiv / reddit / tumblr / twitter / web / youtube ","weblink(mailto:+)"]
 // ];db.push(data);
 // data=[];db.push(data);
-data=[];db.push(data);
+// data=[[false,""],["",""]];db.push(data);
+data=[
+    [false,"Johnson Zhuang / johnson"],
+    ["pixiv","https://www.pixiv.net/member.php?id=4041740"],
+    ["web","http://drawcrowd.com/j511220"],
+    ["twitter","https://twitter.com/ZhuangJ511220"]
+];db.push(data);
+data=[
+    [false,"mignon / mignon/ミニョン@3日目東コ55a"],
+    ["twitter","https://twitter.com/mignon"],
+    ["web","http://cannondo.biz/"],
+    ["pixiv","https://www.pixiv.net/member.php?id=24234"],
+    ["web","https://fantia.jp/mignon"]
+];db.push(data);
+data=[
+    [false,"meme 50 / メメ50 / メメメメ / メメ屋"],
+    ["pixiv","https://www.pixiv.net/member.php?id=27897"],
+    ["web","http://blog.livedoor.jp/meme50-dmmc/"],
+    ["twitter","https://twitter.com/meme50"],
+    ["patreon","https://www.patreon.com/meme50"],
+    ["web","https://fantia.jp/fanclubs/490"]
+];db.push(data);
+data=[
+    [false,"cian yo / cianyo"],
+    ["email","mailto:QAZ2365643@gmail.com "],
+    ["facebook","https://www.facebook.com/H.Cian.Yo/"],
+    ["pixiv","https://www.pixiv.net/member.php?id=4196200"],
+    ["twitter","https://twitter.com/cian_yo"],
+    ["twitter","https://twitter.com/Cian"],
+    ["artstation","https://www.artstation.com/cianyo"],
+    ["artstation","https://cianyo.artstation.com/"],
+    ["patreon","https://www.patreon.com/CIANYO"],
+    ["deviantart","https://www.deviantart.com/cianyo"]
+];db.push(data);
+data=[
+    [false,"wa@3日目セ25b / washizutan2"],
+    ["twitter","https://twitter.com/washizutan2"],
+    ["pixiv","https://www.pixiv.net/member.php?id=502313"]
+];db.push(data);
+data=[
+    [false,"ricegnat / ケラス"],
+    ["web","http://ricegnat.moe"],
+    ["twitter","https://twitter.com/ricegnat"],
+    ["web","http://www.medicalwhiskey.com/store"],
+    ["patreon","http://www.patreon.com/ricegnat"],
+    ["picarto","https://www.picarto.tv/RiceGnat"],
+    ["pixiv","http://www.pixiv.net/member.php?id=1229860"],
+    ["deviantart","http://ricegnat.deviantart.com/"],
+    ["web","http://www.medicalwhiskey.com/"]
+];db.push(data);
+data=[
+    [false,"Astor Alexander / astoralexander"],
+    ["web","https://www.behance.net/astoralexander"],
+    ["deviantart","https://www.deviantart.com/astoralexander/"],
+    ["instagram","https://www.instagram.com/astoralexander/"],
+    ["web","https://society6.com/astoralexander"],
+    ["twitter","https://twitter.com/astoralexander"],
+    ["artstation","https://www.artstation.com/astoralexander"],
+    ["artstation","https://astoralexander.artstation.com/"],
+    ["tumblr","http://astoralexander.tumblr.com/"]
+];db.push(data);
+data=[
+    [false,"ikuchan kaoru / 郁 / Shiroinuchikusyo"],
+    ["twitter","https://twitter.com/ikuchan_kaoru"],
+    ["pixiv","https://www.pixiv.net/member.php?id=5476137"],
+    ["web","https://www.dmm.co.jp/dc/doujin/-/detail/=/cid=d_132070/ikuchankaoru-002"]
+];db.push(data);
 data=[
     [false,"gtunver / Chen Gart"],
     ["pixiv","https://www.pixiv.net/member.php?id=1793569"],
