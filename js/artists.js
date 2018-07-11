@@ -8,6 +8,31 @@ var data;
 // data=[];db.push(data);
 // data=[[false,""],["",""]];db.push(data);
 data=[
+    [false,"Akatsuki Akane (あかつき茜) / A.Matsumoto / A2 LampShade / 〜Yuzuriha〜 / OwnPace / A.M.I.S"],
+    ["web","http://akatsuki2012.blog.fc2.com/"],
+    ["twitter","http://twitter.com/Akatsuki_2013"],
+    ["web","http://drawr.net/a-m-i-s"],
+    ["pixiv","https://www.pixiv.net/member.php?id=1144986"],
+    ["email","mailto:amis22@hotmail.com"]
+];db.push(data);
+data=[
+    [false,"木村 / kimura / ykimu"],
+    ["pixiv","https://www.pixiv.net/member.php?id=447961"]
+];db.push(data);
+data=[
+    [false,"matilda vin / fiship / matilda fiship"],
+    ["tumblr","http://fiship.tumblr.com/"],
+    ["youtube","https://www.youtube.com/channel/UCm7TBLk3DJmAYhi74dW0SXg"],
+    ["artstation","https://fiship.artstation.com/"],
+    ["artstation","https://www.artstation.com/fiship"],
+    ["patreon","https://www.patreon.com/fiship"],
+    ["web","https://www.twitch.tv/matilda_fiship"],
+    ["twitter","https://twitter.com/matilda_fiship"],
+    ["web","https://society6.com/fiship"],
+    ["instagram","https://www.instagram.com/matilda.fiship/"],
+    ["deviantart","https://matilda-fiship.deviantart.com/"]
+];db.push(data);
+data=[
     [false,"Johnson Zhuang / johnson"],
     ["pixiv","https://www.pixiv.net/member.php?id=4041740"],
     ["web","http://drawcrowd.com/j511220"],
