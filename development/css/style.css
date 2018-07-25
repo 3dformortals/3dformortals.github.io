@@ -100,6 +100,8 @@ div.code{
   color: #bae8c1;
 }
 
+img.h200px{max-height: 200px;}
+
 codebox{
   color: #E3DEDC;
 }
