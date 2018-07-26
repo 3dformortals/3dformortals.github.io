@@ -8,6 +8,12 @@ var data;
 // data=[];db.push(data);
 // data=[[false,""],["",""]];db.push(data);
 data=[
+    [false,"笹岡ぐんぐ / ssokgng / sasaoka gungu"],
+    ["web","http://ssokgng.blog.fc2.com/"],
+    ["twitter","https://twitter.com/ssokgng"],
+    ["pixiv","https://www.pixiv.net/member.php?id=1019732"]
+];db.push(data);
+data=[
     [false,"Akatsuki Akane (あかつき茜) / A.Matsumoto / A2 LampShade / 〜Yuzuriha〜 / OwnPace / A.M.I.S"],
     ["web","http://akatsuki2012.blog.fc2.com/"],
     ["twitter","http://twitter.com/Akatsuki_2013"],
