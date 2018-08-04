@@ -8,6 +8,12 @@ var data;
 // data=[];db.push(data);
 // data=[[false,""],["",""]];db.push(data);
 data=[
+    [false,"nishieda / nisieda / シビレ罠 / 西e田"],
+    ["web","http://www.nisieda.com/"],
+    ["twitter","https://twitter.com/nisiedas"],
+    ["pixiv","https://www.pixiv.net/member.php?id=4015"]
+];db.push(data);
+data=[
     [false,"笹岡ぐんぐ / ssokgng / sasaoka gungu"],
     ["web","http://ssokgng.blog.fc2.com/"],
     ["twitter","https://twitter.com/ssokgng"],
