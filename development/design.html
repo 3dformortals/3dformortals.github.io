@@ -17,6 +17,7 @@
     <br>
     <a href="#gimp_planet_gas">gimp draw gas planet</a> |
     <a href="#gimp_planet_rings">gimp draw planetary rings</a> |
+    <a href="#gimp_nebula_starspace">gimp draw nebula star space</a> |
     <hr>
     COLORS
     
@@ -150,7 +151,7 @@
     <a name="gimp_planet_gas"></a>
     <br><br>draw gas planet 3D looks
     <br>GIMP 2.10
-    <br><img class="h200px" src="img/planet_gas.png">
+    <br><a href="https://youtu.be/wWb9G_ck4dY" target="_blank" title="tutorial video on youtube"><img class="h200px" src="img/planet_gas.png"></a>
     <br>-create document 400x400px
     <br>-create new layer "planet" and select it
     <br>-Filters - Render - Noise - Plasma...
@@ -177,6 +178,7 @@
     <br><br>draw planetary rings
     <br>GIMP 2.10
     <br><img class="h200px" src="img/planet_gas_rings.png">
+    <a href="https://youtu.be/OnQ5lfeVYNA" target="_blank" title="tutorial video on youtube"><img class="h200px" src="img/planetary_rings.png"></a>
     <br>-imagine you have planet picture size 400x400px
     <br>-create layer rings size 1200x1200px and select it
     <br>-draw radial gradient from center to border
@@ -198,6 +200,144 @@
     <br>-select layer "mask" <codebox>Edit - Copy</codebox>
     <br>-select mask box of layer "rings" <codebox>Edit - Paste</codebox>
     <br>-hide "mask" layer (can be deleted for decrease file size)
+    <hr>
+    
+    <a name="gimp_nebula_starspace"></a>
+    <br><br>drawing a starspace
+    <br>GIMP 2.10
+    <br><img class="h200px" src="img/nebula_starspace1.png">
+    <a href="https://youtu.be/MqVrdNLw-uw" target="_blank" title="tutorial video on youtube"><img class="h200px" src="img/nebula_starspace2.png"></a>
+    <br>4000x2000 px can generate effects (sparkle, etc) few minutes.
+
+    <br><br>example tested on 400x400px size image
+    <br>final image will have 7 layers. Create layer step by step. Each new layer on top. Later layers will be reordered.
+
+    <br><br>---------------------
+    <br>"face stars" layer
+    <br>(foreground white , background black)
+    <br>- Tools - Paint Tools - Bucket Fill
+    <br>-- BG color fill
+    <br>-- fill black (which is background)
+
+    <br><br>- Filters - Noise - CIE ich Noise...
+    <br>-- Dulling 8
+    <br>-- Lightness 100
+    <br>-- Chroma 0
+    <br>-- Hue 0
+    <br>-- press "new seed" to looks good
+    <br>-- ok
+
+    <br><br>- Colors - Brightness-Contrast...
+    <br>-- Contrast 63
+    <br>-- Brightness -20...0...20 (number of stars)
+    <br>-- ok
+
+    <br><br>- Filters - Light and Shadow - Sparkle...
+    <br>-- luminosity threshold 0.001
+    <br>-- Flare intensity 1.0
+    <br>-- Spike length 10
+    <br>-- Spike points 4
+    <br>-- Spike angle -1
+    <br>-- Spike density 1
+    <br>-- Transparency 0
+    <br>-- Random hue 0
+    <br>-- Random saturation 0
+    <br>-- Foreground color (white)
+    <br>-- ok
+    
+    <br><br>-----------------------
+    <br>"back stars" layer
+    <br>(foreground white , background black)
+    <br>- Tools - Paint Tools - Bucket Fill
+    <br>-- BG color fill
+    <br>-- fill black (which is background)
+    
+    <br><br>- Filters - Noise - CIE ich Noise...
+    <br>-- Dulling 8
+    <br>-- Lightness 75
+    <br>-- Chroma 0
+    <br>-- Hue 0
+    <br>-- press "new seed" to looks good
+    <br>-- ok
+    
+    <br><br>- Filters - Light and Shadow - Sparkle...
+    <br>-- luminosity threshold 0.006
+    <br>-- Flare intensity 0.5
+    <br>-- Spike length 10
+    <br>-- Spike points 4
+    <br>-- Spike angle -1
+    <br>-- Spike density 1
+    <br>-- Transparency 0
+    <br>-- Random hue 0
+    <br>-- Random saturation 0
+    <br>-- Foreground color (white)
+    <br>-- ok
+    <br>
+    <br>--------------------------
+    <br>"color plasma" layer
+    <br>- Filters - Render - Noise - Plasma...
+    <br>-- New Seed ... to looks good
+    <br>-- ok
+    <br>
+    <br>-------------------------
+    <br>"black" layer
+    <br>(foreground white , background black)
+    <br>- Tools - Paint Tools - Bucket Fill
+    <br>-- BG color fill
+    <br>-- fill black (which is background)
+    <br>
+    <br>------------------
+    <br>"nebula plasma" layer
+    <br>- Filters - Render - Noise - Plasma...
+    <br>-- Turbulence 0.5
+    <br>-- New Seed ... to looks good
+    <br>-- ok
+    <br>
+    <br>--------------------
+    <br>"nebula noise" layer
+    <br>- Filters - Render - Noise - Solid Noise...
+    <br>-- X Size 4
+    <br>-- Y Size 4
+    <br>-- Detail 15
+    <br>-- ok
+    <br>
+    <br>-----------------------
+    <br>"supernova" layer (transparent)
+    <br>- Filters - Light and Shadow - Supernova...
+    <br>-- Radius 3...4
+    <br>-- Number of spokes 100
+    <br>-- Random hue 0
+    <br>-- color similar to highlighted area
+    <br>-- color alpha 0
+    <br>(use it after arrangement and addition of effects to all other layers(next step), that highlights any areas uses similar <br>color with alpha 0. That decrease light - decrease the rgb component)
+    <br>-- ok
+    <br>
+    <br>
+    <br>--------------------------
+    <br>Arrange the layers in the following order from top to bottom:
+    <br>- 1 color plasma
+    <br>- 2 face stars
+    <br>- 3 back stars
+    <br>- 4 supernova
+    <br>- 5 nebula noise
+    <br>- 6 nebula plasma
+    <br>- 7 black
+    <br>
+    <br>---------------------------
+    <br>configure view mode for layers:
+    <br>- color plasma - Mode Overlay
+    <br>- face stars - Mode Addition
+    <br>- back stars - Mode Addition
+    <br>- supernova - Mode Normal
+    <br>- nebula noise - Mode Linear burn
+    <br>- nebula plasma - Mode Normal
+    <br>- black - Mode Normal
+    <br>
+    <br>done ... now you can use File - Export As... to export result to PNG image
+    <br>
+    <br>----------------------------------
+    <br>after Brightness and Contrast the sparkle - Flare Intensity and other parameters change the result different than before
+
     <hr>
     
     <br><br>фильтры - свет и тени - Xach эффект
