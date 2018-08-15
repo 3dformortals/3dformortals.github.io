@@ -59,6 +59,12 @@
     <hr>
     -terminal <terminal>git config --global color.ui true</terminal> , Enter. Coloring of output. Default auto. true false
     <br>-terminal <terminal>git config --global submodule.recurse true</terminal> , Enter. Description <a href="https://git-scm.com/docs/git-config#git-config-submodulerecurse" target="_blank">weblink</a>
+    <br>-terminal <terminal>kate ~/.gitignore_global</terminal> , Enter,
+    <br>then addon into new file next text and save the file:
+    <br><terminal>.directory<br>**/export</terminal>
+    <br>The file <terminal>.directory</terminal> - file which dolphin create that store folder view data from last session
+    <br>The folder <terminal>**/export</terminal> - standart folder for store haxeflixel project compiling result files like apk, exe and environment
+    <br>-terminal <terminal>git config --global core.excludesfile '~/.gitignore_global'</terminal> now git will always skip these files and folders(and subfolders) inside all repos
     <!-- <br>terminal <terminal></terminal> -->
     
     <hr><li id="c4"><a href="#c0">setup repo</a></li>
