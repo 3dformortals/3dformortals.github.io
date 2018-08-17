@@ -8,6 +8,15 @@ var data;
 // data=[];db.push(data);
 // data=[[false,""],["",""]];db.push(data);
 data=[
+    [false,"hews / hews-hack"],
+    ["twitter","https://twitter.com/hews__"],
+    ["facebook","http://www.facebook.com/hewsgraphicsSAFE"],
+    ["deviantart","https://www.deviantart.com/hews-hack"],
+    ["patreon","https://www.patreon.com/hewsie"],
+    ["pixiv","https://www.pixiv.net/member.php?id=4338012"],
+    ["email","mailto:hewshack@gmail.com"]
+];db.push(data);
+data=[
     [false,"nishieda / nisieda / シビレ罠 / 西e田"],
     ["web","http://www.nisieda.com/"],
     ["twitter","https://twitter.com/nisiedas"],
