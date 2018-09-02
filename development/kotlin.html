@@ -87,9 +87,26 @@
             <br>&nbsp;&nbsp;&nbsp;&nbsp;return fragment
         <br>}
     </codebox>
-    Improved syntax:
+    <br>Improved syntax:
     <codebox>
         <br>fun createInstance(args: Bundle) = MyFragment().apply { arguments = args }
+    </codebox>
+    <hr>
+    Unchained object creation chain-able.
+    <br>Normal syntax:
+    <codebox>
+        <br>fun createIntent(intentData: String, intentAction: String): Intent {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;val intent = Intent()
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;intent.action = intentAction
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;intent.data=Uri.parse(intentData)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;return intent
+        <br>}
+    </codebox>
+    <br>Improved syntax:
+    <codebox>
+        <br>fun createIntent(intentData: String, intentAction: String) =
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;Intent().apply { action = intentAction }
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.apply { data = Uri.parse(intentData) }
     </codebox>
     
     <hr><li id="c8"><a href="#c0">also(), takeIf() and takeUnless() ... extension functions</a></li>
