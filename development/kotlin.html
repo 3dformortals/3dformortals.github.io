@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>kotlin</title>
+        <title>kotlin syntax</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
@@ -14,14 +14,68 @@
     </head>
     <body>
     <script src="css/switchfont/switchfont.js"></script><br>
-    <a class="up" id="c0" href="index.html">development &lt;&lt;&lt; kotlin</a>
+    <a class="up" id="c0" href="index.html">development &lt;&lt;&lt; kotlin syntax</a>
     
     <ol>
-        <li><a class="up" href="#c1" >number sequence generator (range Array&lt;Int&gt; generator)</a></li>
+        <li><a class="up" href="#c1" >Bound callable references</a></li>
+        <li><a class="up" href="#c2" >Underscores for unused parameters</a></li>
+        <li><a class="up" href="#c3" >Underscores in numeric literals</a></li>
+        <li><a class="up" href="#c4" >Shorter syntax for properties</a></li>
+        <li><a class="up" href="#c5" >String to number conversions</a></li>
+        <li><a class="up" href="#c6" >onEach() ... extension function for collections and sequences</a></li>
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
-    <hr><li id="c1"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>
+    <hr><li id="c1"><a href="#c0">Bound callable references</a></li>
+    <codebox>
+        val numberRegex = "\\d+".toRegex()
+        <br>val numbers = listOf("abc", "123", "456").filter(numberRegex::matches)
+    </codebox>
+    
+    <hr><li id="c2"><a href="#c0">Underscores for unused parameters</a></li>
+    For a lambda with multiple parameters, you can use the <codebox>_</codebox> character to replace the names of the parameters you don't use:
+    <codebox>
+        <br>map.forEach { _, value -> println("$value!") }
+    </codebox>
+    <br>This also works in destructuring declarations:
+    <codebox>
+        <br>val (_, status) = function( ... )
+        <br>for ((a, _) in collection) { ... }
+    </codebox>
+    
+    <hr><li id="c3"><a href="#c0">Underscores in numeric literals</a></li>
+    <codebox>
+            val oneMillion = 1_000_000
+            <br>val hexBytes = 0xFF_EC_DE_5E
+            <br>val bytes = 0b11010010_01101001_10010100_10010010
+    </codebox>
+    
+    <hr><li id="c4"><a href="#c0">Shorter syntax for properties</a></li>
+    <codebox>
+        data class Person(val name: String, val age: Int) { val isAdult get() = age >= 20 // Property type inferred to be 'Boolean' }
+    </codebox>
+    
+    <hr><li id="c5"><a href="#c0">String to number conversions</a></li>
+    Without throwing exception:
+    <codebox>
+        <br> String.toIntOrNull(): Int?
+        <br> String.toDoubleOrNull(): Double?
+    </codebox>
+    Overloadable integer conversion with radix parameter, which allows to specify the base of conversion (2 to 36):
+    <codebox>
+        <br> Int.toString()
+        <br> String.toInt()
+        <br> String.toIntOrNull()
+    </codebox>
+    
+    <hr><li id="c6"><a href="#c0">onEach() ... extension function for collections and sequences</a></li>
+    <codebox>
+        inputDir.walk()
+        <br> .filter { it.isFile && it.name.endsWith(".txt") }
+        <br> .onEach { println("Moving $it to $outputDir") }
+        <br> .forEach { moveFile(it, File(outputDir, it.toRelativeString(inputDir))) }
+    </codebox>
+    
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>
     </body>
