@@ -82,9 +82,9 @@
     Normal syntax:
     <codebox>
         <br>fun createInstance(args: Bundle) : MyFragment {
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;val fragment = MyFragment()
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;fragment.arguments = args
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;return fragment
+            <bin>1</bin>val fragment = MyFragment()
+            <bin>1</bin>fragment.arguments = args
+            <bin>1</bin>return fragment
         <br>}
     </codebox>
     <br>Improved syntax:
@@ -96,17 +96,17 @@
     <br>Normal syntax:
     <codebox>
         <br>fun createIntent(intentData: String, intentAction: String): Intent {
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;val intent = Intent()
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;intent.action = intentAction
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;intent.data=Uri.parse(intentData)
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;return intent
+            <bin>1</bin>val intent = Intent()
+            <bin>1</bin>intent.action = intentAction
+            <bin>1</bin>intent.data=Uri.parse(intentData)
+            <bin>1</bin>return intent
         <br>}
     </codebox>
     <br>Improved syntax:
     <codebox>
         <br>fun createIntent(intentData: String, intentAction: String) =
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;Intent().apply { action = intentAction }
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.apply { data = Uri.parse(intentData) }
+        <bin>1</bin>Intent().apply { action = intentAction }
+        <bin>2</bin>.apply { data = Uri.parse(intentData) }
     </codebox>
     
     <hr><li id="c8"><a href="#c0">also(), takeIf() and takeUnless() ... extension functions</a></li>
@@ -129,5 +129,8 @@
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>
+    
+    
     </body>
+    <script src="css/indentation/indentation.js"></script><br>
 </html>
