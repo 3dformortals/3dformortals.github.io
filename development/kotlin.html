@@ -25,6 +25,9 @@
         <li><a class="up" href="#c6" ><terminal>onEach()</terminal> ... extension function for collections and sequences</a></li>
         <li><a class="up" href="#c7" ><terminal>apply()</terminal> ... extension function</a></li>
         <li><a class="up" href="#c8" ><terminal>also()</terminal> , <terminal>takeIf()</terminal> and <terminal>takeUnless()</terminal> ... extension functions</a></li>
+        <li><a class="up" href="#c9" >Destructuring in lambdas</a></li>
+        <li><a class="up" href="#c10" ><terminal>minOf()</terminal> and <terminal>maxOf()</terminal></a></li>
+        <li><a class="up" href="#c11" ><terminal>Array()</terminal> like <terminal>List()</terminal> and <terminal>MutableList()</terminal></a></li>
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
@@ -63,7 +66,7 @@
         <br> String.toIntOrNull(): Int?
         <br> String.toDoubleOrNull(): Double?
     </codebox>
-    Overloadable integer conversion with radix parameter, which allows to specify the base of conversion (2 to 36):
+    <br>Overloadable integer conversion with radix parameter, which allows to specify the base of conversion (2 to 36):
     <codebox>
         <br> Int.toString()
         <br> String.toInt()
@@ -125,6 +128,26 @@
     <codebox>
         <br>val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not found")
         <br>val result = string.takeUnless(String::isEmpty)
+    </codebox>
+    
+    <hr><li id="c9"><a href="#c0">Destructuring in lambdas</a></li>
+    <codebox>
+        val map = mapOf(2 to "one", 3 to "two")
+        <br>println(map.mapValues { (key, value) -> "$key -> $value!" })
+    </codebox>
+    
+    <hr><li id="c10"><a href="#c0">minOf() and maxOf()</a></li>
+    <codebox>
+        val list1 = listOf("a", "b")
+        <br>val list2 = listOf("x", "y", "z")
+        <br>val minSize = minOf(list1.size, list2.size)
+        <br>val longestList = maxOf(list1, list2, compareBy { it.size })
+    </codebox>
+    
+    <hr><li id="c11"><a href="#c0">Array() like List() and MutableList()</a></li>
+    <codebox>
+        val squares = List(4) { index -> index * index } //[0, 1, 4, 9]
+        <br>val mutable = MutableList(4) { 0 } //[0, 0, 0, 0]
     </codebox>
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
