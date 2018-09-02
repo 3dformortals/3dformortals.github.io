@@ -23,6 +23,7 @@
         <li><a class="up" href="#c4" >Shorter syntax for properties</a></li>
         <li><a class="up" href="#c5" >String to number conversions</a></li>
         <li><a class="up" href="#c6" >onEach() ... extension function for collections and sequences</a></li>
+        <li><a class="up" href="#c7" >also(), takeIf() and takeUnless() ... extension functions</a></li>
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
@@ -74,6 +75,24 @@
         <br> .filter { it.isFile && it.name.endsWith(".txt") }
         <br> .onEach { println("Moving $it to $outputDir") }
         <br> .forEach { moveFile(it, File(outputDir, it.toRelativeString(inputDir))) }
+    </codebox>
+    
+    <hr><li id="c7"><a href="#c0">also(), takeIf() and takeUnless() ... extension functions</a></li>
+    <terminal>also()</terminal> is like apply, but reciever inside is available as <terminal>it</terminal> (inside apply is available as <terminal>this</terminal>) .
+    <codebox>
+        <br> fun Block.copy() = Block().also { it.content = this.content }
+    </codebox>
+    <hr>
+    <terminal>takeIf()</terminal> is like filter for a single value, which returns the reciever or <terminal>null</terminal> .
+    <codebox>
+        <br>val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
+        <br>val index = input.indexOf(keyword).takeIf { it >= 0 } ?: error("keyword not found")
+    </codebox>
+    <hr>
+    <terminal>takeUnless()</terminal> is inverted <terminal>takeIf()</terminal> .
+    <codebox>
+        <br>val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not found")
+        <br>val result = string.takeUnless(String::isEmpty)
     </codebox>
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
