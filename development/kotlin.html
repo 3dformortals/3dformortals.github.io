@@ -21,13 +21,25 @@
         <li><a class="up" href="#c2" >Underscores for unused parameters</a></li>
         <li><a class="up" href="#c3" >Underscores in numeric literals</a></li>
         <li><a class="up" href="#c4" >Shorter syntax for properties</a></li>
-        <li><a class="up" href="#c5" >String to number conversions</a></li>
+        
+        <li><a class="up" href="#c5" >empty</a></li>
+        
         <li><a class="up" href="#c6" ><terminal>onEach()</terminal> ... extension function for collections and sequences</a></li>
         <li><a class="up" href="#c7" ><terminal>apply()</terminal> ... extension function</a></li>
         <li><a class="up" href="#c8" ><terminal>also()</terminal> , <terminal>takeIf()</terminal> and <terminal>takeUnless()</terminal> ... extension functions</a></li>
         <li><a class="up" href="#c9" >Destructuring in lambdas</a></li>
         <li><a class="up" href="#c10" ><terminal>minOf()</terminal> and <terminal>maxOf()</terminal></a></li>
         <li><a class="up" href="#c11" ><terminal>Array()</terminal> like <terminal>List()</terminal> and <terminal>MutableList()</terminal></a></li>
+        <li><a class="up" href="#c12" ><terminal>Arrays</terminal></a></li>
+        <li><a class="up" href="#c13" ><terminal>List()</terminal> kotlin.collections</a></li>
+        <li><a class="up" href="#c14" ><terminal>Map()</terminal> kotlin.collections</a></li>
+        <li><a class="up" href="#c15" ><terminal>Set()</terminal> kotlin.collections</a></li>
+        <li><a class="up" href="#c16" ><terminal>Itarable()</terminal> kotlin.collections</a></li>
+        <li><a class="up" href="#c17" ><terminal>Collection()</terminal> kotlin.collections</a></li>
+        <li><a class="up" href="#c18" >Strings</a></li>
+        <li><a class="up" href="#c19" >String Literals</a></li>
+        <li><a class="up" href="#c20" >String Templates</a></li>
+        <li><a class="up" href="#c21" >String to number conversions</a></li>
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
@@ -60,18 +72,7 @@
         data class Person(val name: String, val age: Int) { val isAdult get() = age >= 20 // Property type inferred to be 'Boolean' }
     </codebox>
     
-    <hr><li id="c5"><a href="#c0">String to number conversions</a></li>
-    Without throwing exception:
-    <codebox>
-        <br> String.toIntOrNull(): Int?
-        <br> String.toDoubleOrNull(): Double?
-    </codebox>
-    <br>Overloadable integer conversion with radix parameter, which allows to specify the base of conversion (2 to 36):
-    <codebox>
-        <br> Int.toString()
-        <br> String.toInt()
-        <br> String.toIntOrNull()
-    </codebox>
+    <hr><li id="c5"><a href="#c0">empty</a></li>
     
     <hr><li id="c6"><a href="#c0">onEach() ... extension function for collections and sequences</a></li>
     <codebox>
@@ -149,6 +150,31 @@
         val squares = List(4) { index -> index * index } //[0, 1, 4, 9]
         <br>val mutable = MutableList(4) { 0 } //[0, 0, 0, 0]
     </codebox>
+    
+    <hr><li id="c12"><a href="#c0">Arrays</a></li>
+    
+    <hr><li id="c13"><a href="#c0">List() kotlin.collections</a></li>
+    <hr><li id="c14"><a href="#c0">Map() kotlin.collections</a></li>
+    <hr><li id="c15"><a href="#c0">Set() kotlin.collections</a></li>
+    <hr><li id="c16"><a href="#c0">Itarable() kotlin.collections</a></li>
+    <hr><li id="c17"><a href="#c0">Collection() kotlin.collections</a></li>
+    
+    <hr><li id="c18"><a href="#c0">Strings</a></li>
+    <hr><li id="c19"><a href="#c0">String Literals</a></li>
+    <hr><li id="c20"><a href="#c0">String Templates</a></li>
+    <hr><li id="c21"><a href="#c0">String to number conversions</a></li>
+    Without throwing exception:
+    <codebox>
+        <br> String.toIntOrNull(): Int?
+        <br> String.toDoubleOrNull(): Double?
+    </codebox>
+    <br>Overloadable integer conversion with <terminal>radix</terminal> parameter, which allows to specify the base of conversion (2 to 36):
+    <codebox>
+        <br> Int.toString()
+        <br> String.toInt()
+        <br> String.toIntOrNull()
+    </codebox>
+    
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>
