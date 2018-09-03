@@ -24,3 +24,17 @@ function brindent(){
     }
 }
 brindent();
+
+function codeboxdiv(){
+    var tags = document.getElementsByTagName("codebox");
+    for (var i=0;i<tags.length;i++){
+        var div = document.createElement('div');
+        div.className = "code";
+        var tag = tags[i];
+        var text = tag.innerHTML;
+        tag.innerHTML = "";
+        div.innerHTML = text;
+        tag.appendChild(div);
+    }
+}
+codeboxdiv();
