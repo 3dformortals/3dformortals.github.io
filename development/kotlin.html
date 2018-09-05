@@ -259,8 +259,15 @@
         <br> println( 'a'.plus( 'd'.toInt() ) ) //Å
         <br> println( 'd'.minus( 3 ) ) //a
         <br> println( 'a'.plus( 3 ) ) //d
-        <br> println( 'a'.rangeTo( 'd' ) ) //a..d
-        <br> println( 'd'.rangeTo( 'a' ) ) //d..a
+        <br> 
+        <br> println( 'a'.rangeTo( 'd' ).toString() ) //a..d
+        <br> println( 'a'.rangeTo( 'd' ).toList() ) //[a, b, c, d]
+        <br> println( 'a'.rangeTo( 'd' ).drop(0) ) //[a, b, c, d]
+        <br> 
+        <br> println( 'd'.rangeTo( 'a' ).toString() ) //d..a
+        <br> println( 'd'.rangeTo( 'a' ).toList() ) //[ ]
+        <br> println( 'd'.rangeTo( 'a' ).drop(0) ) //[ ]
+        <br> 
         <br> println( 'a'.toByte() ) //97
         <br> println( 'd'.toChar() ) //d
     </codebox>
