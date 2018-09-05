@@ -54,25 +54,25 @@
     <hr><li id="c1"><a href="#c0">Bound callable references</a></li>
     <codebox>
         val numberRegex = "\\d+".toRegex()
-        <br>val numbers = listOf("abc", "123", "456").filter(numberRegex::matches)
+        <br>val numbers = listOf( "abc", "123", "456" ).filter( numberRegex::matches )
     </codebox>
     
     <hr><li id="c2"><a href="#c0">Underscores for unused parameters</a></li>
     For a lambda with multiple parameters, you can use the <treminal>_</treminal> character to replace the names of the parameters you don't use:
     <codebox>
-        map.forEach { _, value -> println("$value!") }
+        map.forEach { _, value -> println( "$value!" ) }
     </codebox>
     <br>This also works in destructuring declarations:
     <codebox>
-        val (_, status) = function( ... )
-        <br>for ((a, _) in collection) { ... }
+        val ( _, status ) = function( ...  )
+        <br>for ( ( a, _ ) in collection ) { ... }
     </codebox>
     
     <hr><li id="c3"><a href="#c0">empty</a></li>
     
     <hr><li id="c4"><a href="#c0">Shorter syntax for properties</a></li>
     <codebox>
-        data class Person(val name: String, val age: Int) { val isAdult get() = age >= 20 // Property type inferred to be 'Boolean' }
+        data class Person( val name: String, val age: Int ) { val isAdult get() = age >= 20 // Property type inferred to be 'Boolean' }
     </codebox>
     
     <hr><li id="c5"><a href="#c0">empty</a></li>
@@ -80,15 +80,15 @@
     <hr><li id="c6"><a href="#c0">onEach() ... extension function for collections and sequences</a></li>
     <codebox>
         inputDir.walk()
-        <br> .filter { it.isFile && it.name.endsWith(".txt") }
-        <br> .onEach { println("Moving $it to $outputDir") }
-        <br> .forEach { moveFile(it, File(outputDir, it.toRelativeString(inputDir))) }
+        <br> .filter { it.isFile && it.name.endsWith( ".txt" ) }
+        <br> .onEach { println( "Moving $it to $outputDir" ) }
+        <br> .forEach { moveFile( it, File( outputDir, it.toRelativeString( inputDir ) ) ) }
     </codebox>
     
     <hr><li id="c7"><a href="#c0">apply() ... extension function</a></li>
     Normal syntax:
     <codebox>
-        fun createInstance(args: Bundle) : MyFragment {
+        fun createInstance( args: Bundle ) : MyFragment {
             <bin>1</bin>val fragment = MyFragment()
             <bin>1</bin>fragment.arguments = args
             <bin>1</bin>return fragment
@@ -96,62 +96,62 @@
     </codebox>
     <br>Improved syntax:
     <codebox>
-        fun createInstance(args: Bundle) = MyFragment().apply { arguments = args }
+        fun createInstance( args: Bundle ) = MyFragment().apply { arguments = args }
     </codebox>
     <hr>
     Unchained object creation chain-able.
     <br>Normal syntax:
     <codebox>
-        fun createIntent(intentData: String, intentAction: String): Intent {
+        fun createIntent( intentData: String, intentAction: String ): Intent {
             <bin>1</bin>val intent = Intent()
             <bin>1</bin>intent.action = intentAction
-            <bin>1</bin>intent.data=Uri.parse(intentData)
+            <bin>1</bin>intent.data=Uri.parse( intentData )
             <bin>1</bin>return intent
         <br>}
     </codebox>
     <br>Improved syntax:
     <codebox>
-        fun createIntent(intentData: String, intentAction: String) =
+        fun createIntent( intentData: String, intentAction: String ) =
         <bin>1</bin>Intent().apply { action = intentAction }
-        <bin>2</bin>.apply { data = Uri.parse(intentData) }
+        <bin>2</bin>.apply { data = Uri.parse( intentData ) }
     </codebox>
     
     <hr><li id="c8"><a href="#c0">also(), takeIf() and takeUnless() ... extension functions</a></li>
-    <terminal>also()</terminal> is like <terminal>apply()</terminal> , but reciever inside is available as <terminal>it</terminal> (inside <terminal>apply()</terminal> is available as <terminal>this</terminal>) .
+    <terminal>also()</terminal> is like <terminal>apply()</terminal> , but reciever inside is available as <terminal>it</terminal> ( inside <terminal>apply()</terminal> is available as <terminal>this</terminal> ) .
     <codebox>
         fun Block.copy() = Block().also { it.content = this.content }
     </codebox>
     <hr>
     <terminal>takeIf()</terminal> is like filter for a single value, which returns the reciever or <terminal>null</terminal> .
     <codebox>
-        val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
-        <br>val index = input.indexOf(keyword).takeIf { it >= 0 } ?: error("keyword not found")
+        val outDirFile = File( outputDir.path ).takeIf { it.exists() } ?: return false
+        <br>val index = input.indexOf( keyword ).takeIf { it >= 0 } ?: error( "keyword not found" )
     </codebox>
     <hr>
     <terminal>takeUnless()</terminal> is inverted <terminal>takeIf()</terminal> .
     <codebox>
-        val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not found")
-        <br>val result = string.takeUnless(String::isEmpty)
+        val index = input.indexOf( keyword ).takeUnless { it < 0 } ?: error( "keyword not found" )
+        <br>val result = string.takeUnless( String::isEmpty )
     </codebox>
     
     <hr><li id="c9"><a href="#c0">Destructuring in lambdas</a></li>
     <codebox>
-        val map = mapOf(2 to "one", 3 to "two")
-        <br>println(map.mapValues { (key, value) -> "$key -> $value!" })
+        val map = mapOf( 2 to "one", 3 to "two" )
+        <br>println( map.mapValues { ( key, value ) -> "$key -> $value!" } )
     </codebox>
     
     <hr><li id="c10"><a href="#c0">minOf() and maxOf()</a></li>
     <codebox>
-        val list1 = listOf("a", "b")
-        <br>val list2 = listOf("x", "y", "z")
-        <br>val minSize = minOf(list1.size, list2.size)
-        <br>val longestList = maxOf(list1, list2, compareBy { it.size })
+        val list1 = listOf( "a", "b" )
+        <br>val list2 = listOf( "x", "y", "z" )
+        <br>val minSize = minOf( list1.size, list2.size )
+        <br>val longestList = maxOf( list1, list2, compareBy { it.size } )
     </codebox>
     
     <hr><li id="c11"><a href="#c0">Array() like List() and MutableList()</a></li>
     <codebox>
-        val squares = List(4) { index -> index * index } //[0, 1, 4, 9]
-        <br>val mutable = MutableList(4) { 0 } //[0, 0, 0, 0]
+        val squares = List( 4 ) { index -> index * index } //[0, 1, 4, 9]
+        <br>val mutable = MutableList( 4 ) { 0 } //[0, 0, 0, 0]
     </codebox>
     
     <hr><li id="c12"><a href="#c0">Arrays</a></li>
@@ -169,64 +169,65 @@
     <hr><li id="c21"><a href="#c0">String to number conversions</a></li>
     Without throwing exception: <terminal>String.toIntOrNull(): Int?</terminal> <terminal>String.toDoubleOrNull(): Double?</terminal>
     <codebox>
-        println(1_0.0) //10.0
-        <br> println("10".toDouble()) //10.0
-        <br> println("010".toDouble()) //10.0
-        <br> //println("1_0".toDouble()) //NumberFormatException
-        <br> println("10".toDoubleOrNull()) //10.0
-        <br> println("1_0".toDoubleOrNull()) //null
+        println( 1_0.0 ) //10.0
+        <br> println( "10".toDouble() ) //10.0
+        <br> println( "010".toDouble() ) //10.0
+        <br> //println( "1_0".toDouble() ) //NumberFormatException
+        <br> println( "10".toDoubleOrNull() ) //10.0
+        <br> println( "1_0".toDoubleOrNull() ) //null
     </codebox>
-    <br>Overloadable integer conversion with <terminal>radix</terminal> parameter, which allows to specify the base of conversion (2 to 36):
+    <br>Overloadable integer conversion with <terminal>radix</terminal> parameter, which allows to specify the base of conversion ( 2 to 36 ):
     <br><terminal>Int.toString()</terminal> :
     <codebox>
         3.toString() //3
-        <br> 3.toString(2)//11
-        <br> 3.toString(radix=2)//11
-        <br> //3.toString(huyadix=2)//Cannot find a parameter with this name: huyadix
-        <br> //3.toString("2")//Type mismatch: inferred type is String but Int was expected
+        <br> 3.toString( 2 )//11
+        <br> 3.toString( radix=2 )//11
+        <br> //3.toString( huyadix=2 )//Cannot find a parameter with this name: huyadix
+        <br> //3.toString( "2" )//Type mismatch: inferred type is String but Int was expected
     </codebox>
     <br><terminal>String.toInt()</terminal> :
     <codebox>
-        println(1_0) //10
-        <br> //println("1_0".toInt()) //NumberFormatException
-        <br> println("10".toInt()) //10
-        <br> println("10".toInt(10).toInt()) //10
-        <br> println("0010".toInt()) //10
-        <br> //println("001_0".toInt()) //NumberFormatException
-        <br> //println("00_10".toInt()) //NumberFormatException
-        <br> //println("1.0".toInt()) //NumberFormatException
-        <br> //println("001.0".toInt()) //NumberFormatException
-        <br> //println(".10".toInt()) //NumberFormatException
-        <br> //println("0.010".toInt()) //NumberFormatException
-        <br> //println("10".toInt(10).toInt(10)) //Too many arguments for public open fun toInt()
-        <br> println("10".toInt(2)) //2 radix=2 determine "10" as binary
-        <br> println("0010".toInt(2)) //2
-        <br> println("10".toInt(2).toInt()) //2
-        <br> //println("0010".toInt(2).toInt(3)) //Too many arguments for public open fun toInt()
-        <br> //println("String".toInt(2)) //NumberFormatException
+        println( 1_0 ) //10
+        <br> //println( "1_0".toInt() ) //NumberFormatException
+        <br> println( "10".toInt() ) //10
+        <br> println( "10".toInt( 10 ).toInt() ) //10
+        <br> println( "0010".toInt() ) //10
+        <br> //println( "001_0".toInt() ) //NumberFormatException
+        <br> //println( "00_10".toInt() ) //NumberFormatException
+        <br> //println( "1.0".toInt() ) //NumberFormatException
+        <br> //println( "001.0".toInt() ) //NumberFormatException
+        <br> //println( ".10".toInt() ) //NumberFormatException
+        <br> //println( "0.010".toInt() ) //NumberFormatException
+        <br> //println( "10".toInt( 10 ).toInt( 10 ) ) //Too many arguments for public open fun toInt()
+        <br> println( "10".toInt( 2 ) ) //2 radix=2 determine "10" as binary
+        <br> println( "0010".toInt( 2 ) ) //2
+        <br> println( "10".toInt( 2 ).toInt() ) //2
+        <br> //println( "0010".toInt( 2 ).toInt( 3 ) ) //Too many arguments for public open fun toInt()
+        <br> //println( "String".toInt( 2 ) ) //NumberFormatException
     </codebox>
     <br><terminal>String.toIntOrNull()</terminal>
     <codebox>
-        println(1_0) //10
-        <br> println("1_0".toIntOrNull()) //null
-        <br> println("10".toIntOrNull()) //10
-        <br> //println("10".toIntOrNull(10).toIntOrNull()) //Unresolved reference
-        <br> println("0010".toIntOrNull()) //10
-        <br> println("001_0".toIntOrNull()) //null
-        <br> println("00_10".toIntOrNull()) //null
-        <br> println("1.0".toIntOrNull()) //null
-        <br> println("001.0".toIntOrNull()) //null
-        <br> println(".10".toIntOrNull()) //null
-        <br> println("0.010".toIntOrNull()) //null
-        <br> //println("10".toIntOrNull(10).toIntOrNull(10)) //Unresolved reference
-        <br> println("10".toIntOrNull(2)) //2 radix=2 determine "10" as binary
-        <br> println("0010".toIntOrNull(2)) //2
-        <br> //println("10".toIntOrNull(2).toIntOrNull()) //Unresolved reference
-        <br> //println("0010".toIntOrNull(2).toIntOrNull(3)) //Unresolved reference
-        <br> println("String".toIntOrNull(2)) //null
+        println( 1_0 ) //10
+        <br> println( "1_0".toIntOrNull() ) //null
+        <br> println( "10".toIntOrNull() ) //10
+        <br> //println( "10".toIntOrNull( 10 ).toIntOrNull() ) //Unresolved reference
+        <br> println( "0010".toIntOrNull() ) //10
+        <br> println( "001_0".toIntOrNull() ) //null
+        <br> println( "00_10".toIntOrNull() ) //null
+        <br> println( "1.0".toIntOrNull() ) //null
+        <br> println( "001.0".toIntOrNull() ) //null
+        <br> println( ".10".toIntOrNull() ) //null
+        <br> println( "0.010".toIntOrNull() ) //null
+        <br> //println( "10".toIntOrNull( 10 ).toIntOrNull( 10 ) ) //Unresolved reference
+        <br> println( "10".toIntOrNull( 2 ) ) //2 radix=2 determine "10" as binary
+        <br> println( "0010".toIntOrNull( 2 ) ) //2
+        <br> //println( "10".toIntOrNull( 2 ).toIntOrNull() ) //Unresolved reference
+        <br> //println( "0010".toIntOrNull( 2 ).toIntOrNull( 3 ) ) //Unresolved reference
+        <br> println( "String".toIntOrNull( 2 ) ) //null
     </codebox>
     
     <hr><li id="c22"><a href="#c0">Char</a></li>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html" target="_blank" >API weblink</a>.
     Represents a 16-bit Unicode character. On the JVM, non-nullable values of this type are represented as values of the primitive type <terminal>Char</terminal> . Can not be treated directly as numbers. Boxed when a nullable reference is needed. Identity is not preserved by the boxing operation.
     <br>Character literals go in single quotes: <terminal>'1'</terminal> .
     <br>Special characters <terminal>\t</terminal> <terminal>\b</terminal> <terminal>\n</terminal> <terminal>\r</terminal> <terminal>\'</terminal> <terminal>\"</terminal> <terminal>\\</terminal> <terminal>\$</terminal> can be escaped using a backslash.
@@ -234,13 +235,86 @@
     <br><br>Can be explicitly converted to an <terminal>Int</terminal> number:
     <codebox>
         val c: Char = '1'
-        <br> println(c.toInt() - '2'.toInt()) // -1
-        <br> println(c - 'a') //-48
-        <br> println(c - 'a'.toInt()) //￐
-        <br> println(c.toInt() - 'a'.toInt()) //-48
-        <br> //println(c.toInt() - 'a') //error
+        <br> println( c.toInt() - '2'.toInt() ) // -1
+        <br> println( c - 'a' ) //-48
+        <br> println( c - 'a'.toInt() ) //￐
+        <br> println( c.toInt() - 'a'.toInt() ) //-48
+        <br> //println( c.toInt() - 'a' ) //error
+    </codebox>
+    <br> Methods:
+    <codebox>
+        println( 'a'.toInt() ) //97
+        <br> println( 'd'.toInt() ) //100
+        <br> println( 'd'.toDouble() ) //100.0
+        <br> println( 'd'.toFloat() ) //100.0
+        <br> println( 'd'.toLong() ) //100
+        <br> println( 'd'.toShort() ) //100
+        <br> println( 'a'.compareTo( 'd' ) ) //-1
+        <br> println( 'd'.compareTo( 'a' ) ) //1
+        <br> println( 'a'.compareTo( 'a' ) ) //0
+        <br> println( 'a'.inc() ) //b
+        <br> println( 'd'.dec() ) //c
+        <br> println( 'a'.minus( 'd' ) ) //-3
+        <br> //println( 'a'.plus( 'd' ) ) //error
+        <br> println( 'a'.plus( 'd'.toInt() ) ) //Å
+        <br> println( 'd'.minus( 3 ) ) //a
+        <br> println( 'a'.plus( 3 ) ) //d
+        <br> println( 'a'.rangeTo( 'd' ) ) //a..d
+        <br> println( 'd'.rangeTo( 'a' ) ) //d..a
+        <br> println( 'a'.toByte() ) //97
+        <br> println( 'd'.toChar() ) //d
+    </codebox>
+    <br>Extension functions:
+    <br><terminal>downTo()</terminal> :
+    <codebox>
+        val da = 'd'.downTo( 'a' ) //d downTo a step 1
+        <br> println( da ) //d downTo a step 1
+        <br> println( da.drop( 0 ) ) //[d, c, b, a]
+        <br> 
+        <br> val ad = 'a'.downTo( 'd' ) //a downTo d step 1
+        <br> println( ad ) //a downTo d step 1
+        <br> println( ad.drop( 0 ) ) //[ ]
+        <br> 
+        <br> val cda = CharRange( 'd','a' ) //d..a
+        <br> println( cda ) //d..a
+        <br> println( cda.drop( 0 ) ) //[ ]
+        <br> 
+        <br> val cad = CharRange( 'a','d' ) //a..d
+        <br> println( cad ) //a..d
+        <br> println( cad.drop( 0 ) ) //[a, b, c, d]
     </codebox>
     
+    <br><terminal>equals()</terminal> :
+    <codebox>
+        println( 'a'.equals( 'A' ) ) //false
+        <br> println( 'a'.equals( 'A', true ) ) //true
+        <br> 
+        <br> println( 'a'.equals( 'B' ) ) //false
+        <br> println( 'a'.equals( 'B', true ) ) //false
+    </codebox>
+    
+    <br><terminal>isLowerCase()</terminal> , <terminal>isUpperCase()</terminal> , <terminal>isWhitespace()</terminal> , <terminal>toLowerCase()</terminal> , <terminal>toUpperCase()</terminal> :
+    <codebox>
+        println( 'a'.isLowerCase() ) //true
+        <br> println( 'a'.isUpperCase() ) //false
+        <br> println( 'A'.isLowerCase() ) //false
+        <br> println( 'A'.isUpperCase() ) //true
+        <br> 
+        <br> //println( ''.isWhitespace() ) //error
+        <br> println( 'a'.isWhitespace() ) //false
+        <br> println( '\b'.isWhitespace() ) //false
+        <br> println( '\$'.isWhitespace() ) //false
+        <br> println( ' '.isWhitespace() ) //true
+        <br> println( '\n'.isWhitespace() ) //true
+        <br> println( '\t'.isWhitespace() ) //true
+        <br> println( '\r'.isWhitespace() ) //true
+        <br>
+        <br> println( 'A'.toLowerCase() ) //a
+        <br> println( 'a'.toUpperCase() ) //A
+        <br> //println( ''.toUpperCase() ) //error
+        <br> println( ' '.toUpperCase() ) // 
+        <br> println( '\n'.toUpperCase() ) //
+    </codebox>
     
     <hr><li id="c23"><a href="#c0">Bool</a></li>
     <hr><li id="c24"><a href="#c0">Numbers</a></li>
@@ -270,34 +344,34 @@
     </codebox>
     
     <hr><li id="c27"><a href="#c0">Numbers comparison</a></li>
-    Boxed store, when need nullable number reference (e.g. <terminal>Int?</terminal>) or generics are involved:
+    Boxed store, when need nullable number reference ( e.g. <terminal>Int?</terminal> ) or generics are involved:
     <codebox>
         val a: Int = 10000
         <br> val boxedA: Int? = a
         <br> val anotherBoxedA: Int? = a
-        <br> println(a === a) // true . Deprecated
-        <br> println(boxedA === anotherBoxedA) // false
-        <br> println(a == a) // true
-        <br> println(boxedA == anotherBoxedA) // true
+        <br> println( a === a ) // true . Deprecated
+        <br> println( boxedA === anotherBoxedA ) // false
+        <br> println( a == a ) // true
+        <br> println( boxedA == anotherBoxedA ) // true
     </codebox>
     
-    <br>Primitive types store (e.g. <terminal>Int</terminal>):
+    <br>Primitive types store ( e.g. <terminal>Int</terminal> ):
     <codebox>
         val b: Int = 10000
         <br> val primitiveB: Int = b
         <br> val anotherPrimitiveB: Int = b
-        <br> println(b === b) // true . Deprecated
-        <br> println(primitiveB === anotherPrimitiveB) // true . Deprecated
-        <br> println(b == b) // true
-        <br> println(primitiveB == anotherPrimitiveB) // true
+        <br> println( b === b ) // true . Deprecated
+        <br> println( primitiveB === anotherPrimitiveB ) // true . Deprecated
+        <br> println( b == b ) // true
+        <br> println( primitiveB == anotherPrimitiveB ) // true
     </codebox>
     
     <br>Different boxed types comparison:
     <codebox>
-        val a: Int? = 1 // A boxed Int (java.lang.Integer)
+        val a: Int? = 1 // A boxed Int ( java.lang.Integer )
         //val b: Long? = a // Type mismatch: inferred type is Int? but Long? was expected
         val b: Long? = 2
-        //print(b == a) // Operator '==' cannot be applied to 'Long?' and 'Int?'
+        //print( b == a ) // Operator '==' cannot be applied to 'Long?' and 'Int?'
     </codebox>
     
     <br>Different types comparison:
@@ -305,7 +379,7 @@
         val b: Byte = 1
         <br> //val i: Int = b // Type mismatch: inferred type is Byte but Int was expected
         <br> val i: Int = 2
-        <br> //println(b == i) // Operator '==' cannot be applied to 'Byte' and 'Int'
+        <br> //println( b == i ) // Operator '==' cannot be applied to 'Byte' and 'Int'
     </codebox>
     
     <br>Every number type supports conversions:
@@ -321,46 +395,48 @@
         val l = 1L + 3 // Long + Int => Long
         <br> val b: Byte = 1
         <br> val i: Int = b.toInt()
-        <br> println(b.toInt() === i) //true . Deprecated
-        <br> println(b.toInt() == i) //true
-        <br> //println(b === i) // Operator '===' cannot be applied to 'Byte' and 'Int'
-        <br> //println(b == i) // Operator '===' cannot be applied to 'Byte' and 'Int'
+        <br> println( b.toInt() === i ) //true . Deprecated
+        <br> println( b.toInt() == i ) //true
+        <br> //println( b === i ) // Operator '===' cannot be applied to 'Byte' and 'Int'
+        <br> //println( b == i ) // Operator '===' cannot be applied to 'Byte' and 'Int'
         <br> //val c:Byte = b + 3 // Type mismatch: inferred type is Int but Byte was expected
         <br> //val c:Byte = b + i // Type mismatch: inferred type is Int but Byte was expected
         <br> //val c:Byte = 3 + b // Type mismatch: inferred type is Int but Byte was expected
         <br> //val c:Byte = i + b // Type mismatch: inferred type is Int but Byte was expected
         <br> val c:Int = i + b
         <br> val d:Int = b + i
-        <br> println(c) //2
-        <br> println(d) //2
-        <br> println(i+b) //2
-        <br> println(b+i) //2
+        <br> println( c ) //2
+        <br> println( d ) //2
+        <br> println( i+b ) //2
+        <br> println( b+i ) //2
         <br> val e:Int = i + 0b11010010
         <br> val f:Int = 0b11010010 + i
-        <br> println(e) //211
-        <br> println(f) //211
-        <br> println(2.5 + 0b11010010) //212.5
+        <br> println( e ) //211
+        <br> println( f ) //211
+        <br> println( 2.5 + 0b11010010 ) //212.5
     </codebox>
     
-    <br><br>Floating Point Numbers Comparison.
+    <br>Floating Point Numbers Comparison.
     <br> Equality checks: <terminal>a == b</terminal> and <terminal>a != b</terminal>
     <br> Comparison operators: <terminal>a &lt; b</terminal> , <terminal>a &gt; b</terminal> , <terminal>a &lt;= b</terminal> , <terminal>a &gt;= b</terminal>
     <br> Range instantiation and range checks: <terminal>a..b</terminal> , <terminal>x in a..b</terminal> , <terminal>x !in a..b</terminal>
     
-    <br><br>When operands are not statically typed as floating point numbers (e.g. Any, Comparable<...>, a type parameter), the operations use the <terminal>equals</terminal> and <terminal>compareTo</terminal> implementations for <terminal>Float</terminal> and <terminal>Double</terminal> , so that:
+    <br><br>When operands are not statically typed as floating point numbers ( e.g. Any, Comparable<...>, a type parameter ), the operations use the <terminal>equals</terminal> and <terminal>compareTo</terminal> implementations for <terminal>Float</terminal> and <terminal>Double</terminal> , so that:
     <br> <terminal>NaN</terminal> is considered equal to itself
     <br> <terminal>NaN</terminal> is considered greater than any other element including <terminal>POSITIVE_INFINITY</terminal>
     <br> <terminal>-0.0</terminal> is considered less than <terminal>0.0</terminal>
     
     <hr><li id="c28"><a href="#c0">Numbers operations</a></li>
-    Bitwise operations (available for <terminal>Int</terminal> and <terminal>Long</terminal> only):
-    <br> <terminal>shl(bits)</terminal> - signed shift left (Java's &lt;&lt;)
-    <br> <terminal>shr(bits)</terminal> - signed shift right (Java's &gt;&gt;)
-    <br> <terminal>ushr(bits)</terminal> - unsigned shift right (Java's &gt;&gt;&gt;)
-    <br> <terminal>and(bits)</terminal> - bitwise and
-    <br> <terminal>or(bits)</terminal> - bitwise or
-    <br> <terminal>xor(bits)</terminal> - bitwise xor
+    Bitwise operations ( available for <terminal>Int</terminal> and <terminal>Long</terminal> only ):
+    <br> <terminal>shl( bits )</terminal> - signed shift left ( Java's &lt;&lt; )
+    <br> <terminal>shr( bits )</terminal> - signed shift right ( Java's &gt;&gt; )
+    <br> <terminal>ushr( bits )</terminal> - unsigned shift right ( Java's &gt;&gt;&gt; )
+    <br> <terminal>and( bits )</terminal> - bitwise and
+    <br> <terminal>or( bits )</terminal> - bitwise or
+    <br> <terminal>xor( bits )</terminal> - bitwise xor
     <br> <terminal>inv()</terminal> - bitwise inversion
+    
+    
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>
