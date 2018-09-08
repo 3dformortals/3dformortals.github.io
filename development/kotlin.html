@@ -19,7 +19,7 @@
     <ol>
         <li><a class="up" href="#c1" >Bound callable references</a></li>
         <li><a class="up" href="#c2" >Underscores for unused parameters</a></li>
-        <li><a class="up" href="#c3" >empty</a></li>
+        <li><a class="up" href="#c3" >Control Flow: <terminal>if</terminal> , <terminal>when</terminal> , <terminal>for</terminal> , <terminal>while</terminal></a></li>
         <li><a class="up" href="#c4" >Shorter syntax for properties</a></li>
         
         <li><a class="up" href="#c5" >empty</a></li>
@@ -68,7 +68,28 @@
         <br>for ( ( a, _ ) in collection ) { ... }
     </codebox>
     
-    <hr><li id="c3"><a href="#c0">empty</a></li>
+    <hr><li id="c3"><a href="#c0">Control Flow: if, when, for, while</a></li>
+    <terminal>if</terminal> :
+    <codebox>
+        <br> if ( a > b ) big = a
+        <br> if ( a > b ) {
+            <bin>1</bin>big = a }
+        <br> if ( a > b ) big = a else big = b
+        <br> if ( a > b ) { big = a } else { if ( b > a ) big = b }
+        <br> if ( a > b ) { big = a } else if ( b > a ) { big = b }
+        <br> if ( a > b ) big = a else if ( b > a ) big = b
+        <br> big = if ( a > b ) a else b // this form always need <terminal>else</terminal>
+        <br> big = if (a > b) {
+                <bin>1</bin>print("case a ")
+                <bin>1</bin>a //this is block value
+            <br> } else if ( b > a ){
+                <bin>1</bin>print("case b ")
+                <bin>1</bin>b //this is block value
+            <br> } else {
+                <bin>1</bin>print("other case ")
+                <bin>1</bin>b*a //this is block value
+            <br> } //this form always need <terminal>else</terminal>
+    </codebox>
     
     <hr><li id="c4"><a href="#c0">Shorter syntax for properties</a></li>
     <codebox>
