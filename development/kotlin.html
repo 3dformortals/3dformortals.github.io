@@ -19,7 +19,7 @@
     <ol>
         <li><a class="up" href="#c1" >Bound callable references</a></li>
         <li><a class="up" href="#c2" >Underscores for unused parameters</a></li>
-        <li><a class="up" href="#c3" >Control Flow: <terminal>if</terminal> , <terminal>when</terminal> , <terminal>for</terminal> , <terminal>while</terminal></a></li>
+        <li><a class="up" href="#c3" >empty</a></li>
         <li><a class="up" href="#c4" >Shorter syntax for properties</a></li>
         
         <li><a class="up" href="#c5" >empty</a></li>
@@ -48,6 +48,8 @@
         <li><a class="up" href="#c26" >Underscores in numeric literals</a></li>
         <li><a class="up" href="#c27" >Numbers comparison</a></li>
         <li><a class="up" href="#c28" >Numbers operations</a></li>
+        <li><a class="up" href="#c29" >Variables: <terminal>val</terminal> vs <terminal>var</terminal></a></li>
+        <li><a class="up" href="#c30" >Control Flow: <terminal>if</terminal> , <terminal>when</terminal> , <terminal>for</terminal> , <terminal>while</terminal></a></li>
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
@@ -68,28 +70,7 @@
         <br>for ( ( a, _ ) in collection ) { ... }
     </codebox>
     
-    <hr><li id="c3"><a href="#c0">Control Flow: if, when, for, while</a></li>
-    <terminal>if</terminal> :
-    <codebox>
-        <br> if ( a > b ) big = a
-        <br> if ( a > b ) {
-            <bin>1</bin>big = a }
-        <br> if ( a > b ) big = a else big = b
-        <br> if ( a > b ) { big = a } else { if ( b > a ) big = b }
-        <br> if ( a > b ) { big = a } else if ( b > a ) { big = b }
-        <br> if ( a > b ) big = a else if ( b > a ) big = b
-        <br> big = if ( a > b ) a else b // this form always need <terminal>else</terminal>
-        <br> big = if (a > b) {
-                <bin>1</bin>print("case a ")
-                <bin>1</bin>a //this is block value
-            <br> } else if ( b > a ){
-                <bin>1</bin>print("case b ")
-                <bin>1</bin>b //this is block value
-            <br> } else {
-                <bin>1</bin>print("other case ")
-                <bin>1</bin>b*a //this is block value
-            <br> } //this form always need <terminal>else</terminal>
-    </codebox>
+    <hr><li id="c3"><a href="#c0">empty</a></li>
     
     <hr><li id="c4"><a href="#c0">Shorter syntax for properties</a></li>
     <codebox>
@@ -466,6 +447,84 @@
     <br> <terminal>xor( bits )</terminal> - bitwise xor
     <br> <terminal>inv()</terminal> - bitwise inversion
     
+    
+    
+    <hr><li id="c29"><a href="#c0">Variables: <terminal>val</terminal> vs <terminal>var</terminal></a></li>
+    <codebox>
+        val vaLx = 0 //something like constant
+        <br> //for(i in 1..5){ vaLx ++ } // Val cannot be reassigned
+        <br> var vaRx = 0 //something like standard variable
+        <br> for(i in 1..5){ vaRx ++ }
+        <br> println(vaRx) // 5
+    </codebox>
+    
+    <hr><li id="c30"><a href="#c0">Control Flow: <terminal>if</terminal> , <terminal>when</terminal> , <terminal>for</terminal> , <terminal>while</terminal></a></li>
+    <terminal>if</terminal> :
+    <codebox>
+        <br> if ( a > b ) big = a
+        <br> if ( a > b ) {
+            <bin>1</bin>big = a }
+        <br> if ( a > b ) big = a else big = b
+        <br> if ( a > b ) { big = a } else { if ( b > a ) big = b }
+        <br> if ( a > b ) { big = a } else if ( b > a ) { big = b }
+        <br> if ( a > b ) big = a else if ( b > a ) big = b
+        <br> big = if ( a > b ) a else b // this form always need <terminal>else</terminal>
+        <br> big = if (a > b) {
+                <bin>1</bin>print("case a ")
+                <bin>1</bin>a //this is block value
+            <br> } else if ( b > a ){
+                <bin>1</bin>print("case b ")
+                <bin>1</bin>b //this is block value
+            <br> } else {
+                <bin>1</bin>print("other case ")
+                <bin>1</bin>b*a //this is block value
+            <br> } //this form always need <terminal>else</terminal>
+    </codebox>
+    
+    <br><terminal>when</terminal> is similar to switch operator in other languages:
+    <codebox>
+        when(x){
+            <bin>1</bin>1 -> print("x == 1")
+            <bin>1</bin>2 -> { print("x == 2") }
+            <bin>1</bin>else -> {
+                <bin>2</bin>print("not 1")
+                <bin>2</bin>print(" not 2")
+            }
+        }
+        <br><br>when(x){ 1 -> { print("x == 1") } 2 -> { print("x == 2") } else -> { print("not 1"); print(" not 2") }}
+        
+        <br><br>when (x){
+            <bin>1</bin>0, 1 -> print("x == 0 or x == 1")
+            <bin>1</bin>s.toInt() -> print("x==$s")
+            <bin>1</bin>else -> print("otherwise")
+        }
+        <br>
+        <br>val x = 22; val s = "2"
+        <br>when(x){ ( s + "2" ).toInt() -> print( "x==( \""+s+"2"+"\" ).toInt()" ) /* x==( "22" ).toInt()*/ }
+        <br>
+        <br>val validNumbers = arrayOf(22,33)
+        <br>when (x) {
+            <bin>1</bin>in 1..10 -> print("x is in the range")
+            <bin>1</bin>in validNumbers -> print("x is valid")
+            <bin>1</bin>!in 10..20 -> print("x is outside the range")
+            <bin>1</bin>else -> print("none of the above")
+        <br>}
+    </codebox>
+    Another possibility is to check that a value is or !is of a particular type.
+    <codebox>
+        fun hasPrefix(x: Any) = when(x) {
+            <bin>1</bin>is String -> x.startsWith("prefix")
+            <bin>1</bin>else -> false
+        }
+    </codebox>
+    Replacement for an if-else if chain.
+    <codebox>
+        when {
+            <bin>1</bin>x.isOdd() -> print("x is odd")
+            <bin>1</bin>x.isEven() -> print("x is even")
+            <bin>1</bin>else -> print("x is funny")
+        <br>}
+    </codebox>
     
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
