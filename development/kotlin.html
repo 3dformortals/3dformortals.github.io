@@ -526,6 +526,40 @@
         <br>}
     </codebox>
     
+    <br><terminal>for</terminal> loop:
+    <codebox>
+        for (item in collection) print(item)
+        <br> for (item in collection) { print(item) }
+        <br> for (item in collection) {
+            <bin>1</bin>print(item) }
+        <br> for (ind in collection.indices) {
+            <bin>1</bin>print(collection[ind]) }
+        <br> for ((index, value) in array.withIndex()) println("the element at $index is $value")
+        <br> for (i in 1..3) println(i)
+        <br> for (i in 1..3 step 2) println(i)
+        <br> //for (i in 1..3 step -2) println(i) //error
+        <br> //for (i in 3..1 step -2) println(i) //error
+        <br> for (i in 6 downTo 0 step 2) println(i)
+        <br> for (i:Int in 6 downTo 0 step 2) println(i)
+        <br> //for (i:Long in 6 downTo 0 step 2) println(i) //error
+        <br> //for (i:Byte in 6 downTo 0 step 2) println(i) //error
+    </codebox>
+    
+    <br><terminal>while</terminal> and <terminal>do..while</terminal> loops:
+    <codebox>
+        var x = 2; while (x>0) { print(x--); } //21
+        <br> x = 2; while (x>0) { print(--x); } //10
+        <br> x = 2; do { print(x); print(x--) } while (x > 0) //2211
+        <br> //do (print(x); print(x--)) while (x > 0) //error
+        <br> //do print(x); print(x--) while (x > 0) //error
+        <br> x = 2; do print(x--) while (x > 0) //21
+    </codebox>
+    <br>Returns and jumps <a href="http://kotlinlang.org/docs/reference/returns.html#returns-and-jumps" target="_blank">weblink</a> .
+    <br> <terminal>return</terminal> result from function.
+    <br> <terminal>break</terminal> terminates the nearest enclosing loop.
+    <br> <terminal>continue</terminal> proceeds to the next step of the nearest enclosing loop.
+    
+    <br>Precedence <a href="http://kotlinlang.org/docs/reference/grammar.html#precedence" target="_blank">weblink</a>
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>
