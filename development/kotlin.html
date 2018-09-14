@@ -380,9 +380,9 @@
     <br>Different boxed types comparison:
     <codebox>
         val a: Int? = 1 // A boxed Int ( java.lang.Integer )
-        //val b: Long? = a // Type mismatch: inferred type is Int? but Long? was expected
-        val b: Long? = 2
-        //print( b == a ) // Operator '==' cannot be applied to 'Long?' and 'Int?'
+        <br> //val b: Long? = a // Type mismatch: inferred type is Int? but Long? was expected
+        <br> val b: Long? = 2
+        <br> //print( b == a ) // Operator '==' cannot be applied to 'Long?' and 'Int?'
     </codebox>
     
     <br>Different types comparison:
@@ -446,8 +446,38 @@
     <br> <terminal>or( bits )</terminal> - bitwise or
     <br> <terminal>xor( bits )</terminal> - bitwise xor
     <br> <terminal>inv()</terminal> - bitwise inversion
-    
-    
+    <hr>
+    Increment , decrement:
+    <br>Single syntax <terminal>x++</terminal> and <terminal>++x</terminal> is close to <terminal>x = x + 1</terminal> .
+    <br>Single syntax <terminal>x--</terminal> and <terminal>--x</terminal> is close to <terminal>x = x - 1</terminal> .
+    <br>But have difference when these syntaxes is part of big syntax:
+    <codebox>
+        var x = 11
+        <br> x++; println(x) // 12
+        <br> ++x; println(x) // 13
+        <br> x--; println(x) // 12
+        <br> --x; println(x) // 11
+        <br> //but
+        <br> println(x++) // 11 ,because first was <terminal>println(x)</terminal> , second was <terminal>x = x + 1</terminal>
+        <br> println(x) // 12
+        <br> 
+        <br> println(++x) // 13 ,because first was <terminal>x = x + 1</terminal> , second was <terminal>println(x)</terminal>
+        <br> println(x) // 13
+        <br> 
+        <br> println(x--) // 13 ,because first was <terminal>println(x)</terminal> , second was <terminal>x = x - 1</terminal>
+        <br> println(x) // 12
+        <br> 
+        <br> println(--x) // 11 ,because first was <terminal>x = x - 1</terminal> , second was <terminal>println(x)</terminal>
+        <br> println(x) // 11
+    </codebox>
+    <br> <terminal>x += y</terminal> is equal <terminal>x = x + y</terminal> .
+    <br> <terminal>x -= y</terminal> is equal <terminal>x = x - y</terminal> .
+    <br> <terminal>x /= y</terminal> is equal <terminal>x = x / y</terminal> .
+    <br> <terminal>x *= y</terminal> is equal <terminal>x = x * y</terminal> .
+    <br> <terminal>x %= y</terminal> is equal <terminal>x = x % y</terminal> .
+    <codebox>
+        
+    </codebox>
     
     <hr><li id="c29"><a href="#c0">Variables: <terminal>val</terminal> vs <terminal>var</terminal></a></li>
     <codebox>
