@@ -453,22 +453,22 @@
     <br>But have difference when these syntaxes is part of big syntax:
     <codebox>
         var x = 11
-        <br> x++; println(x) // 12
-        <br> ++x; println(x) // 13
-        <br> x--; println(x) // 12
-        <br> --x; println(x) // 11
+        <br> x++; println( x ) // 12
+        <br> ++x; println( x ) // 13
+        <br> x--; println( x ) // 12
+        <br> --x; println( x ) // 11
         <br> //but
-        <br> println(x++) // 11 ,because first was <terminal>println(x)</terminal> , second was <terminal>x = x + 1</terminal>
-        <br> println(x) // 12
+        <br> println( x++ ) // 11 ,because first was <terminal>println( x )</terminal> , second was <terminal>x = x + 1</terminal>
+        <br> println( x ) // 12
         <br> 
-        <br> println(++x) // 13 ,because first was <terminal>x = x + 1</terminal> , second was <terminal>println(x)</terminal>
-        <br> println(x) // 13
+        <br> println( ++x ) // 13 ,because first was <terminal>x = x + 1</terminal> , second was <terminal>println( x )</terminal>
+        <br> println( x ) // 13
         <br> 
-        <br> println(x--) // 13 ,because first was <terminal>println(x)</terminal> , second was <terminal>x = x - 1</terminal>
-        <br> println(x) // 12
+        <br> println( x-- ) // 13 ,because first was <terminal>println( x )</terminal> , second was <terminal>x = x - 1</terminal>
+        <br> println( x ) // 12
         <br> 
-        <br> println(--x) // 11 ,because first was <terminal>x = x - 1</terminal> , second was <terminal>println(x)</terminal>
-        <br> println(x) // 11
+        <br> println( --x ) // 11 ,because first was <terminal>x = x - 1</terminal> , second was <terminal>println( x )</terminal>
+        <br> println( x ) // 11
     </codebox>
     <br> <terminal>x += y</terminal> is equal <terminal>x = x + y</terminal> .
     <br> <terminal>x -= y</terminal> is equal <terminal>x = x - y</terminal> .
@@ -476,7 +476,18 @@
     <br> <terminal>x *= y</terminal> is equal <terminal>x = x * y</terminal> .
     <br> <terminal>x %= y</terminal> is equal <terminal>x = x % y</terminal> .
     <codebox>
-        
+        var x = 11.5
+        <br> //x = 11 // error
+        <br> x = 11.0
+        <br> var y = 2
+        <br> 
+        <br> x += y ; println( x ) //13.0
+        <br> x -= y ; println( x ) //11.0
+        <br> x *= y ; println( x ) //22.0
+        <br> x /= y ; println( x ) //11.0
+        <br> x %= y ; println( x ) //1.0 ... 11 / 2 = [5](integer) -> 11 - ( 2 * [5] ) = 1
+        <br> x = 11.0
+        <br> x %= 3 ; println( x ) //2.0 ... 11 / 3 = [3](integer) -> 11 - ( 3 * [3] ) = 2
     </codebox>
     
     <hr><li id="c29"><a href="#c0">Variables: <terminal>val</terminal> vs <terminal>var</terminal></a></li>
