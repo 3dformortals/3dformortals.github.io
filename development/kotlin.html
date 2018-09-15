@@ -166,8 +166,48 @@
     <hr><li id="c17"><a href="#c0">Collection() kotlin.collections</a></li>
     
     <hr><li id="c18"><a href="#c0">Strings</a></li>
+    <codebox>
+        val s0 = "efgh" + 8 // efgh8
+        <br> var s1 = "abcd"
+        <br> for (c in s1){ print(c+" ") } // a b c d
+        <br> println( s0 + s1 ) // efgh8abcd
+        <br> s1 += s1; println(s1) //abcdabcd
+        <br> //s1[0]= "e" //error
+        <br> //s1 *= 2 //error
+        <br> //s1 -= s1 //error
+        <br> //println(s1 - s1) //error
+    </codebox>
+    
     <hr><li id="c19"><a href="#c0">String Literals</a></li>
+    One quoted <terminal>"splitted\nstring"</terminal> , escaped strings may have characters <terminal>\t</terminal> , <terminal>\b</terminal> , <terminal>\n</terminal> , <terminal>\r</terminal> , <terminal>\'</terminal> , <terminal>\"</terminal> , <terminal>\\</terminal> , <terminal>\$</terminal> .
+    <br> Triple quoted <terminal>"""multiline string"""</terminal> , raw strings, no escaped characters and may have new lines.
+    <br> By default <terminal>|</terminal> is used as margin prefix. That change it to another character <terminal>&gt;</terminal> use <terminal>.trimMargin("&gt;")</terminal> or <terminal>.trinMargin("""\""")</terminal> in backslash case.
+    
+    <codebox>
+        val eString = "splitted\nstring"
+        <br> val etString = "tabulated\tstring"
+        <br> println(etString) //tabulated<in>1</in>string
+        <br> val mString = """multiline
+        <br> string"""
+        <br> val mtString = """multiline
+        <br> string
+        <bin>1</bin>with tabs"""
+        <br> val msString = """multiline string with spaces<in>1</in>!<in>1</in>"""
+        <br> println(msString) // multiline string with spaces<in>1</in>!<in>1</in>
+        <br> val text = """
+        <bin>1</bin>|Tell me and I forget. 
+        <bin>1</bin>|Teach me and I remember.
+        <bin>1</bin>""".trimMargin()
+    </codebox>
+    
     <hr><li id="c20"><a href="#c0">String Templates</a></li>
+    <codebox>
+        val i = 10
+        <br> println("i = $i") // i = 10
+        <br> val s = "abc"
+        <br> println("$s.length is ${s.length}") // abc.length is 3
+    </codebox>
+    
     <hr><li id="c21"><a href="#c0">String to number conversions</a></li>
     Without throwing exception: <terminal>String.toIntOrNull(): Int?</terminal> , <terminal>String.toDoubleOrNull(): Double?</terminal>
     <codebox>
