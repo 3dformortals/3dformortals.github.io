@@ -203,9 +203,9 @@
     <hr><li id="c20"><a href="#c0">String Templates</a></li>
     <codebox>
         val i = 10
-        <br> println("i = $i") // i = 10
+        <br> println("i = $i") //i = 10
         <br> val s = "abc"
-        <br> println("$s.length is ${s.length}") // abc.length is 3
+        <br> println("$s.length is ${s.length}") //abc.length is 3
     </codebox>
     
     <hr><li id="c21"><a href="#c0">String to number conversions</a></li>
@@ -465,6 +465,13 @@
         <br> println( e ) //211
         <br> println( f ) //211
         <br> println( 2.5 + 0b11010010 ) //212.5
+        <br> //be careful
+        <br> val long = 1L ;println(long) //1
+        <br> val int = long.toInt() ;println(int) //1
+        <br>
+        <br> val biglong = 1_000_000_000_000_000_000L ;println(biglong) //1000000000000000000
+        <br> val bigint = biglong.toInt() ;println(bigint) //-1486618624
+        <br>//without errors etc
     </codebox>
     
     <br>Floating Point Numbers Comparison.
