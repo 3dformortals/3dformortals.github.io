@@ -41,7 +41,7 @@
         <li><a class="up" href="#c20" >String Templates</a></li>
         <li><a class="up" href="#c21" >String to number conversions</a></li>
         <li><a class="up" href="#c22" >Char</a></li>
-        <li><a class="up" href="#c23" >Bool</a></li>
+        <li><a class="up" href="#c23" >Boolean</a></li>
         
         <li><a class="up" href="#c24" >Numbers</a></li>
         <li><a class="up" href="#c25" >Literal Constants</a></li>
@@ -365,7 +365,46 @@
         <br> println( '\n'.toUpperCase() ) //
     </codebox>
     
-    <hr><li id="c23"><a href="#c0">Bool</a></li>
+    <hr><li id="c23"><a href="#c0">Boolean</a></li>
+    <codebox>
+        val a = true
+        <br> val b = false
+        <br> val c:Boolean = false
+        <br> val d:Boolean = true
+        <br> 
+        <br> println( a || b ) //true . one true return true
+        <br> println( a || d ) //true . both true return true
+        <br> 
+        <br> println( a && b ) //false
+        <br> println( a && d ) //true
+        <br> println( c && b ) //false
+        <br>
+        <br> println( !a ) //false
+        <br> println( !b ) //true
+        <br> println( !c ) //true 
+        <br> 
+        <br> println ( a.and(d) ) //true
+        <br> println ( a.and(b) ) //false
+        <br> println ( c.and(b) ) //false
+        <br> 
+        <br> println ( a.compareTo(b) ) //1
+        <br> println ( b.compareTo(a) ) //-1
+        <br> println ( c.compareTo(b) ) //0
+        <br> 
+        <br> println ( a.not() ) //false
+        <br> println ( b.not() ) //true
+        <br> 
+        <br> println ( a.or( b ) ) //true
+        <br> println ( b.or( c ) ) //false
+        <br> println ( a.or( d ) ) //true . both true return true
+        <br> println ( d.or( c ) ) //true
+        <br> 
+        <br> println ( a.xor( b ) ) //true
+        <br> println ( b.xor( c ) ) //false
+        <br> println ( a.xor( d ) ) //false . only one true return true, both true return false
+        <br> println ( d.xor( c ) ) //true
+    </codebox>
+    In <terminal>.and()</terminal> and <terminal>.or()</terminal> case always will be evaluated both parameters. An <terminal>.xor()</terminal> case always evaluate both parameters.
     
     
     <hr><li id="c24"><a href="#c0">Numbers</a></li>
