@@ -166,8 +166,13 @@ data=[
     ["patreon","https://www.patreon.com/evulchibi"]
 ];db.push(data);
 data=[
-    [false,"shadman / shadbase / Shädbase"],
-    ["web","http://www.shadbase.com/"]
+    [false,"shadman / Shädman / shadbase / Shädbase / Marshall Shadders"],
+    ["web","http://www.shadbase.com/"],
+    ["twitter","https://twitter.com/shadbase"],
+    ["youtube","https://www.youtube.com/user/TheRealShadman"],
+    ["web","https://www.twitch.tv/shadbasemurdertv"],
+    ["web","https://discord.gg/FAsBnwP"],
+    ["facebook","https://www.facebook.com/shadbase"]
 ];db.push(data);
 data=[
     [false,"karasu / カラス(空巣) / akisukarasu"],
