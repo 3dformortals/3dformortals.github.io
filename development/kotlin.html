@@ -193,8 +193,23 @@
     </codebox>
     <hr>
     <terminal>Array&lt;Double&gt;</terminal> can include only <terminal>Double</terminal> numbers. Have lot of usual methods, like other arrays of mono type number like <terminal>Int</terminal> , <terminal>Float</terminal> , <terminal>Long</terminal>.
-    <br><terminal>Array&lt;Double?&gt;</terminal> also can include <terminal>null</terminal> values:
-    
+    <br><terminal>Array&lt;Double?&gt;</terminal> also can include <terminal>null</terminal> values, but can't be converted <terminal>.toDoubleArray()</terminal> :
+    <codebox>
+        var aDouble:Array&lt;Double&gt; = emptyArray() //[ ]
+        <br> aDouble = <terminal>Array(3){0.0}</terminal> //[0.0, 0.0, 0.0]
+        <br> aDouble = <terminal>arrayOf(1.0,2.0,3.0)</terminal> //[1.0, 2.0, 3.0]
+        <br> aDouble = <terminal>listOf(4.0,2.0,3.0).toTypedArray()</terminal> //[4.0, 2.0, 3.0]
+        <br> aDouble <terminal>+= 1.0</terminal> //[4.0, 2.0, 3.0, 1.0] ...add element
+        <br> //<eterminal>aDouble = aDouble.toDoubleArray()</eterminal> //error , because <terminal>Array&lt;Double&gt; != DoubleArray</terminal>
+        <br> <terminal>var dArray = aDouble.toDoubleArray()</terminal> //[4.0, 2.0, 3.0, 1.0] ...new var and array auto type is <terminal>DoubleArray</terminal>
+        <br> //<eterminal>aDouble = arrayOfNulls(3)</eterminal> //error , <terminal>null</terminal>'s have own type syntax
+        <br> <terminal>var aDoubleNulls:Array&lt;Double?&gt; = arrayOfNulls(3)</terminal> //[null, null, null]
+        <br> aDoubleNulls <terminal>+= 1.0</terminal> //[null, null, null, 1.0] ...add element
+        <br> aDoubleNulls = <terminal>listOf(4.0,2.0,3.0,null).toTypedArray()</terminal> //[4.0, 2.0, 3.0, null]
+        <br> //<eterminal>var dArrayNulls = aDoubleNulls.toDoubleArray()</eterminal> //error , because <terminal>nullable support</terminal>
+        <br> aDoubleNulls<terminal>.set(aDoubleNulls.size-1, 423.1)</terminal> //[4.0, 2.0, 3.0, 423.1] ...set last element value
+        <br> println( aDoubleNulls<terminal>.get(0)</terminal> ) //4.0 ...get first element value
+    </codebox>
     
     <hr><li id="c13"><a href="#c0">List() kotlin.collections</a></li>
     <hr><li id="c14"><a href="#c0">Map() kotlin.collections</a></li>
