@@ -160,7 +160,7 @@
     <hr><li id="c12"><a href="#c0">Arrays</a></li>
     Array&lt;T&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html" target="_blank">weblink</a>. <terminal>T</terminal> can be at least <terminal>Number</terminal> , <terminal>Double</terminal> , <terminal>Int</terminal> , <terminal>Float</terminal> , <terminal>Long</terminal> , <terminal>String</terminal> , <terminal>Char</terminal> .
     <hr>
-    <terminal>Array&lt;Number&gt;</terminal> can include different types of numbers:
+    <terminal>Array&lt;Number&gt;</terminal> can include different types of numbers, but some of array methods(sorting etc) not work usual way:
     <codebox>
         var aNumber:Array&lt;Number&gt; = Array(0){0} //[ ]
         <br> aNumber += 1 //add int
@@ -172,37 +172,29 @@
         <br> aNumber += 1000000000000000000L //add long
         <br> // aNumber += 'a' //error
         <br> // aNumber += "1" //error
-        <br> println(aNumber.contentToString()) //[1, 1.2, 1.2, 15, 3, 97, 1000000000000000000]
-        <br> aNumber = aNumber<terminal>.sliceArray(0..aNumber.size-2)</terminal> //delete last
-        <br> println(aNumber.contentToString()) //[1, 1.2, 1.2, 15, 3, 97]
-        <br> aNumber = aNumber<terminal>.sliceArray(0 until aNumber.size-1)</terminal> //delete last
-        <br> println(aNumber.contentToString()) //[1, 1.2, 1.2, 15, 3]
-        <br> aNumber = aNumber<terminal>.sliceArray(1 .. aNumber.size-1)</terminal> //delete first
-        <br> println(aNumber.contentToString()) //[1.2, 1.2, 15, 3]
-        <br> aNumber = aNumber<terminal>.sliceArray(1 until aNumber.size)</terminal> //delete first
-        <br> println(aNumber.contentToString()) //[1.2, 15, 3]
-        <br> //aNumber = 1.1 + aNumber //error
-        <br> aNumber = <terminal>aNumber + 1.1</terminal> //add element
-        <br> println(aNumber.contentToString()) //[1.2, 15, 3, 1.1]
-        <br> aNumber = <terminal>aNumber + aNumber</terminal> //add array
-        <br> println(aNumber.contentToString()) //[1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1]
-        <br> aNumber <terminal>+= aNumber</terminal> //add array
-        <br> println(aNumber.contentToString()) //[1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1]
-        <br> aNumber = aNumber<terminal>.sliceArray(1..3)</terminal> //slice range to new array
-        <br> println(aNumber.contentToString()) //[15, 3, 1.1]
-        <br> aNumber<terminal>.reverse()</terminal> //reverse in place
-        <br> println(aNumber.contentToString()) //[1.1, 3, 15]
-        <br> aNumber = aNumber<terminal>.reversedArray()</terminal> //reverse to new array
-        <br> println(aNumber.contentToString()) //[15, 3, 1.1]
-        <br> //aNumber = aNumber.sortedArray() //error
-        <br> //var aDouble = aNumber.toDoubleArray() //error
-        <br> aNumber<terminal>.sortBy(){it.toDouble()}</terminal> //manually sort array, because Number is not mono type
-        <br> println(aNumber.contentToString()) //[1.1, 3, 15]
-        <br> aNumber<terminal>.sortByDescending(){it.toDouble()}</terminal> //manually reversed sort array
-        <br> println(aNumber.contentToString()) //[15, 3, 1.1]
-        <br> println( aNumber<terminal>.sumBy(){it.toInt()}</terminal> ) //19 sum of array elements as Int
-        <br> println( aNumber<terminal>.sumByDouble(){it.toDouble()}</terminal> ) //19.1 sum of array elements as Double
+        <br> println(aNumber.contentToString()) //[1, 1.2, 1.2, 15, 3, 97, 1000000000000000000] ...print content
+        <br> aNumber = aNumber<terminal>.sliceArray(0..aNumber.size-2)</terminal> //[1, 1.2, 1.2, 15, 3, 97] ...delete last
+        <br> aNumber = aNumber<terminal>.sliceArray(0 until aNumber.size-1)</terminal> //[1, 1.2, 1.2, 15, 3] ...delete last
+        <br> aNumber = aNumber<terminal>.sliceArray(1 .. aNumber.size-1)</terminal> //[1.2, 1.2, 15, 3] ...delete first
+        <br> aNumber = aNumber<terminal>.sliceArray(1 until aNumber.size)</terminal> //[1.2, 15, 3] ...delete first
+        <br> //aNumber = <eterminal>1.1 + aNumber</eterminal> //error
+        <br> aNumber = <terminal>aNumber + 1.1</terminal> //[1.2, 15, 3, 1.1] ...add element
+        <br> aNumber = <terminal>aNumber + aNumber</terminal> //[1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1] ...add array
+        <br> aNumber <terminal>+= aNumber</terminal> //[1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1] ...add array
+        <br> aNumber = aNumber<terminal>.sliceArray(1..3)</terminal> //[15, 3, 1.1] ...slice range to new array
+        <br> aNumber<terminal>.reverse()</terminal> //[1.1, 3, 15] ...reverse in place
+        <br> aNumber = aNumber<terminal>.reversedArray()</terminal> //[15, 3, 1.1] ...reverse to new array
+        <br> //aNumber = aNumber<eterminal>.sortedArray()</eterminal> //error , not work for <terminal>Array&lt;Number&gt;</terminal>
+        <br> //var aDouble = aNumber<eterminal>.toDoubleArray()</eterminal> //error , need <terminal>Array&lt;Double&gt;.toDoubleArray()</terminal>
+        <br> aNumber<terminal>.sortBy(){it.toDouble()}</terminal> //[1.1, 3, 15] ...manually sort array, because <terminal>Array&lt;Number&gt;</terminal> is not mono type
+        <br> aNumber<terminal>.sortByDescending(){it.toDouble()}</terminal> //[15, 3, 1.1] ...manually reversed sort array
+        <br> println( aNumber<terminal>.sumBy(){it.toInt()}</terminal> ) //19 ...sum of array elements as Int
+        <br> println( aNumber<terminal>.sumByDouble(){it.toDouble()}</terminal> ) //19.1 ...sum of array elements as Double
     </codebox>
+    <hr>
+    <terminal>Array&lt;Double&gt;</terminal> can include only <terminal>Double</terminal> numbers. Have lot of usual methods, like other arrays of mono type number like <terminal>Int</terminal> , <terminal>Float</terminal> , <terminal>Long</terminal>.
+    <br><terminal>Array&lt;Double?&gt;</terminal> also can include <terminal>null</terminal> values:
+    
     
     <hr><li id="c13"><a href="#c0">List() kotlin.collections</a></li>
     <hr><li id="c14"><a href="#c0">Map() kotlin.collections</a></li>
