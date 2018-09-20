@@ -17,13 +17,11 @@
     <a class="up" id="c0" href="index.html">development &lt;&lt;&lt; kotlin syntax</a>
     
     <ol>
-        <li><a class="up" href="#c1" >Bound callable references</a></li>
-        <li><a class="up" href="#c2" >Underscores for unused parameters</a></li>
-        <li><a class="up" href="#c3" >empty</a></li>
-        <li><a class="up" href="#c4" >Shorter syntax for properties</a></li>
-        
-        <li><a class="up" href="#c5" >empty</a></li>
-        
+        <li><a class="up" href="#c1" >empty</a></li>
+        <li><a class="up" href="#c2" >empty</a></li>
+        <li><a class="up" href="#c3" >Underscores for unused parameters</a></li>
+        <li><a class="up" href="#c4" >Bound callable references</a></li>
+        <li><a class="up" href="#c5" >Shorter syntax for properties</a></li>
         <li><a class="up" href="#c6" ><terminal>onEach()</terminal> ... extension function for collections and sequences</a></li>
         <li><a class="up" href="#c7" ><terminal>apply()</terminal> ... extension function</a></li>
         <li><a class="up" href="#c8" ><terminal>also()</terminal> , <terminal>takeIf()</terminal> and <terminal>takeUnless()</terminal> ... extension functions</a></li>
@@ -54,204 +52,20 @@
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
-    <hr><li id="c1"><a href="#c0">Bound callable references</a></li>
-    <codebox>
-        val numberRegex = "\\d+".toRegex()
-        <br>val numbers = listOf( "abc", "123", "456" ).filter( numberRegex::matches )
-    </codebox>
+    <div w3-include-html="kotlin/c1.html"></div>
+    <div w3-include-html="kotlin/c2.html"></div>
+    <div w3-include-html="kotlin/c3.html"></div>
+    <div w3-include-html="kotlin/c4.html"></div>
+    <div w3-include-html="kotlin/c5.html"></div>
+    <div w3-include-html="kotlin/c6.html"></div>
+    <div w3-include-html="kotlin/c7.html"></div>
+    <div w3-include-html="kotlin/c8.html"></div>
+    <div w3-include-html="kotlin/c9.html"></div>
+    <div w3-include-html="kotlin/c10.html"></div>
+    <div w3-include-html="kotlin/c11.html"></div>
+    <div w3-include-html="kotlin/c12.html"></div>
     
-    <hr><li id="c2"><a href="#c0">Underscores for unused parameters</a></li>
-    For a lambda with multiple parameters, you can use the <treminal>_</treminal> character to replace the names of the parameters you don't use:
-    <codebox>
-        map.forEach { _, value -> println( "$value!" ) }
-    </codebox>
-    <br>This also works in destructuring declarations:
-    <codebox>
-        val ( _, status ) = function( ...  )
-        <br>for ( ( a, _ ) in collection ) { ... }
-    </codebox>
     
-    <hr><li id="c3"><a href="#c0">empty</a></li>
-    
-    <hr><li id="c4"><a href="#c0">Shorter syntax for properties</a></li>
-    <codebox>
-        data class Person( val name: String, val age: Int ) { val isAdult get() = age >= 20 // Property type inferred to be 'Boolean' }
-    </codebox>
-    
-    <hr><li id="c5"><a href="#c0">empty</a></li>
-    
-    <hr><li id="c6"><a href="#c0">onEach() ... extension function for collections and sequences</a></li>
-    <codebox>
-        inputDir.walk()
-        <br> .filter { it.isFile && it.name.endsWith( ".txt" ) }
-        <br> .onEach { println( "Moving $it to $outputDir" ) }
-        <br> .forEach { moveFile( it, File( outputDir, it.toRelativeString( inputDir ) ) ) }
-    </codebox>
-    
-    <hr><li id="c7"><a href="#c0">apply() ... extension function</a></li>
-    Normal syntax:
-    <codebox>
-        fun createInstance( args: Bundle ) : MyFragment {
-            <bin>1</bin>val fragment = MyFragment()
-            <bin>1</bin>fragment.arguments = args
-            <bin>1</bin>return fragment
-        <br>}
-    </codebox>
-    <br>Improved syntax:
-    <codebox>
-        fun createInstance( args: Bundle ) = MyFragment().apply { arguments = args }
-    </codebox>
-    <hr>
-    Unchained object creation chain-able.
-    <br>Normal syntax:
-    <codebox>
-        fun createIntent( intentData: String, intentAction: String ): Intent {
-            <bin>1</bin>val intent = Intent()
-            <bin>1</bin>intent.action = intentAction
-            <bin>1</bin>intent.data=Uri.parse( intentData )
-            <bin>1</bin>return intent
-        <br>}
-    </codebox>
-    <br>Improved syntax:
-    <codebox>
-        fun createIntent( intentData: String, intentAction: String ) =
-        <bin>1</bin>Intent().apply { action = intentAction }
-        <bin>2</bin>.apply { data = Uri.parse( intentData ) }
-    </codebox>
-    
-    <hr><li id="c8"><a href="#c0">also(), takeIf() and takeUnless() ... extension functions</a></li>
-    <terminal>also()</terminal> is like <terminal>apply()</terminal> , but reciever inside is available as <terminal>it</terminal> ( inside <terminal>apply()</terminal> is available as <terminal>this</terminal> ) .
-    <codebox>
-        fun Block.copy() = Block().also { it.content = this.content }
-    </codebox>
-    <hr>
-    <terminal>takeIf()</terminal> is like filter for a single value, which returns the reciever or <terminal>null</terminal> .
-    <codebox>
-        val outDirFile = File( outputDir.path ).takeIf { it.exists() } ?: return false
-        <br>val index = input.indexOf( keyword ).takeIf { it >= 0 } ?: error( "keyword not found" )
-    </codebox>
-    <hr>
-    <terminal>takeUnless()</terminal> is inverted <terminal>takeIf()</terminal> .
-    <codebox>
-        val index = input.indexOf( keyword ).takeUnless { it < 0 } ?: error( "keyword not found" )
-        <br>val result = string.takeUnless( String::isEmpty )
-    </codebox>
-    
-    <hr><li id="c9"><a href="#c0">Destructuring in lambdas</a></li>
-    <codebox>
-        val map = mapOf( 2 to "one", 3 to "two" )
-        <br>println( map.mapValues { ( key, value ) -> "$key -> $value!" } )
-    </codebox>
-    
-    <hr><li id="c10"><a href="#c0">minOf() and maxOf()</a></li>
-    <codebox>
-        val list1 = listOf( "a", "b" )
-        <br>val list2 = listOf( "x", "y", "z" )
-        <br>val minSize = minOf( list1.size, list2.size )
-        <br>val longestList = maxOf( list1, list2, compareBy { it.size } )
-    </codebox>
-    
-    <hr><li id="c11"><a href="#c0">Array() like List() and MutableList()</a></li>
-    <codebox>
-        val squares = List( 4 ) { index -> index * index } //[0, 1, 4, 9]
-        <br>val mutable = MutableList( 4 ) { 0 } //[0, 0, 0, 0]
-    </codebox>
-    
-    <hr><li id="c12"><a href="#c0">Arrays</a></li>
-    Array&lt;T&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html" target="_blank">weblink</a>. <terminal>T</terminal> can be at least <terminal>Number</terminal> , <terminal>Double</terminal> , <terminal>Int</terminal> , <terminal>Float</terminal> , <terminal>Long</terminal> , <terminal>String</terminal> , <terminal>Char</terminal> .
-    <hr>
-    <terminal>Array&lt;Number&gt;</terminal> can include different types of numbers, but some of array methods(sorting etc) not work usual way:
-    <codebox>
-        var aNumber:Array&lt;Number&gt; = Array(0){0} //[ ]
-        <br> aNumber += 1 //add int
-        <br> aNumber += 1.2 //add double
-        <br> aNumber += 1.2F //add float
-        <br> aNumber += 0x0F //15 add hexa
-        <br> aNumber += 0b11 //3 add binary
-        <br> aNumber += 'a'<terminal>.toInt()</terminal> //97 add char to int
-        <br> aNumber += 1000000000000000000L //add long
-        <br> // aNumber += 'a' //error
-        <br> // aNumber += "1" //error
-        <br> println(aNumber.contentToString()) //[1, 1.2, 1.2, 15, 3, 97, 1000000000000000000] ...print content
-        <br> aNumber = aNumber<terminal>.sliceArray(0..aNumber.size-2)</terminal> //[1, 1.2, 1.2, 15, 3, 97] ...delete last
-        <br> aNumber = aNumber<terminal>.sliceArray(0 until aNumber.size-1)</terminal> //[1, 1.2, 1.2, 15, 3] ...delete last
-        <br> aNumber = aNumber<terminal>.sliceArray(1 .. aNumber.size-1)</terminal> //[1.2, 1.2, 15, 3] ...delete first
-        <br> aNumber = aNumber<terminal>.sliceArray(1 until aNumber.size)</terminal> //[1.2, 15, 3] ...delete first
-        <br> //aNumber = <eterminal>1.1 + aNumber</eterminal> //error
-        <br> aNumber = <terminal>aNumber + 1.1</terminal> //[1.2, 15, 3, 1.1] ...add element
-        <br> aNumber = <terminal>aNumber + aNumber</terminal> //[1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1] ...add array
-        <br> aNumber <terminal>+= aNumber</terminal> //[1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1] ...add array
-        <br> aNumber = aNumber<terminal>.sliceArray(1..3)</terminal> //[15, 3, 1.1] ...slice range to new array
-        <br> aNumber<terminal>.reverse()</terminal> //[1.1, 3, 15] ...reverse in place
-        <br> aNumber = aNumber<terminal>.reversedArray()</terminal> //[15, 3, 1.1] ...reverse to new array
-        <br> //aNumber = aNumber<eterminal>.sortedArray()</eterminal> //error , not work for <terminal>Array&lt;Number&gt;</terminal>
-        <br> //var aDouble = aNumber<eterminal>.toDoubleArray()</eterminal> //error , need <terminal>Array&lt;Double&gt;.toDoubleArray()</terminal>
-        <br> aNumber<terminal>.sortBy(){it.toDouble()}</terminal> //[1.1, 3, 15] ...manually sort array, because <terminal>Array&lt;Number&gt;</terminal> is not mono type
-        <br> aNumber<terminal>.sortByDescending(){it.toDouble()}</terminal> //[15, 3, 1.1] ...manually reversed sort array
-        <br> println( aNumber<terminal>.sumBy(){it.toInt()}</terminal> ) //19 ...sum of array elements as Int
-        <br> println( aNumber<terminal>.sumByDouble(){it.toDouble()}</terminal> ) //19.1 ...sum of array elements as Double
-    </codebox>
-    <hr>
-    <terminal>Array&lt;Double&gt;</terminal> can include only <terminal>Double</terminal> numbers. Have lot of usual methods, like other arrays of mono type number like <terminal>Int</terminal> , <terminal>Float</terminal> , <terminal>Long</terminal>.
-    <br><terminal>Array&lt;Double?&gt;</terminal> can also include <terminal>null</terminal> values, but can't be converted <terminal>.toDoubleArray()</terminal> :
-    <codebox>
-        var aDouble:Array&lt;Double&gt; = emptyArray() //[ ]
-        <br> aDouble = <terminal>Array(3){0.0}</terminal> //[0.0, 0.0, 0.0]
-        <br> aDouble = <terminal>arrayOf(1.0,2.0,3.0)</terminal> //[1.0, 2.0, 3.0]
-        <br> aDouble = <terminal>listOf(4.0,2.0,3.0).toTypedArray()</terminal> //[4.0, 2.0, 3.0]
-        <br> aDouble <terminal>+= 1.0</terminal> //[4.0, 2.0, 3.0, 1.0] ...add element
-        <br> //<eterminal>aDouble = aDouble.toDoubleArray()</eterminal> //error , because <terminal>Array&lt;Double&gt; != DoubleArray</terminal>
-        <br> <terminal>var dArray = aDouble.toDoubleArray()</terminal> //[4.0, 2.0, 3.0, 1.0] ...new var and array auto type is <terminal>DoubleArray</terminal>
-        <br> //<eterminal>aDouble = arrayOfNulls(3)</eterminal> //error , <terminal>null</terminal>'s have own type syntax
-        <br> <terminal>var aDoubleNulls:Array&lt;Double?&gt; = arrayOfNulls(3)</terminal> //[null, null, null]
-        <br> aDoubleNulls <terminal>+= 1.0</terminal> //[null, null, null, 1.0] ...add element
-        <br> aDoubleNulls = <terminal>listOf(4.0,2.0,3.0,null).toTypedArray()</terminal> //[4.0, 2.0, 3.0, null]
-        <br> //<eterminal>var dArrayNulls = aDoubleNulls.toDoubleArray()</eterminal> //error , because <terminal>nullable support</terminal>
-        <br> aDoubleNulls<terminal>.set(aDoubleNulls.size-1, 423.1)</terminal> //[4.0, 2.0, 3.0, 423.1] ...set last element value
-        <br> println( aDoubleNulls<terminal>.get(0)</terminal> ) //4.0 ...get first element value
-    </codebox>
-    <hr>
-    <terminal>DoubleArray</terminal>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html" target="_blank">weblink</a>
-    when targeting the JVM, instances of this class are represented as <terminal>double[]</terminal> .
-    <codebox>
-        var dArray:DoubleArray = DoubleArray(0) //[ ]
-        <br> dArray = DoubleArray(3) //[0.0, 0.0, 0.0]
-        <br> dArray = DoubleArray(3){i->i.toDouble()} //[0.0, 1.0, 2.0]
-        <br> dArray <terminal>+= 3.0</terminal> //[0.0, 1.0, 2.0, 3.0] ...add element
-        <br> dArray = dArray<terminal>.plus(4.0)</terminal> //[0.0, 1.0, 2.0, 3.0, 4.0] ...add element to new array
-        <br> dArray = dArray<terminal>.sliceArray(1..3)</terminal> //[1.0, 2.0, 3.0] ...slice range
-        <br> dArray<terminal>.set(0,4.0)</terminal> //[4.0, 2.0, 3.0] ...set first element value
-        <br> println( dArray<terminal>.get(dArray.size-1)</terminal> ) //3.0 ...get last element value
-        <br> //dArray<eterminal>.set(0, null)</eterminal> //error , because null as value(non-null type)
-        <br> println( dArray<terminal>.indexOf( 2.0 )</terminal> ) //1 ...return first index of element
-        <br> println( dArray<terminal>.indexOf( 5.0 )</terminal> ) //-1 ...first index of element not found
-        <br> println( dArray<terminal>.last()</terminal> ) //3.0 ...return last element
-        <br> println( <terminal>dArray[0]</terminal> ) //4.0 ...return first element
-        <br> //dArray = dArray<eterminal>.sliceArray(-1..0)</eterminal> //error
-        <br> dArray = dArray<terminal>.sliceArray(0..-1)</terminal> //[ ] slowest than <terminal>DoubleArray(0)</terminal>
-        <br> // println( dArray<eterminal>.last()</eterminal> ) //error , because array have size 0
-        <br> println( dArray<terminal>.lastOrNull()</terminal> ) //null
-    </codebox>
-    <hr>
-    Other basic types have similar classes, with some different methods:
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/index.html" target="_blank">BooleanArray</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html" target="_blank">ByteArray</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-array/index.html" target="_blank">CharArray</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float-array/index.html" target="_blank">FloatArray</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html" target="_blank">IntArray</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long-array/index.html" target="_blank">LongArray</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short-array/index.html" target="_blank">ShortArray</a>
-    <br>An <terminal>arrayOf()</terminal> function for basic types have similar versions:
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/boolean-array-of.html" target="_blank">booleanArrayOf</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/byte-array-of.html" target="_blank">byteArrayOf</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/char-array-of.html" target="_blank">charArrayOf</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/char-array-of.html" target="_blank">doubleArrayOf</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/float-array-of.html" target="_blank">floatArrayOf</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/int-array-of.html" target="_blank">intArrayOf</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/long-array-of.html" target="_blank">longArrayOf</a>
-    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/short-array-of.html" target="_blank">shortArrayOf</a>
-    <a href="" target="_blank"></a>
     
     
     <hr><li id="c13"><a href="#c0">List() kotlin.collections</a></li>
@@ -848,10 +662,12 @@
     
     <br>Precedence <a href="http://kotlinlang.org/docs/reference/grammar.html#precedence" target="_blank">weblink</a>
     
+    <div w3-include-html="kotlin/test.html"></div>
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>
     
     
     </body>
+    <script src="css/includehtml/includehtml.js"></script>
     <script src="css/indentation/indentation.js"></script><br>
 </html>

@@ -1,0 +1,95 @@
+<hr><li id="c12"><a href="#c0">Arrays</a></li>
+    Array&lt;T&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html" target="_blank">weblink</a>. <terminal>T</terminal> can be at least <terminal>Number</terminal> , <terminal>Double</terminal> , <terminal>Int</terminal> , <terminal>Float</terminal> , <terminal>Long</terminal> , <terminal>String</terminal> , <terminal>Char</terminal> .
+    <hr>
+    <terminal>Array&lt;Number&gt;</terminal> can include different types of numbers, but some of array methods(sorting etc) not work usual way:
+    <codebox>
+        var aNumber:Array&lt;Number&gt; = Array(0){0} //[ ]
+        <br> aNumber += 1 //add int
+        <br> aNumber += 1.2 //add double
+        <br> aNumber += 1.2F //add float
+        <br> aNumber += 0x0F //15 add hexa
+        <br> aNumber += 0b11 //3 add binary
+        <br> aNumber += 'a'<terminal>.toInt()</terminal> //97 add char to int
+        <br> aNumber += 1000000000000000000L //add long
+        <br> // aNumber += 'a' //error
+        <br> // aNumber += "1" //error
+        <br> println(aNumber.contentToString()) //[1, 1.2, 1.2, 15, 3, 97, 1000000000000000000] ...print content
+        <br> aNumber = aNumber<terminal>.sliceArray(0..aNumber.size-2)</terminal> //[1, 1.2, 1.2, 15, 3, 97] ...delete last
+        <br> aNumber = aNumber<terminal>.sliceArray(0 until aNumber.size-1)</terminal> //[1, 1.2, 1.2, 15, 3] ...delete last
+        <br> aNumber = aNumber<terminal>.sliceArray(1 .. aNumber.size-1)</terminal> //[1.2, 1.2, 15, 3] ...delete first
+        <br> aNumber = aNumber<terminal>.sliceArray(1 until aNumber.size)</terminal> //[1.2, 15, 3] ...delete first
+        <br> //aNumber = <eterminal>1.1 + aNumber</eterminal> //error
+        <br> aNumber = <terminal>aNumber + 1.1</terminal> //[1.2, 15, 3, 1.1] ...add element
+        <br> aNumber = <terminal>aNumber + aNumber</terminal> //[1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1] ...add array
+        <br> aNumber <terminal>+= aNumber</terminal> //[1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1, 1.2, 15, 3, 1.1] ...add array
+        <br> aNumber = aNumber<terminal>.sliceArray(1..3)</terminal> //[15, 3, 1.1] ...slice range to new array
+        <br> aNumber<terminal>.reverse()</terminal> //[1.1, 3, 15] ...reverse in place
+        <br> aNumber = aNumber<terminal>.reversedArray()</terminal> //[15, 3, 1.1] ...reverse to new array
+        <br> //aNumber = aNumber<eterminal>.sortedArray()</eterminal> //error , not work for <terminal>Array&lt;Number&gt;</terminal>
+        <br> //var aDouble = aNumber<eterminal>.toDoubleArray()</eterminal> //error , need <terminal>Array&lt;Double&gt;.toDoubleArray()</terminal>
+        <br> aNumber<terminal>.sortBy(){it.toDouble()}</terminal> //[1.1, 3, 15] ...manually sort array, because <terminal>Array&lt;Number&gt;</terminal> is not mono type
+        <br> aNumber<terminal>.sortByDescending(){it.toDouble()}</terminal> //[15, 3, 1.1] ...manually reversed sort array
+        <br> println( aNumber<terminal>.sumBy(){it.toInt()}</terminal> ) //19 ...sum of array elements as Int
+        <br> println( aNumber<terminal>.sumByDouble(){it.toDouble()}</terminal> ) //19.1 ...sum of array elements as Double
+    </codebox>
+    <hr>
+    <terminal>Array&lt;Double&gt;</terminal> can include only <terminal>Double</terminal> numbers. Have lot of usual methods, like other arrays of mono type number like <terminal>Int</terminal> , <terminal>Float</terminal> , <terminal>Long</terminal>.
+    <br><terminal>Array&lt;Double?&gt;</terminal> can also include <terminal>null</terminal> values, but can't be converted <terminal>.toDoubleArray()</terminal> :
+    <codebox>
+        var aDouble:Array&lt;Double&gt; = emptyArray() //[ ]
+        <br> aDouble = <terminal>Array(3){0.0}</terminal> //[0.0, 0.0, 0.0]
+        <br> aDouble = <terminal>arrayOf(1.0,2.0,3.0)</terminal> //[1.0, 2.0, 3.0]
+        <br> aDouble = <terminal>listOf(4.0,2.0,3.0).toTypedArray()</terminal> //[4.0, 2.0, 3.0]
+        <br> aDouble <terminal>+= 1.0</terminal> //[4.0, 2.0, 3.0, 1.0] ...add element
+        <br> //<eterminal>aDouble = aDouble.toDoubleArray()</eterminal> //error , because <terminal>Array&lt;Double&gt; != DoubleArray</terminal>
+        <br> <terminal>var dArray = aDouble.toDoubleArray()</terminal> //[4.0, 2.0, 3.0, 1.0] ...new var and array auto type is <terminal>DoubleArray</terminal>
+        <br> //<eterminal>aDouble = arrayOfNulls(3)</eterminal> //error , <terminal>null</terminal>'s have own type syntax
+        <br> <terminal>var aDoubleNulls:Array&lt;Double?&gt; = arrayOfNulls(3)</terminal> //[null, null, null]
+        <br> aDoubleNulls <terminal>+= 1.0</terminal> //[null, null, null, 1.0] ...add element
+        <br> aDoubleNulls = <terminal>listOf(4.0,2.0,3.0,null).toTypedArray()</terminal> //[4.0, 2.0, 3.0, null]
+        <br> //<eterminal>var dArrayNulls = aDoubleNulls.toDoubleArray()</eterminal> //error , because <terminal>nullable support</terminal>
+        <br> aDoubleNulls<terminal>.set(aDoubleNulls.size-1, 423.1)</terminal> //[4.0, 2.0, 3.0, 423.1] ...set last element value
+        <br> println( aDoubleNulls<terminal>.get(0)</terminal> ) //4.0 ...get first element value
+    </codebox>
+    <hr>
+    <terminal>DoubleArray</terminal>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html" target="_blank">weblink</a>
+    when targeting the JVM, instances of this class are represented as <terminal>double[]</terminal> .
+    <codebox>
+        var dArray:DoubleArray = DoubleArray(0) //[ ]
+        <br> dArray = DoubleArray(3) //[0.0, 0.0, 0.0]
+        <br> dArray = DoubleArray(3){i->i.toDouble()} //[0.0, 1.0, 2.0]
+        <br> dArray <terminal>+= 3.0</terminal> //[0.0, 1.0, 2.0, 3.0] ...add element
+        <br> dArray = dArray<terminal>.plus(4.0)</terminal> //[0.0, 1.0, 2.0, 3.0, 4.0] ...add element to new array
+        <br> dArray = dArray<terminal>.sliceArray(1..3)</terminal> //[1.0, 2.0, 3.0] ...slice range
+        <br> dArray<terminal>.set(0,4.0)</terminal> //[4.0, 2.0, 3.0] ...set first element value
+        <br> println( dArray<terminal>.get(dArray.size-1)</terminal> ) //3.0 ...get last element value
+        <br> //dArray<eterminal>.set(0, null)</eterminal> //error , because null as value(non-null type)
+        <br> println( dArray<terminal>.indexOf( 2.0 )</terminal> ) //1 ...return first index of element
+        <br> println( dArray<terminal>.indexOf( 5.0 )</terminal> ) //-1 ...first index of element not found
+        <br> println( dArray<terminal>.last()</terminal> ) //3.0 ...return last element
+        <br> println( <terminal>dArray[0]</terminal> ) //4.0 ...return first element
+        <br> //dArray = dArray<eterminal>.sliceArray(-1..0)</eterminal> //error
+        <br> dArray = dArray<terminal>.sliceArray(0..-1)</terminal> //[ ] slowest than <terminal>DoubleArray(0)</terminal>
+        <br> // println( dArray<eterminal>.last()</eterminal> ) //error , because array have size 0
+        <br> println( dArray<terminal>.lastOrNull()</terminal> ) //null
+    </codebox>
+    <hr>
+    Other basic types have similar classes, with some different methods:
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/index.html" target="_blank">BooleanArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html" target="_blank">ByteArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-array/index.html" target="_blank">CharArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float-array/index.html" target="_blank">FloatArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html" target="_blank">IntArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long-array/index.html" target="_blank">LongArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short-array/index.html" target="_blank">ShortArray</a>
+    <br>An <terminal>arrayOf()</terminal> function for basic types have similar versions:
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/boolean-array-of.html" target="_blank">booleanArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/byte-array-of.html" target="_blank">byteArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/char-array-of.html" target="_blank">charArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/char-array-of.html" target="_blank">doubleArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/float-array-of.html" target="_blank">floatArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/int-array-of.html" target="_blank">intArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/long-array-of.html" target="_blank">longArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/short-array-of.html" target="_blank">shortArrayOf</a>
+    <a href="" target="_blank"></a>

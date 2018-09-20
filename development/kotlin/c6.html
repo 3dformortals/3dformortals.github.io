@@ -1,0 +1,7 @@
+<hr><li id="c6"><a href="#c0">onEach() ... extension function for collections and sequences</a></li>
+    <codebox>
+        inputDir.walk()
+        <br> .filter { it.isFile && it.name.endsWith( ".txt" ) }
+        <br> .onEach { println( "Moving $it to $outputDir" ) }
+        <br> .forEach { moveFile( it, File( outputDir, it.toRelativeString( inputDir ) ) ) }
+    </codebox>

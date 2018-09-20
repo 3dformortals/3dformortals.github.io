@@ -1,0 +1,10 @@
+<hr><li id="c3"><a href="#c0">Underscores for unused parameters</a></li>
+    For a lambda with multiple parameters, you can use the <treminal>_</treminal> character to replace the names of the parameters you don't use:
+    <codebox>
+        map.forEach { _, value -> println( "$value!" ) }
+    </codebox>
+    <br>This also works in destructuring declarations:
+    <codebox>
+        val ( _, status ) = function( ...  )
+        <br>for ( ( a, _ ) in collection ) { ... }
+    </codebox>

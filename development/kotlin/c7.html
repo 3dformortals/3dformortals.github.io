@@ -1,0 +1,30 @@
+<hr><li id="c7"><a href="#c0">apply() ... extension function</a></li>
+    Normal syntax:
+    <codebox>
+        fun createInstance( args: Bundle ) : MyFragment {
+            <bin>1</bin>val fragment = MyFragment()
+            <bin>1</bin>fragment.arguments = args
+            <bin>1</bin>return fragment
+        <br>}
+    </codebox>
+    <br>Improved syntax:
+    <codebox>
+        fun createInstance( args: Bundle ) = MyFragment().apply { arguments = args }
+    </codebox>
+    <hr>
+    Unchained object creation chain-able.
+    <br>Normal syntax:
+    <codebox>
+        fun createIntent( intentData: String, intentAction: String ): Intent {
+            <bin>1</bin>val intent = Intent()
+            <bin>1</bin>intent.action = intentAction
+            <bin>1</bin>intent.data=Uri.parse( intentData )
+            <bin>1</bin>return intent
+        <br>}
+    </codebox>
+    <br>Improved syntax:
+    <codebox>
+        fun createIntent( intentData: String, intentAction: String ) =
+        <bin>1</bin>Intent().apply { action = intentAction }
+        <bin>2</bin>.apply { data = Uri.parse( intentData ) }
+    </codebox>
