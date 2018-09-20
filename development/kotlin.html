@@ -227,7 +227,7 @@
         <br> println( dArray<terminal>.last()</terminal> ) //3.0 ...return last element
         <br> println( <terminal>dArray[0]</terminal> ) //4.0 ...return first element
         <br> //dArray = dArray<eterminal>.sliceArray(-1..0)</eterminal> //error
-        <br> dArray = dArray<terminal>.sliceArray(0..-1)</terminal> //[ ]
+        <br> dArray = dArray<terminal>.sliceArray(0..-1)</terminal> //[ ] slowest than <terminal>DoubleArray(0)</terminal>
         <br> // println( dArray<eterminal>.last()</eterminal> ) //error , because array have size 0
         <br> println( dArray<terminal>.lastOrNull()</terminal> ) //null
     </codebox>
