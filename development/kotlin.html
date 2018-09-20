@@ -211,7 +211,9 @@
         <br> println( aDoubleNulls<terminal>.get(0)</terminal> ) //4.0 ...get first element value
     </codebox>
     <hr>
-    <terminal>DoubleArray</terminal> when targeting the JVM, instances of this class are represented as <terminal>double[]</terminal> .
+    <terminal>DoubleArray</terminal>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html" target="_blank">weblink</a>
+    when targeting the JVM, instances of this class are represented as <terminal>double[]</terminal> .
     <codebox>
         var dArray:DoubleArray = DoubleArray(0) //[ ]
         <br> dArray = DoubleArray(3) //[0.0, 0.0, 0.0]
@@ -231,6 +233,26 @@
         <br> // println( dArray<eterminal>.last()</eterminal> ) //error , because array have size 0
         <br> println( dArray<terminal>.lastOrNull()</terminal> ) //null
     </codebox>
+    <hr>
+    Other basic types have similar classes, with some different methods:
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/index.html" target="_blank">BooleanArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html" target="_blank">ByteArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-array/index.html" target="_blank">CharArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float-array/index.html" target="_blank">FloatArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html" target="_blank">IntArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long-array/index.html" target="_blank">LongArray</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short-array/index.html" target="_blank">ShortArray</a>
+    <br>An <terminal>arrayOf()</terminal> function for basic types have similar versions:
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/boolean-array-of.html" target="_blank">booleanArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/byte-array-of.html" target="_blank">byteArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/char-array-of.html" target="_blank">charArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/char-array-of.html" target="_blank">doubleArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/float-array-of.html" target="_blank">floatArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/int-array-of.html" target="_blank">intArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/long-array-of.html" target="_blank">longArrayOf</a>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/short-array-of.html" target="_blank">shortArrayOf</a>
+    <a href="" target="_blank"></a>
+    
     
     <hr><li id="c13"><a href="#c0">List() kotlin.collections</a></li>
     <hr><li id="c14"><a href="#c0">Map() kotlin.collections</a></li>
@@ -585,6 +607,57 @@
         <br> val biglong = 1_000_000_000_000_000_000L ;println(biglong) //1000000000000000000
         <br> val bigint = biglong.toInt() ;println(bigint) //-1486618624
         <br>//without errors etc
+    </codebox>
+    <br>An <terminal>Int</terminal> and <terminal>Long</terminal> types have <terminal>.toBigInteger()</terminal> method:
+    <codebox>
+        //val longint:Int = 5555555555555555555 //error
+        <br> //val longint:BigInteger = 5555555555555555555 //error
+        <br> val longint = 5555555555555555555 //auto type <terminal>Long</terminal>
+        <br> val long = 5555555555555555555L
+        <br> println(longint) //5555555555555555555
+        <br> println(long) //5555555555555555555
+        <br> println(longint.toBigInteger()) //5555555555555555555
+        <br> println(long.toBigInteger()) //5555555555555555555
+    </codebox>
+    <br>An <terminal>Double</terminal> and <terminal>Float</terminal> types have <terminal>.toBits()</terminal> , <terminal>.toRawBits()</terminal> , <terminal>fromBits()</terminal> methods:
+    <codebox>
+        val double:Double = 5555555555555555555.12345678
+        <br> val float:Float = 5555555555555555555.12345678F
+        <br> val doubleBit = double.toBits()
+        <br> val floatBit = float.toBits()
+        <br> val doubleRawBit = double.toRawBits()
+        <br> val floatRawBit = float.toRawBits()
+        <br> 
+        <br> println(double) //5.5555555555555553E18
+        <br> println(doubleBit) //4887327343291839886
+        <br> println(doubleRawBit) //4887327343291839886
+        <br> println(Double.Companion.fromBits(doubleBit)) //5.5555555555555553E18
+        <br> println(Double.Companion.fromBits(doubleRawBit)) //5.5555555555555553E18
+        <br> 
+        <br> println(float) //5.5555557E18
+        <br> println(floatBit) //1587163801
+        <br> println(floatRawBit) //1587163801
+        <br> println(Float.Companion.fromBits(floatBit)) //5.5555557E18
+        <br> println(Float.Companion.fromBits(floatRawBit)) //5.5555557E18
+    </codebox>
+    
+    
+    <br>An <terminal>Int</terminal> , <terminal>Long</terminal> , <terminal>Float</terminal> , <terminal>Double</terminal> types have <terminal>.toBigDecimal()</terminal> method:
+    <codebox>
+        //val int:Int = 5555555555555555555 //error
+        <br> // val longint:BigDecimal = 5555555555555555555 //error
+        <br> val longint = 5555555555555555555 //auto type Long
+        <br> val long = 5555555555555555555L
+        <br> val double = 5555555555555555555.0
+        <br> val float = 5555555555555555555F
+        <br> println(longint) //5555555555555555555
+        <br> println(long) //5555555555555555555
+        <br> println(double) //5.5555555555555553E18
+        <br> println(float) //5.5555557E18
+        <br> println(longint.toBigDecimal()) //5555555555555555555
+        <br> println(long.toBigDecimal()) //5555555555555555555
+        <br> println(double.toBigDecimal()) //5.5555555555555553E+18
+        <br> println(float.toBigDecimal()) //5.5555557E+18
     </codebox>
     
     <br>Floating Point Numbers Comparison.
