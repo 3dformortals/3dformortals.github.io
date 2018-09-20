@@ -210,6 +210,27 @@
         <br> aDoubleNulls<terminal>.set(aDoubleNulls.size-1, 423.1)</terminal> //[4.0, 2.0, 3.0, 423.1] ...set last element value
         <br> println( aDoubleNulls<terminal>.get(0)</terminal> ) //4.0 ...get first element value
     </codebox>
+    <hr>
+    <terminal>DoubleArray</terminal> when targeting the JVM, instances of this class are represented as <terminal>double[]</terminal> .
+    <codebox>
+        var dArray:DoubleArray = DoubleArray(0) //[ ]
+        <br> dArray = DoubleArray(3) //[0.0, 0.0, 0.0]
+        <br> dArray = DoubleArray(3){i->i.toDouble()} //[0.0, 1.0, 2.0]
+        <br> dArray <terminal>+= 3.0</terminal> //[0.0, 1.0, 2.0, 3.0] ...add element
+        <br> dArray = dArray<terminal>.plus(4.0)</terminal> //[0.0, 1.0, 2.0, 3.0, 4.0] ...add element to new array
+        <br> dArray = dArray<terminal>.sliceArray(1..3)</terminal> //[1.0, 2.0, 3.0] ...slice range
+        <br> dArray<terminal>.set(0,4.0)</terminal> //[4.0, 2.0, 3.0] ...set first element value
+        <br> println( dArray<terminal>.get(dArray.size-1)</terminal> ) //3.0 ...get last element value
+        <br> //dArray<eterminal>.set(0, null)</eterminal> //error , because null as value(non-null type)
+        <br> println( dArray<terminal>.indexOf( 2.0 )</terminal> ) //1 ...return first index of element
+        <br> println( dArray<terminal>.indexOf( 5.0 )</terminal> ) //-1 ...first index of element not found
+        <br> println( dArray<terminal>.last()</terminal> ) //3.0 ...return last element
+        <br> println( <terminal>dArray[0]</terminal> ) //4.0 ...return first element
+        <br> //dArray = dArray<eterminal>.sliceArray(-1..0)</eterminal> //error
+        <br> dArray = dArray<terminal>.sliceArray(0..-1)</terminal> //[ ]
+        <br> // println( dArray<eterminal>.last()</eterminal> ) //error , because array have size 0
+        <br> println( dArray<terminal>.lastOrNull()</terminal> ) //null
+    </codebox>
     
     <hr><li id="c13"><a href="#c0">List() kotlin.collections</a></li>
     <hr><li id="c14"><a href="#c0">Map() kotlin.collections</a></li>
