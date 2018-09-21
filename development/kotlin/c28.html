@@ -1,0 +1,52 @@
+<hr><li id="c28"><a href="#c0">Numbers operations</a></li>
+    Bitwise operations ( available for <terminal>Int</terminal> and <terminal>Long</terminal> only ):
+    <br> <terminal>shl( bits )</terminal> - signed shift left ( Java's &lt;&lt; )
+    <br> <terminal>shr( bits )</terminal> - signed shift right ( Java's &gt;&gt; )
+    <br> <terminal>ushr( bits )</terminal> - unsigned shift right ( Java's &gt;&gt;&gt; )
+    <br> <terminal>and( bits )</terminal> - bitwise and
+    <br> <terminal>or( bits )</terminal> - bitwise or
+    <br> <terminal>xor( bits )</terminal> - bitwise xor
+    <br> <terminal>inv()</terminal> - bitwise inversion
+    <hr>
+    Increment , decrement:
+    <br>Single syntax <terminal>x++</terminal> and <terminal>++x</terminal> is close to <terminal>x = x + 1</terminal> .
+    <br>Single syntax <terminal>x--</terminal> and <terminal>--x</terminal> is close to <terminal>x = x - 1</terminal> .
+    <br>But have difference when these syntaxes is part of big syntax:
+    <codebox>
+        var x = 11
+        <br> x++; println( x ) // 12
+        <br> ++x; println( x ) // 13
+        <br> x--; println( x ) // 12
+        <br> --x; println( x ) // 11
+        <br> //but
+        <br> println( x++ ) // 11 ,because first was <terminal>println( x )</terminal> , second was <terminal>x = x + 1</terminal>
+        <br> println( x ) // 12
+        <br> 
+        <br> println( ++x ) // 13 ,because first was <terminal>x = x + 1</terminal> , second was <terminal>println( x )</terminal>
+        <br> println( x ) // 13
+        <br> 
+        <br> println( x-- ) // 13 ,because first was <terminal>println( x )</terminal> , second was <terminal>x = x - 1</terminal>
+        <br> println( x ) // 12
+        <br> 
+        <br> println( --x ) // 11 ,because first was <terminal>x = x - 1</terminal> , second was <terminal>println( x )</terminal>
+        <br> println( x ) // 11
+    </codebox>
+    <br> <terminal>x += y</terminal> is equal <terminal>x = x + y</terminal> .
+    <br> <terminal>x -= y</terminal> is equal <terminal>x = x - y</terminal> .
+    <br> <terminal>x /= y</terminal> is equal <terminal>x = x / y</terminal> .
+    <br> <terminal>x *= y</terminal> is equal <terminal>x = x * y</terminal> .
+    <br> <terminal>x %= y</terminal> is equal <terminal>x = x % y</terminal> .
+    <codebox>
+        var x = 11.5
+        <br> //x = 11 // error
+        <br> x = 11.0
+        <br> var y = 2
+        <br> 
+        <br> x += y ; println( x ) //13.0
+        <br> x -= y ; println( x ) //11.0
+        <br> x *= y ; println( x ) //22.0
+        <br> x /= y ; println( x ) //11.0
+        <br> x %= y ; println( x ) //1.0 ... 11 / 2 = [5](integer) -> 11 - ( 2 * [5] ) = 1
+        <br> x = 11.0
+        <br> x %= 3 ; println( x ) //2.0 ... 11 / 3 = [3](integer) -> 11 - ( 3 * [3] ) = 2
+    </codebox>

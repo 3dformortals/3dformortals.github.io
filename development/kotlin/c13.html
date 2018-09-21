@@ -1,0 +1,45 @@
+<hr><li id="c13"><a href="#c0">List() kotlin.collections</a></li>
+<terminal>List()</terminal> read-only access. <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html" target="_blank">weblink</a>
+<br><terminal>MutableList()</terminal> read/write access. <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html" target="_blank">weblink</a>
+<codebox>
+    var intlist = List(0){0} //[ ] ...empty list of Int
+    <br> intlist = intlist<terminal>.plus(3)</terminal> //[3]
+    <br> intlist <terminal>+= 4</terminal> //[3, 4]
+    <br> //intlist <eterminal>+= 5.0</eterminal> //error
+    <br> var doublelist = List(0){0.0} //[ ] ...empty list of Double
+    <br> doublelist <terminal>+= 5.0</terminal> //[5.0]
+    <br> //doublelist <eterminal>+= 6</eterminal> //error
+    <br> doublelist = doublelist<terminal>.plus(6.toDouble())</terminal> //[5.0, 6.0]
+    <br> doublelist <terminal>+= doublelist</terminal> //[5.0, 6.0, 5.0, 6.0]
+    <br> doublelist = doublelist<terminal>.slice(1..3)</terminal> //[6.0, 5.0, 6.0]
+    <br> var aDouble:Array&lt;Double&gt; = doublelist<terminal>.toTypedArray()</terminal> //array
+    <br> var dArray:DoubleArray = doublelist<terminal>.toTypedArray().toDoubleArray()</terminal> //array for JVM targeting as double[ ]
+    <br> var list = <terminal>listOf(1, 2, 3)</terminal> //[1, 2, 3]
+    <br> var name = <terminal>listOf("a","b","c")</terminal> //[a, b, c]
+    <br> var pair = name<terminal>.zip(list)</terminal> //[(a, 1), (b, 2), (c, 3)]
+    <br> println(pair<terminal>.size</terminal>) //3
+    <br> //println(pair[0]<eterminal>.size</eterminal>) //error
+    <br> println(pair[0]) //(a, 1)
+    <br> println(pair[0]<terminal>.first</terminal>) //a
+    <br> println(pair[0]<terminal>.second</terminal>) //1
+    <br> var train = name<terminal>.zipWithNext()</terminal> //[(a, b), (b, c)]
+    <br> list = list<terminal>.reversed()</terminal> //[3, 2, 1]
+    <br> 
+    <br> var mutablelist = <terminal>mutableListOf(4, 5, 6)</terminal> //[4, 5, 6]
+    <br> println(list<terminal>.get(0)</terminal>)//3
+    <br> println(mutablelist<terminal>.get(0)</terminal>)//4
+    <br> //list<eterminal>.set(0, 8)</eterminal> //error , read-only list
+    <br> mutablelist<terminal>.set(0, 8)</terminal> //[8, 5, 6]
+    <br> //mutablelist = mutablelist<eterminal>.plus(9)</eterminal> //error
+    <br> mutablelist<terminal>.add(9)</terminal> //[8, 5, 6, 9]
+    <br> mutablelist<terminal>.addAll(2, listOf(9, 6))</terminal> //[8, 5, 9, 6, 6, 9]
+    <br> 
+    <br> list <terminal>+= list</terminal> //[3, 2, 1, 3, 2, 1]
+    <br> // mutablelist <eterminal>+= mutablelist</eterminal> //error
+    <br> 
+    <br> mutablelist<terminal>.removeAt(0)</terminal> //[5, 9, 6, 6, 9]
+    <br> mutablelist<terminal>.removeAll(listOf(5, 6))</terminal> //[9, 9]
+    <br> mutablelist<terminal>.addAll(1, listOf(8))</terminal> //[9, 8, 9]
+    <br> mutablelist<terminal>.remove(9)</terminal> //[8, 9]
+    <br> mutablelist<terminal>.clear()</terminal> //[ ]
+</codebox>

@@ -1,0 +1,142 @@
+<hr><li id="c27"><a href="#c0">Numbers comparison</a></li>
+    Boxed store, when need nullable number reference ( e.g. <terminal>Int?</terminal> ) or generics are involved:
+    <codebox>
+        val a: Int = 10000
+        <br> val boxedA: Int? = a
+        <br> val anotherBoxedA: Int? = a
+        <br> println( a === a ) // true . Deprecated
+        <br> println( boxedA === anotherBoxedA ) // false
+        <br> println( a == a ) // true
+        <br> println( boxedA == anotherBoxedA ) // true
+    </codebox>
+    
+    <br>Primitive types store ( e.g. <terminal>Int</terminal> ):
+    <codebox>
+        val b: Int = 10000
+        <br> val primitiveB: Int = b
+        <br> val anotherPrimitiveB: Int = b
+        <br> println( b === b ) // true . Deprecated
+        <br> println( primitiveB === anotherPrimitiveB ) // true . Deprecated
+        <br> println( b == b ) // true
+        <br> println( primitiveB == anotherPrimitiveB ) // true
+    </codebox>
+    
+    <br>Different boxed types comparison:
+    <codebox>
+        val a: Int? = 1 // A boxed Int ( java.lang.Integer )
+        <br> //val b: Long? = a // Type mismatch: inferred type is Int? but Long? was expected
+        <br> val b: Long? = 2
+        <br> //print( b == a ) // Operator '==' cannot be applied to 'Long?' and 'Int?'
+    </codebox>
+    
+    <br>Different types comparison:
+    <codebox>
+        val b: Byte = 1
+        <br> //val i: Int = b // Type mismatch: inferred type is Byte but Int was expected
+        <br> val i: Int = 2
+        <br> //println( b == i ) // Operator '==' cannot be applied to 'Byte' and 'Int'
+    </codebox>
+    
+    <br>Every number type supports conversions:
+    <br> <terminal>toByte(): Byte</terminal>
+    <br> <terminal>toShort(): Short</terminal>
+    <br> <terminal>toInt(): Int</terminal>
+    <br> <terminal>toLong(): Long</terminal>
+    <br> <terminal>toFloat(): Float</terminal>
+    <br> <terminal>toDouble(): Double</terminal>
+    <br> <terminal>toChar(): Char</terminal> .
+    Kotlin <terminal>Char</terminal> is not a number type.
+    <codebox>
+        val l = 1L + 3 // Long + Int => Long
+        <br> val b: Byte = 1
+        <br> val i: Int = b.toInt()
+        <br> println( b.toInt() === i ) //true . Deprecated
+        <br> println( b.toInt() == i ) //true
+        <br> //println( b === i ) // Operator '===' cannot be applied to 'Byte' and 'Int'
+        <br> //println( b == i ) // Operator '===' cannot be applied to 'Byte' and 'Int'
+        <br> //val c:Byte = b + 3 // Type mismatch: inferred type is Int but Byte was expected
+        <br> //val c:Byte = b + i // Type mismatch: inferred type is Int but Byte was expected
+        <br> //val c:Byte = 3 + b // Type mismatch: inferred type is Int but Byte was expected
+        <br> //val c:Byte = i + b // Type mismatch: inferred type is Int but Byte was expected
+        <br> val c:Int = i + b
+        <br> val d:Int = b + i
+        <br> println( c ) //2
+        <br> println( d ) //2
+        <br> println( i+b ) //2
+        <br> println( b+i ) //2
+        <br> val e:Int = i + 0b11010010
+        <br> val f:Int = 0b11010010 + i
+        <br> println( e ) //211
+        <br> println( f ) //211
+        <br> println( 2.5 + 0b11010010 ) //212.5
+        <br> //be careful
+        <br> val long = 1L ;println(long) //1
+        <br> val int = long.toInt() ;println(int) //1
+        <br>
+        <br> val biglong = 1_000_000_000_000_000_000L ;println(biglong) //1000000000000000000
+        <br> val bigint = biglong.toInt() ;println(bigint) //-1486618624
+        <br>//without errors etc
+    </codebox>
+    <br>An <terminal>Int</terminal> and <terminal>Long</terminal> types have <terminal>.toBigInteger()</terminal> method:
+    <codebox>
+        //val longint:Int = 5555555555555555555 //error
+        <br> //val longint:BigInteger = 5555555555555555555 //error
+        <br> val longint = 5555555555555555555 //auto type <terminal>Long</terminal>
+        <br> val long = 5555555555555555555L
+        <br> println(longint) //5555555555555555555
+        <br> println(long) //5555555555555555555
+        <br> println(longint.toBigInteger()) //5555555555555555555
+        <br> println(long.toBigInteger()) //5555555555555555555
+    </codebox>
+    <br>An <terminal>Double</terminal> and <terminal>Float</terminal> types have <terminal>.toBits()</terminal> , <terminal>.toRawBits()</terminal> , <terminal>fromBits()</terminal> methods:
+    <codebox>
+        val double:Double = 5555555555555555555.12345678
+        <br> val float:Float = 5555555555555555555.12345678F
+        <br> val doubleBit = double.toBits()
+        <br> val floatBit = float.toBits()
+        <br> val doubleRawBit = double.toRawBits()
+        <br> val floatRawBit = float.toRawBits()
+        <br> 
+        <br> println(double) //5.5555555555555553E18
+        <br> println(doubleBit) //4887327343291839886
+        <br> println(doubleRawBit) //4887327343291839886
+        <br> println(Double.Companion.fromBits(doubleBit)) //5.5555555555555553E18
+        <br> println(Double.Companion.fromBits(doubleRawBit)) //5.5555555555555553E18
+        <br> 
+        <br> println(float) //5.5555557E18
+        <br> println(floatBit) //1587163801
+        <br> println(floatRawBit) //1587163801
+        <br> println(Float.Companion.fromBits(floatBit)) //5.5555557E18
+        <br> println(Float.Companion.fromBits(floatRawBit)) //5.5555557E18
+    </codebox>
+    
+    
+    <br>An <terminal>Int</terminal> , <terminal>Long</terminal> , <terminal>Float</terminal> , <terminal>Double</terminal> types have <terminal>.toBigDecimal()</terminal> method:
+    <codebox>
+        //val int:Int = 5555555555555555555 //error
+        <br> // val longint:BigDecimal = 5555555555555555555 //error
+        <br> val longint = 5555555555555555555 //auto type Long
+        <br> val long = 5555555555555555555L
+        <br> val double = 5555555555555555555.0
+        <br> val float = 5555555555555555555F
+        <br>
+        <br> println(longint) //5555555555555555555
+        <br> println(long) //5555555555555555555
+        <br> println(double) //5.5555555555555553E18
+        <br> println(float) //5.5555557E18
+        <br>
+        <br> println(longint.toBigDecimal()) //5555555555555555555
+        <br> println(long.toBigDecimal()) //5555555555555555555
+        <br> println(double.toBigDecimal()) //5.5555555555555553E+18
+        <br> println(float.toBigDecimal()) //5.5555557E+18
+    </codebox>
+    
+    <br>Floating Point Numbers Comparison.
+    <br> Equality checks: <terminal>a == b</terminal> and <terminal>a != b</terminal>
+    <br> Comparison operators: <terminal>a &lt; b</terminal> , <terminal>a &gt; b</terminal> , <terminal>a &lt;= b</terminal> , <terminal>a &gt;= b</terminal>
+    <br> Range instantiation and range checks: <terminal>a..b</terminal> , <terminal>x in a..b</terminal> , <terminal>x !in a..b</terminal>
+    
+    <br><br>When operands are not statically typed as floating point numbers ( e.g. Any, Comparable<...>, a type parameter ), the operations use the <terminal>equals</terminal> and <terminal>compareTo</terminal> implementations for <terminal>Float</terminal> and <terminal>Double</terminal> , so that:
+    <br> <terminal>NaN</terminal> is considered equal to itself
+    <br> <terminal>NaN</terminal> is considered greater than any other element including <terminal>POSITIVE_INFINITY</terminal>
+    <br> <terminal>-0.0</terminal> is considered less than <terminal>0.0</terminal>

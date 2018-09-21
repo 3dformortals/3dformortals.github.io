@@ -1,0 +1,96 @@
+<hr><li id="c22"><a href="#c0">Char</a></li>
+    <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html" target="_blank" >API weblink</a>.
+    Represents a 16-bit Unicode character. On the JVM, non-nullable values of this type are represented as values of the primitive type <terminal>Char</terminal> . Can not be treated directly as numbers. Boxed when a nullable reference is needed. Identity is not preserved by the boxing operation.
+    <br>Character literals go in single quotes: <terminal>'1'</terminal> .
+    <br>Special characters <terminal>\t</terminal> <terminal>\b</terminal> <terminal>\n</terminal> <terminal>\r</terminal> <terminal>\'</terminal> <terminal>\"</terminal> <terminal>\\</terminal> <terminal>\$</terminal> can be escaped using a backslash.
+    <br>Any other characters can be encoded uses the Unicode escape sequence syntax: <terminal>'\uFF00'</terminal> .
+    <br><br>Can be explicitly converted to an <terminal>Int</terminal> number:
+    <codebox>
+        val c: Char = '1'
+        <br> println( c.toInt() - '2'.toInt() ) // -1
+        <br> println( c - 'a' ) //-48
+        <br> println( c - 'a'.toInt() ) //￐
+        <br> println( c.toInt() - 'a'.toInt() ) //-48
+        <br> //println( c.toInt() - 'a' ) //error
+    </codebox>
+    <br> Methods:
+    <codebox>
+        println( 'a'.toInt() ) //97
+        <br> println( 'd'.toInt() ) //100
+        <br> println( 'd'.toDouble() ) //100.0
+        <br> println( 'd'.toFloat() ) //100.0
+        <br> println( 'd'.toLong() ) //100
+        <br> println( 'd'.toShort() ) //100
+        <br> println( 'a'.compareTo( 'd' ) ) //-1
+        <br> println( 'd'.compareTo( 'a' ) ) //1
+        <br> println( 'a'.compareTo( 'a' ) ) //0
+        <br> println( 'a'.inc() ) //b
+        <br> println( 'd'.dec() ) //c
+        <br> println( 'a'.minus( 'd' ) ) //-3
+        <br> //println( 'a'.plus( 'd' ) ) //error
+        <br> println( 'a'.plus( 'd'.toInt() ) ) //Å
+        <br> println( 'd'.minus( 3 ) ) //a
+        <br> println( 'a'.plus( 3 ) ) //d
+        <br> 
+        <br> println( 'a'.rangeTo( 'd' ).toString() ) //a..d
+        <br> println( 'a'.rangeTo( 'd' ).toList() ) //[a, b, c, d]
+        <br> println( 'a'.rangeTo( 'd' ).drop(0) ) //[a, b, c, d]
+        <br> 
+        <br> println( 'd'.rangeTo( 'a' ).toString() ) //d..a
+        <br> println( 'd'.rangeTo( 'a' ).toList() ) //[ ]
+        <br> println( 'd'.rangeTo( 'a' ).drop(0) ) //[ ]
+        <br> 
+        <br> println( 'a'.toByte() ) //97
+        <br> println( 'd'.toChar() ) //d
+    </codebox>
+    <br>Extension functions:
+    <br><terminal>downTo()</terminal> :
+    <codebox>
+        val da = 'd'.downTo( 'a' ) //d downTo a step 1
+        <br> println( da ) //d downTo a step 1
+        <br> println( da.drop( 0 ) ) //[d, c, b, a]
+        <br> 
+        <br> val ad = 'a'.downTo( 'd' ) //a downTo d step 1
+        <br> println( ad ) //a downTo d step 1
+        <br> println( ad.drop( 0 ) ) //[ ]
+        <br> 
+        <br> val cda = CharRange( 'd','a' ) //d..a
+        <br> println( cda ) //d..a
+        <br> println( cda.drop( 0 ) ) //[ ]
+        <br> 
+        <br> val cad = CharRange( 'a','d' ) //a..d
+        <br> println( cad ) //a..d
+        <br> println( cad.drop( 0 ) ) //[a, b, c, d]
+    </codebox>
+    
+    <br><terminal>equals()</terminal> :
+    <codebox>
+        println( 'a'.equals( 'A' ) ) //false
+        <br> println( 'a'.equals( 'A', true ) ) //true
+        <br> 
+        <br> println( 'a'.equals( 'B' ) ) //false
+        <br> println( 'a'.equals( 'B', true ) ) //false
+    </codebox>
+    
+    <br><terminal>isLowerCase()</terminal> , <terminal>isUpperCase()</terminal> , <terminal>isWhitespace()</terminal> , <terminal>toLowerCase()</terminal> , <terminal>toUpperCase()</terminal> :
+    <codebox>
+        println( 'a'.isLowerCase() ) //true
+        <br> println( 'a'.isUpperCase() ) //false
+        <br> println( 'A'.isLowerCase() ) //false
+        <br> println( 'A'.isUpperCase() ) //true
+        <br> 
+        <br> //println( ''.isWhitespace() ) //error
+        <br> println( 'a'.isWhitespace() ) //false
+        <br> println( '\b'.isWhitespace() ) //false
+        <br> println( '\$'.isWhitespace() ) //false
+        <br> println( ' '.isWhitespace() ) //true
+        <br> println( '\n'.isWhitespace() ) //true
+        <br> println( '\t'.isWhitespace() ) //true
+        <br> println( '\r'.isWhitespace() ) //true
+        <br>
+        <br> println( 'A'.toLowerCase() ) //a
+        <br> println( 'a'.toUpperCase() ) //A
+        <br> //println( ''.toUpperCase() ) //error
+        <br> println( ' '.toUpperCase() ) // 
+        <br> println( '\n'.toUpperCase() ) //
+    </codebox>

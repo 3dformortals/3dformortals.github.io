@@ -1,0 +1,59 @@
+<hr><li id="c21"><a href="#c0">String to number conversions</a></li>
+    Without throwing exception: <terminal>String.toIntOrNull(): Int?</terminal> , <terminal>String.toDoubleOrNull(): Double?</terminal>
+    <codebox>
+        println( 1_0.0 ) //10.0
+        <br> println( "10".toDouble() ) //10.0
+        <br> println( "010".toDouble() ) //10.0
+        <br> //println( "1_0".toDouble() ) //NumberFormatException
+        <br> println( "10".toDoubleOrNull() ) //10.0
+        <br> println( "1_0".toDoubleOrNull() ) //null
+    </codebox>
+    <br>Overloadable integer conversion with <terminal>radix</terminal> parameter, which allows to specify the base of conversion ( 2 to 36 ):
+    <br><terminal>Int.toString()</terminal> :
+    <codebox>
+        3.toString() //3
+        <br> 3.toString( 2 )//11
+        <br> 3.toString( radix=2 )//11
+        <br> //3.toString( huyadix=2 )//Cannot find a parameter with this name: huyadix
+        <br> //3.toString( "2" )//Type mismatch: inferred type is String but Int was expected
+    </codebox>
+    <br><terminal>String.toInt()</terminal> :
+    <codebox>
+        println( 1_0 ) //10
+        <br> //println( "1_0".toInt() ) //NumberFormatException
+        <br> println( "10".toInt() ) //10
+        <br> println( "10".toInt( 10 ).toInt() ) //10
+        <br> println( "0010".toInt() ) //10
+        <br> //println( "001_0".toInt() ) //NumberFormatException
+        <br> //println( "00_10".toInt() ) //NumberFormatException
+        <br> //println( "1.0".toInt() ) //NumberFormatException
+        <br> //println( "001.0".toInt() ) //NumberFormatException
+        <br> //println( ".10".toInt() ) //NumberFormatException
+        <br> //println( "0.010".toInt() ) //NumberFormatException
+        <br> //println( "10".toInt( 10 ).toInt( 10 ) ) //Too many arguments for public open fun toInt()
+        <br> println( "10".toInt( 2 ) ) //2 radix=2 determine "10" as binary
+        <br> println( "0010".toInt( 2 ) ) //2
+        <br> println( "10".toInt( 2 ).toInt() ) //2
+        <br> //println( "0010".toInt( 2 ).toInt( 3 ) ) //Too many arguments for public open fun toInt()
+        <br> //println( "String".toInt( 2 ) ) //NumberFormatException
+    </codebox>
+    <br><terminal>String.toIntOrNull()</terminal>
+    <codebox>
+        println( 1_0 ) //10
+        <br> println( "1_0".toIntOrNull() ) //null
+        <br> println( "10".toIntOrNull() ) //10
+        <br> //println( "10".toIntOrNull( 10 ).toIntOrNull() ) //Unresolved reference
+        <br> println( "0010".toIntOrNull() ) //10
+        <br> println( "001_0".toIntOrNull() ) //null
+        <br> println( "00_10".toIntOrNull() ) //null
+        <br> println( "1.0".toIntOrNull() ) //null
+        <br> println( "001.0".toIntOrNull() ) //null
+        <br> println( ".10".toIntOrNull() ) //null
+        <br> println( "0.010".toIntOrNull() ) //null
+        <br> //println( "10".toIntOrNull( 10 ).toIntOrNull( 10 ) ) //Unresolved reference
+        <br> println( "10".toIntOrNull( 2 ) ) //2 radix=2 determine "10" as binary
+        <br> println( "0010".toIntOrNull( 2 ) ) //2
+        <br> //println( "10".toIntOrNull( 2 ).toIntOrNull() ) //Unresolved reference
+        <br> //println( "0010".toIntOrNull( 2 ).toIntOrNull( 3 ) ) //Unresolved reference
+        <br> println( "String".toIntOrNull( 2 ) ) //null
+    </codebox>

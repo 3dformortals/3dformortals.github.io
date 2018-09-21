@@ -1,0 +1,113 @@
+<hr><li id="c30"><a href="#c0">Control Flow: <terminal>if</terminal> , <terminal>when</terminal> , <terminal>for</terminal> , <terminal>while</terminal></a></li>
+    <terminal>if</terminal> :
+    <codebox>
+        <br> if ( a > b ) big = a
+        <br> if ( a > b ) {
+            <bin>1</bin>big = a }
+        <br> if ( a > b ) big = a else big = b
+        <br> if ( a > b ) { big = a } else { if ( b > a ) big = b }
+        <br> if ( a > b ) { big = a } else if ( b > a ) { big = b }
+        <br> if ( a > b ) big = a else if ( b > a ) big = b
+        <br> big = if ( a > b ) a else b // this form always need <terminal>else</terminal>
+        <br> big = if (a > b) {
+                <bin>1</bin>print("case a ")
+                <bin>1</bin>a //this is block value
+            <br> } else if ( b > a ){
+                <bin>1</bin>print("case b ")
+                <bin>1</bin>b //this is block value
+            <br> } else {
+                <bin>1</bin>print("other case ")
+                <bin>1</bin>b*a //this is block value
+            <br> } //this form always need <terminal>else</terminal>
+    </codebox>
+    
+    <br><terminal>when</terminal> is similar to switch operator in other languages:
+    <codebox>
+        when(x){
+            <bin>1</bin>1 -> print("x == 1")
+            <bin>1</bin>2 -> { print("x == 2") }
+            <bin>1</bin>else -> {
+                <bin>2</bin>print("not 1")
+                <bin>2</bin>print(" not 2")
+            }
+        }
+        <br><br>when(x){ 1 -> { print("x == 1") } 2 -> { print("x == 2") } else -> { print("not 1"); print(" not 2") }}
+        
+        <br><br>when (x){
+            <bin>1</bin>0, 1 -> print("x == 0 or x == 1")
+            <bin>1</bin>s.toInt() -> print("x==$s")
+            <bin>1</bin>else -> print("otherwise")
+        }
+        <br>
+        <br>val x = 22; val s = "2"
+        <br>when(x){ ( s + "2" ).toInt() -> print( "x==( \""+s+"2"+"\" ).toInt()" ) /* x==( "22" ).toInt()*/ }
+        <br>
+        <br>val validNumbers = arrayOf(22,33)
+        <br>when (x) {
+            <bin>1</bin>in 1..10 -> print("x is in the range")
+            <bin>1</bin>in validNumbers -> print("x is valid")
+            <bin>1</bin>!in 10..20 -> print("x is outside the range")
+            <bin>1</bin>else -> print("none of the above")
+        <br>}
+    </codebox>
+    Another possibility is to check that a value is or !is of a particular type.
+    <codebox>
+        fun hasPrefix(x: Any) = when(x) {
+            <bin>1</bin>is String -> x.startsWith("prefix")
+            <bin>1</bin>else -> false
+        }
+    </codebox>
+    Replacement for an <terminal>if-else if</terminal> chain.
+    <codebox>
+        when {
+            <bin>1</bin>x.isOdd() -> print("x is odd")
+            <bin>1</bin>x.isEven() -> print("x is even")
+            <bin>1</bin>else -> print("x is funny")
+        <br>}
+    </codebox>
+    
+    <br><terminal>for</terminal> loop:
+    <codebox>
+        for (item in collection) print(item)
+        <br> for (item in collection) { print(item) }
+        <br> for (item in collection) {
+            <bin>1</bin>print(item) }
+        <br> for (ind in collection.indices) {
+            <bin>1</bin>print(collection[ind]) }
+        <br> for ((index, value) in array.withIndex()) println("the element at $index is $value")
+        <br> for (i in 1..3) println(i)
+        <br> for (i in 1..3 step 2) println(i)
+        <br> //for (i in 1..3 step -2) println(i) //error
+        <br> //for (i in 3..1 step -2) println(i) //error
+        <br> for (i in 6 downTo 0 step 2) println(i)
+        <br> for (i:Int in 6 downTo 0 step 2) println(i)
+        <br> //for (i:Long in 6 downTo 0 step 2) println(i) //error
+        <br> //for (i:Byte in 6 downTo 0 step 2) println(i) //error
+    </codebox>
+    
+    <br><terminal>while</terminal> and <terminal>do..while</terminal> loops:
+    <codebox>
+        var x = 2; while (x>0) { print(x--); } //21
+        <br> x = 2; while (x>0) { print(--x); } //10
+        <br> x = 2; do { print(x); print(x--) } while (x > 0) //2211
+        <br> //do (print(x); print(x--)) while (x > 0) //error
+        <br> //do print(x); print(x--) while (x > 0) //error
+        <br> x = 2; do print(x--) while (x > 0) //21
+    </codebox>
+    <br>Returns and jumps <a href="http://kotlinlang.org/docs/reference/returns.html#returns-and-jumps" target="_blank">weblink</a> .
+    <br> <terminal>return</terminal> result from function. Return can be named.
+    
+    <br> <terminal>break</terminal> terminates the nearest enclosing loop.
+    Or terminates named loop:
+    <codebox>
+        loop1@ for (i in 1..3){
+            <bin>1</bin>loop2@ for (ii in 1..5){
+                <bin>2</bin>if (ii==2){ print("ii="+ii+" i="+i); break@loop1 } //ii=2 i=1
+            <bin>1</bin>}
+        }
+        <br> loop1@ for (i in 1..3) loop2@ for (ii in 1..5) if (ii==2){ print("ii="+ii+" i="+i); break@loop1 } //ii=2 i=1
+    </codebox>
+    
+    <br> <terminal>continue</terminal> proceeds to the next step of the nearest enclosing loop. Can be named similar as <terminal>break</terminal> .
+    
+    <br>Precedence <a href="http://kotlinlang.org/docs/reference/grammar.html#precedence" target="_blank">weblink</a>

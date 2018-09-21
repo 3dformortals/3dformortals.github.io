@@ -1,0 +1,21 @@
+<hr><li id="c19"><a href="#c0">String Literals</a></li>
+    One quoted <terminal>"splitted\nstring"</terminal> , escaped strings may have characters <terminal>\t</terminal> , <terminal>\b</terminal> , <terminal>\n</terminal> , <terminal>\r</terminal> , <terminal>\'</terminal> , <terminal>\"</terminal> , <terminal>\\</terminal> , <terminal>\$</terminal> .
+    <br> Triple quoted <terminal>"""multiline string"""</terminal> , raw strings, no escaped characters and may have new lines.
+    <br> By default <terminal>|</terminal> is used as margin prefix. That change it to another character <terminal>&gt;</terminal> use <terminal>.trimMargin("&gt;")</terminal> or <terminal>.trinMargin("""\""")</terminal> in backslash case.
+    
+    <codebox>
+        val eString = "splitted\nstring"
+        <br> val etString = "tabulated\tstring"
+        <br> println(etString) //tabulated<in>1</in>string
+        <br> val mString = """multiline
+        <br> string"""
+        <br> val mtString = """multiline
+        <br> string
+        <bin>1</bin>with tabs"""
+        <br> val msString = """multiline string with spaces<in>1</in>!<in>1</in>"""
+        <br> println(msString) // multiline string with spaces<in>1</in>!<in>1</in>
+        <br> val text = """
+        <bin>1</bin>|Tell me and I forget. 
+        <bin>1</bin>|Teach me and I remember.
+        <bin>1</bin>""".trimMargin()
+    </codebox>
