@@ -1,1 +1,31 @@
-<hr><li id="c15"><a href="#c0">Set() kotlin.collections</a></li>
+<hr><li id="c15"><a href="#c0">Set of unique elements kotlin.collections</a></li>
+<terminal>Set</terminal> is collection of unique read-only elements.
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html" target="_blank">weblink</a>
+<br> <terminal>MutableSet</terminal> is collection of unique read/write elements.
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html" target="_blank">weblink</a>
+<codebox>
+    var setA<terminal>:Set&lt;Any&gt; = setOf(1,2,"abc",'x')</terminal> //[1, 2, abc, x]
+    <br> var set = <terminal>setOf(1,2,"abc",'x')</terminal> //[1, 2, abc, x]
+    <br> println( set<terminal>.size</terminal> ) //4
+    <br> println( set<terminal>.elementAt(2)</terminal> ) //abc
+    <br> println( set<terminal>.indexOf( "abc" )</terminal> ) //2
+    <br> println( set<terminal>.first()</terminal> ) //1
+    <br> println( set<terminal>.last()</terminal> ) //x
+    <br> set = set<terminal>.plus(3)</terminal> //[1, 2, abc, x, 3]
+    <br> set = set<terminal>.plus( arrayOf( 4, 5, 6 ) )</terminal> //[1, 2, abc, x, 3, 4, 5, 6]
+    <br> set = set<terminal>.minus( 3 )</terminal> //[1, 2, abc, x, 4, 5, 6]
+    <br> set = set<terminal>.minus( arrayOf( 4, 5, 6 ) )</terminal> //[1, 2, abc, x]
+    <br> var setInt<terminal>:Set&lt;Int&gt; = setOf( 1, 2, 3 )</terminal> //[1, 2, 3]
+    <br> set = set<terminal>.union(setInt)</terminal> //[1, 2, abc, x, 3]
+    <br> println( set<terminal>.drop( 1 )</terminal> ) //[2, abc, x, 3]
+    <br> println( set<terminal>.take( 1 )</terminal> ) //[1]
+    <br> println( set<terminal>.zip( setInt )</terminal> ) //[(1, 1), (2, 2), (abc, 3)]
+    <br> 
+    <br> var mSet<terminal>:MutableSet&lt;Any&gt; = mutableSetOf( 1, 2, 3 )</terminal> //[1, 2, 3]
+    <br> var mset = <terminal>mutableSetOf&lt;Any&gt;( 1, 2, 3 )</terminal> //[1, 2, 3]
+    <br> mset<terminal>.clear()</terminal> //[ ]
+    <br> mset<terminal>.add( 4 )</terminal> //[4]
+    <br> mset<terminal>.addAll(mSet)</terminal> //[4, 1, 2, 3]
+    <br> mset<terminal>.remove( 1 )</terminal> //[4, 2, 3]
+    <br> mset<terminal>.removeAll(mSet)</terminal> //[4]
+</codebox>

@@ -1,1 +1,35 @@
-<hr><li id="c14"><a href="#c0">Map() kotlin.collections</a></li>
+<hr><li id="c14"><a href="#c0">Map interface kotlin.collections</a></li>
+<terminal>Map&lt;K, V&gt;</terminal> is collection that holds pairs of objects (keys and values).
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html" target="_blank">weblink</a>
+<br><terminal>MutableMap&lt;K, V&gt;</terminal> is modifiable collection that holds pairs of objects (keys and values).
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html" target="_blank">weblink</a>
+<codebox>
+    var map = <terminal>mapOf( "abc" to "textkey", 4 to "numberkey", '3' to "charkey" )</terminal> //{a=textkey, 4=numberkey, 3=charkey}
+    <br> println( map[0] ) //null
+    <br> println( map["abc"] ) //textkey
+    <br> println( map<terminal>.size</terminal> ) //3
+    <br> println ( map<terminal>.keys</terminal> ) //[abc, 4, 3]
+    <br> println ( map<terminal>.values</terminal> ) //[textkey, numberkey, charkey]
+    <br> println ( map<terminal>.entries</terminal> ) //[abc=textkey, 4=numberkey, 3=charkey]
+    <br> 
+    <br> var mapID<terminal>:Map&lt;Int, Double&gt; = mapOf()</terminal> //{ }
+    <br> mapID = mapID<terminal>.plus( Pair( 1, 10.0 ) )</terminal> //{1=10.0}
+    <br> mapID = mapID<terminal>.plus( 2 to 20.0 )</terminal> //{1=10.0, 2=20.0}
+    <br> // mapID <eterminal>+= Pair( 3 to 30.0 )</eterminal> //error
+    <br> mapID = mapID.plus( 2 to 40.0 ) //{1=10.0, 2=40.0}
+    <br> mapID = mapID<terminal>.minus( 2 )</terminal> //{1=10.0}
+    <br> println( mapID<terminal>.get( 1 )</terminal> ) //10.0
+    <br> 
+    <br> var mMap = <terminal>mutableMapOf( "def" to "textkey", 4.0 to "numberkey", 'x' to "charkey" )</terminal>
+    <br> mMap<terminal>.clear()</terminal> //{ }
+    <br> mMap<terminal>.putAll( map )</terminal> //{abc=textkey, 4=numberkey, 3=charkey}
+    <br> mMap<terminal>.putAll( mutableMapOf( "3" to "stringkey" ) )</terminal> //{abc=textkey, 4=numberkey, 3=charkey, 3=stringkey}
+    <br> mMap<terminal>.remove( '3' )</terminal> //{abc=textkey, 4=numberkey, 3=stringkey}
+    <br> mMap<terminal>.remove( "3", "value" )</terminal> //{abc=textkey, 4=numberkey, 3=stringkey}
+    <br> println( mMap<terminal>.get( '3' )</terminal> ) //null
+    <br> println( mMap<terminal>.get( "3" )</terminal> ) //stringkey
+    <br> mMap<terminal>.set( "3", "value" )</terminal> //{abc=textkey, 4=numberkey, 3=value}
+    <br> mMap<terminal>.put("3", "text3")</terminal> //{abc=textkey, 4=numberkey, 3=text3}
+    <br> mMap<terminal>.putAll( mapOf( Pair("3",  "string3"), '4' to "char4" ) )</terminal> //{abc=textkey, 4=numberkey, 3=string3, 4=char4}
+    <br> var mMapAA<terminal>:MutableMap&lt;Any, Any&gt; = mutableMapOf()</terminal> //{ } any type declaration
+</codebox>
