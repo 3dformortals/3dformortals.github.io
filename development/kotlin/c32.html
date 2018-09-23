@@ -1,1 +1,23 @@
 <hr><li id="c32"><a href="#c0">Function</a></li>
+<codebox>
+    fun test(){ println("testfunction") }
+    <br> test() //testfunction
+    <br> 
+    <br> fun test_param(a:Int,b:Int):Double{ return (a + b).toDouble() }
+    <br> // println( test_param( ) ) //error
+    <br> println( test_param( 3, 5 ) ) //8.0
+    <br> 
+    <br> fun test_default(a:Int = 1, b:Int = 1):Double{ return test_param( a, b) }
+    <br> println( test_default() ) //2.0
+    <br> println( test_default(10, 11) ) //21.0
+    <br> 
+    <br> fun test_named(first:Int = 0, second:Int = 1):Unit{ println( "first=$first second=$second" ) } //Unit == return nothing
+    <br> test_named( 2 ) //first=2 second=1
+    <br> test_named( second = 2 ) //first=0 second=2
+    <br> 
+    <br> var test_var: ( Int, Int ) -> Unit = { a, b -> println( a + b ) }
+    <br> test_var( 3, 4 ) //7
+    <br> 
+    <br> var test_fun = ::test_param
+    <br> println( test_fun( 4, 4 ) ) //8.0
+</codebox>
