@@ -1,1 +1,34 @@
-<hr><li id="c31"><a href="#c0">Elvis operator (?:)</a></li>
+<hr><li id="c31"><a href="#c0">Elvis operator ?:</a></li>
+Used to return the not null value even the conditional expression is null.
+<br> Also used to check the null safety of values.
+<a href="https://www.javatpoint.com/kotlin-elvis-operator" target="_blank">weblink</a>
+<codebox>
+    //var str:String = null //error
+    var s:String? = null
+    <br> var slen: Int = if (s != null) s.length else -1 //-1
+    <br> var elen: Int = s?.length <terminal>?:</terminal> -1 //-1 ...safe <terminal>s?</terminal>
+    <br> 
+    <br> s = "5"
+    <br> //println(s.length) //error
+    <br> if ( s != null ) println( s.length ) else println( "s == null" ) //1
+    <br> if ( s is String ) println("String") //String
+    <br> if ( s !is String ) println("not String") else println("String") //String
+    <br> 
+    <br> var obj:Any? = null
+    <br> // println( obj as Any ) //error
+    <br> println( obj as Any? ) //null
+    <br> obj = 123
+    <br> println( obj as Any ) //123
+    <br> println( obj as Any? ) //123
+    <br> 
+    <br> var magic:Any = "bang"
+    <br> var safeString: String? = magic as? String //bang
+    <br> var safeInt: Int? = magic as? Int //null
+    <br> 
+    <br> var x:Any? = null
+    <br> println( x )
+    <br> //println( x<terminal>!!</terminal> ) //error , !! == must be not <terminal>null</terminal> or arise exception
+    <br> var y:Any? = 0
+    <br> println( y ) //0
+    <br> println( y<terminal>!!</terminal> ) //0
+</codebox>
