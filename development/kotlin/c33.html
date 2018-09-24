@@ -1,1 +1,45 @@
 <hr><li id="c33"><a href="#c0">Lambda function</a></li>
+Is no name function with syntax <terminal>{ variable -&gt; body_of_function}</terminal> .
+<a href="https://www.javatpoint.com/kotlin-lambdas" target="_blank">weblink</a>
+<a href="https://kotlinlang.org/docs/reference/lambdas.html" target="_blank">weblink</a>
+<codebox>
+    //usual syntax
+    <br> fun usual_fun(a:Int, b:Int):Int{ return a + b }
+    <br> 
+    <br> //similar lambda syntax
+    <br> var variable_fun:(Int, Int) -&gt; Int = { a, b -&gt; a + b } //multiline syntax last operator will be used as <terminal>return</terminal>
+    <br> 
+    <br> //lambda as parameter of usual function
+    <br> fun usual_take_lambda(a:Int, b:Int, incoming_lambda:( Int, Int ) -&gt; Int ):Int{
+    <bin>1</bin>     val x = a + b
+    <bin>1</bin>     return incoming_lambda( x, x )
+    <br> }
+    <br> 
+    <br> println( usual_fun( 21, 12 ) ) // 33
+    <br> println( variable_fun( 21, 12 ) ) // 33
+    <br> println( usual_take_lambda( 21, 12, variable_fun ) ) //66
+</codebox>
+<hr>
+<terminal>it</terminal> : implicit name of a single parameter. <a href="https://kotlinlang.org/docs/reference/lambdas.html#it-implicit-name-of-a-single-parameter" target="_blank">weblink</a>
+<hr>
+Destructuring in lambdas.
+<a href="https://kotlinlang.org/docs/reference/multi-declarations.html#destructuring-in-lambdas-since-11" target="_blank">weblink</a>
+<codebox>
+    val map = mapOf( 2 to "two", 3 to "three" )
+    <br>println( map.mapValues { ( key, value ) -&gt; "$key -&gt; $value!" } ) //{2=2 -&gt; two!, 3=3 -&gt; three!}
+</codebox>
+{ a -&gt; ... } // one parameter
+<br> { a, b -&gt; ... } // two parameters
+<br> { ( a, b ) -&gt; ... } // a destructured pair
+<br> { ( a, b ), c -&gt; ... } // a destructured pair and another parameter
+<hr>
+Underscore for unused parameter:
+<codebox>
+    map.mapValues { ( _, value ) -&gt; "$value!" }
+</codebox>
+<hr>
+Type specifying, for the whole destructured parameter or for a specific component:
+<codebox>
+    map.mapValues { ( _, value ): Map.Entry&lt;Int, String&gt; -&gt; "$value!" }
+    <br> map.mapValues { ( _, value: String ) -&gt; "$value!" }
+</codebox>

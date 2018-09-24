@@ -20,4 +20,20 @@
     <br> 
     <br> var test_fun = ::test_param
     <br> println( test_fun( 4, 4 ) ) //8.0
+    <br> 
+    <br> //return defferent types
+    <br> fun different_return_type(a:Int,b:Double):Array&lt;Any&gt;{ return arrayOf&lt;Any&gt;( a, b )}
+    <br> val (a, b) = different_return_type( 55, 88.8 )
+    <br> println( a ) //55
+    <br> println( b ) //88.8
+    <br> println( a is Int ) //true
+    <br> println( b is Double ) //true
+    <br> 
+    <br> //return nullable different types
+    <br> fun nullable_different_return_type(a:Int,b:Double?):Array&lt;Any?&gt;{ return arrayOf&lt;Any?&gt;( a, b )}
+    <br> val (c, d) = nullable_different_return_type( 55, null )
+    <br> println( c ) //55
+    <br> println( d ) //null
+    <br> println( c is Int ) //true
+    <br> println( d is Double ) //false
 </codebox>
