@@ -12,5 +12,57 @@ Is declare with a keyword <terminal>inline</terminal> .
 <bin>1</bin> -Declarations of local function
 <bin>1</bin> -Default value for optional parameters
 <codebox>
+    fun main(args:Array&lt;String&gt;){
+    <bin>1</bin>// <eterminal>inline</eterminal> fun inFu(myFun: () -> Unit ) { myFun(); print("code inside inline function") } //error , because local function not supported
+    <br>
+    <bin>1</bin>inlineFunction({ print("calling inline functions") }) //calling inline functions ||| code inside inline function
+    <br> }
+    <br> 
+    <br> //not local function
+    <br> <terminal>inline</terminal> fun inlineFunction(myFun: () -> Unit ) {  
+    <bin>1</bin>myFun()  
+    <bin>1</bin>print(" ||| code inside inline function")  
+    <br> }
+</codebox>
+<hr>
+Use <terminal>return</terminal> from inline function, that return from lambda expression itself:
+<codebox>
+    fun main(args: Array&lt;String&gt;) {  
+        <bin>1</bin>inFu( { print("calling inline functions"); <terminal>return</terminal> }, { print(" ||| next parameter in inline functions") } ) //calling inline functions
+    <br> }
     
+    <br> <terminal>inline</terminal> fun inFu(myFun: () -> Unit, nxtFun: () -> Unit) {  
+        <bin>1</bin>myFun()  
+        <bin>1</bin>nxtFun() //not executed , because placed after <terminal>return</terminal>
+        <bin>1</bin>print("code inside inline function")  
+    <br> }
+</codebox>
+
+<br>To prevent <terminal>return</terminal> from lambda expression and inline function itself, we can mark the lambda expression as <terminal>crossinline</terminal> :
+<codebox>
+    fun main(args: Array&lt;String&gt;) {  
+        <bin>1</bin>inFu( { print("calling inline functions")
+        <bin>2</bin><eterminal>return</eterminal> //compile time error
+        <bin>2</bin>}, { print(" ||| next parameter in inline functions") <bin>1</bin>} )
+    <br>}
+    <br> 
+    <br> <terminal>inline</terminal> fun inFu( <terminal>crossinline</terminal> myFun: () -> Unit, nxtFun: () -> Unit) {  
+        <bin>1</bin>myFun()  
+        <bin>1</bin>nxtFun()
+        <bin>1</bin>print("code inside inline function")  
+    <br> }
+</codebox>
+<hr>
+In inline function, that make some of lambdas passed in inline function to be an inlined, mark other function parameter with <terminal>noinline</terminal> modifier. This is used to set expressions not to be inlined in the call.
+<codebox>
+    <br>fun main(args: Array&lt;String&gt;) {  
+        <bin>1</bin>inFu( { print("calling inline functions") }, { print(" ||| next parameter in inline functions") } )
+        //calling inline functions ||| next parameter in inline functions ||| code inside inline function
+    <br> }
+    <br> 
+    <br><terminal>inline</terminal> fun inFu(myFun: () -> Unit, <terminal>noinline</terminal> nxtFun: () -> Unit) {  
+        <bin>1</bin>myFun()  
+        <bin>1</bin>nxtFun()
+        <bin>1</bin>print(" ||| code inside inline function")  
+    <br>}
 </codebox>
