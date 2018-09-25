@@ -3,16 +3,16 @@ Is a function which accepts function as a parameter or returns a function or can
 <a href="https://www.javatpoint.com/kotlin-higher-order-function" target="_blank">weblink</a>
 <a href="https://kotlinlang.org/docs/reference/lambdas.html#higher-order-functions" target="_blank">weblink</a>
 <codebox>
-    val lambda_param_fun:(String, String) -> String = { a, b -> "param1:$a ||| param2:$b" } //usual function lambda styled
-    <br> fun normal_param_fun(a:Int, b:Int):Double{ return ( a + b ).toDouble() }
+    <terminal>val lambda_param_fun</terminal> :(String, String) -> String = { a, b -> "param1:$a ||| param2:$b" } //lambda styled function declared uses <terminal>val</terminal>
+    <br> <terminal>fun normal_param_fun</terminal> (a:Int, b:Int):Double{ return ( a + b ).toDouble() } //normal styled function declared uses <terminal>fun</terminal>
     <br> 
     <br> //higher order function
-    <br> fun higher_fun( a:Int, b:Int, sf:(String, String) -> String, nf:(Int, Int) -> Double ):Double{
+    <br> fun higher_fun( a:Int, b:Int, <terminal>sf:(String, String) -> String</terminal> , <terminal>nf:(Int, Int) -> Double</terminal> ):Double{
     <bin>1</bin>     println( sf(a.toString(), b.toString()) )
     <bin>1</bin>     return nf( a, b )
     <br> }
-    <br> val hf = higher_fun( 3, 5, lambda_param_fun, ::normal_param_fun ) //param1:3 ||| param2:5
-    <br> val hla = higher_fun( 3, 5, lambda_param_fun, { a:Int, b:Int -> ( a + b ).toDouble() } ) //param1:3 ||| param2:5
+    <br> val hf = higher_fun( 3, 5, <terminal>lambda_param_fun</terminal> , <terminal>::normal_param_fun</terminal> ) //param1:3 ||| param2:5
+    <br> val hla = higher_fun( 3, 5, <terminal>lambda_param_fun</terminal> , <terminal>{ a:Int, b:Int -> ( a + b ).toDouble() }</terminal> ) //param1:3 ||| param2:5
     <br> println( "higher_fun = $hf" ) //higher_fun = 8.0
     <br> println( "higher_fun = $hla" ) //higher_fun = 8.0
 </codebox>
