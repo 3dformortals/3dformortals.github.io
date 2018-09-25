@@ -1,1 +1,36 @@
 <hr><li id="c16"><a href="#c0">ranges: a..b , a until b , .rangeTo() , .downTo() , .reversed() , step() </a></li>
+<codebox>
+    for ( i in <terminal>2..4</terminal> ){ print( i ) } //234
+    <br> println( <terminal>( 2..4 ).toList()</terminal> ) //[2, 3, 4]
+    <br> var range = <terminal>'a'..'c'</terminal>
+    <br> println( range.toString() ) //a..c
+    <br> println( range.toList() ) //[a, b, c]
+    <br> for (i in range <terminal>step 2</terminal> ) print(i) //ac
+    <br> for ( i in ( 'a'..'c' ) <terminal>step ( 2 )</terminal> ) print(i) //ac
+    <br> println( range<terminal>.reversed()</terminal>.toString() )//c downTo a step 1
+    <br> println( range.reversed().toList() )//[c, b, a]
+    <br> var rangeS = <eterminal>"a".."c"</eterminal> //now try <terminal>String</terminal> , not <terminal>Char</terminal> ... not show error
+    <br> println( rangeS )//a..c
+    <br> // println( rangeS.toList() ) //error
+    <br> // println( rangeS.reversed() ) //error , looks like Char way is better
+    <br> 
+    <br> println( 1<terminal>.rangeTo( 3 )</terminal>.toList() ) //[1, 2, 3]
+    <br> println( 1.rangeTo( 3 ).toList() ) //[1, 2, 3]
+    <br> println( ( <terminal>1 until 3</terminal> ).toList() ) //[1, 2]
+    <br> println( 1.rangeTo( 3 )<terminal>.step( 2 )</terminal>.toList() ) //[1, 3]
+    <br> 
+    <br> println( 3<terminal>.downTo( 1 )</terminal>.toList() ) //[3, 2, 1]
+    <br> println( 3.downTo(1).step(2).toList() ) //[3, 1]
+    <br> println( 3.downTo(1).step(2).reversed().toList() ) //[1, 3]
+    <br> println( 3.downTo(1).reversed().step(2).toList() ) //[1, 3]
+    <br> for (i in 3 downTo 1 step 2) print(i) //31
+    <br> 
+    <br> var irange:IntRange = <terminal>IntRange(1,3)</terminal>
+    <br> println( irange.toList() ) //[1, 2, 3]
+    <br> println( <terminal>LongRange(1, 3)</terminal> ) //1..3
+    <br> //be careful
+    <br> println( <terminal>CharRange('a','d')</terminal> ) //a..d
+    <br> println( CharRange('a','d').toList() ) //[a, b, c, d]
+    <br> println( <eterminal>CharRange('d','a')</eterminal> ) //d..a , no error looks like normal
+    <br> println( CharRange('d','a').toList() ) //[ ]
+</codebox>
