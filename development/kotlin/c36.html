@@ -1,0 +1,11 @@
+<hr><li id="c36"><a href="#c0">Return multivalues from function</a></li>
+That comfort return two values from function you can use <terminal>data class</terminal> declaration and using.
+<a href="https://kotlinlang.org/docs/reference/multi-declarations.html#example-returning-two-values-from-a-function" target="_blank">weblink</a>
+<codebox>
+    <terminal>data class</terminal> <terminal>Result(val dummyInt: Int, val dummyDouble: Double)</terminal>
+    <br> 
+    <br> fun x2x3dummy(dummy:Int): <terminal>Result</terminal> { return <terminal>Result( dummy*2, ( dummy*3 ).toDouble() )</terminal> }
+    <br> 
+    <br> var <terminal>(x2, x3)</terminal> = x2x3dummy(3) //destructuring declarations support
+    <br> print("int_result = $x2 double_result = $x3") //int_result = 6 double_result = 9.0
+</codebox>
