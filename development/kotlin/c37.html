@@ -1,0 +1,33 @@
+<hr><li id="c37"><a href="#c0">Classes using</a></li>
+<a href="https://kotlinlang.org/docs/reference/classes.html" target="_blank">weblink</a>
+<a href="https://www.javatpoint.com/kotlin-class-and-object" target="_blank">weblink</a>
+<br> Empty class declaration:
+<codebox>
+    class testName
+    <br> var empty = testName()
+    <br> println(empty) //MainKt$main$testName@1b6d3586
+</codebox>
+<hr>
++ property and method:
+<codebox>
+    <br> class testName{
+        <bin>1</bin>var <terminal>testProperty</terminal>:Int = 8
+        <bin>1</bin>fun <terminal>testMethod</terminal>( multi:Int ):Int{ return testProperty * multi }
+    <br> }
+    <br> 
+    <br> var test = testName()
+    <br> println( test<terminal>.testProperty</terminal> ) //8
+    <br> println( test<terminal>.testMethod( 4 )</terminal> ) //32
+</codebox>
+<hr>
++ prebuild <terminal>primary constructor</terminal> using, without annotations or visibility modifiers:
+<codebox>
+    <br> class testName<terminal>( val x:Int, var y:Int )</terminal>{
+        <bin>1</bin>var testProperty:Int = 8
+        <bin>1</bin>fun testMethod( multi:Int ):Int{ return testProperty * multi * x * y }
+    <br> }
+    <br> 
+    <br> var test = testName<terminal>( 2, 3 )</terminal>
+    <br> println( test.testProperty ) //8
+    <br> println( test.testMethod( 4 ) ) //192
+</codebox>
