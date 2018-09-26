@@ -34,6 +34,17 @@ function textindent(text){
         div.innerHTML = text;
         tag.appendChild(div);
     }
+    //codeout
+    var tags = el.getElementsByTagName("codeout");
+    for (var i=0;i<tags.length;i++){
+        var div = document.createElement('div');
+        div.className = "code";
+        var tag = tags[i];
+        var text = tag.innerHTML;
+        tag.innerHTML = "";
+        div.innerHTML = text;
+        tag.appendChild(div);
+    }
     return el.innerHTML;
 }
 

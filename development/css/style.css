@@ -113,6 +113,9 @@ img.h200px{max-height: 200px;}
 codebox{
   color: #E3DEDC;
 }
+codeout{
+  color: #bae8c1;
+}
 terminal{
   color: #E3DEDC;
   font-family: "RBM";font-size: 16;

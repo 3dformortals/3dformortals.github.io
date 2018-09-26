@@ -38,3 +38,17 @@ function codeboxdiv(){
     }
 }
 codeboxdiv();
+
+function codeoutdiv(){
+    var tags = document.getElementsByTagName("codeout");
+    for (var i=0;i<tags.length;i++){
+        var div = document.createElement('div');
+        div.className = "code";
+        var tag = tags[i];
+        var text = tag.innerHTML;
+        tag.innerHTML = "";
+        div.innerHTML = text;
+        tag.appendChild(div);
+    }
+}
+codeoutdiv();

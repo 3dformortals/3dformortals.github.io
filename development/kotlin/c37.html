@@ -31,3 +31,24 @@
     <br> println( test.testProperty ) //8
     <br> println( test.testMethod( 4 ) ) //192
 </codebox>
+That addon initialisation code after using prebuild primary constructor, use <terminal>init</terminal> block's:
+<codebox>
+    class testName( val x:Int, var y:Int ){
+        <bin>1</bin> //println("testprint") //error
+        <bin>1</bin> val xx:Int = x * x
+        <bin>1</bin> init{ println( "xx = $xx" ) }
+        <bin>1</bin> val yy:Int = y * y
+        <bin>1</bin> init{ println( "yy = $yy" ) }
+        <bin>1</bin> var testProperty:Int = 8
+        <bin>1</bin> fun testMethod( multi:Int ):Int{ return testProperty * multi * xx * yy }
+    <br> }
+    <br> 
+    <br> var test = testName( 2, 3 )
+    <codeout>
+        xx = 4
+        <br> yy = 9
+    </codeout>
+    println(test.testProperty) //8
+    <br> println(test.testMethod( 4 ) ) //1152
+</codebox>
+Secondary Constructors
