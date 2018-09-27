@@ -30,6 +30,7 @@ function codeboxdiv(){
     for (var i=0;i<tags.length;i++){
         var div = document.createElement('div');
         div.className = "code";
+        div.title = "code"
         var tag = tags[i];
         var text = tag.innerHTML;
         tag.innerHTML = "";
@@ -44,6 +45,7 @@ function codeoutdiv(){
     for (var i=0;i<tags.length;i++){
         var div = document.createElement('div');
         div.className = "code";
+        div.title = "output";
         var tag = tags[i];
         var text = tag.innerHTML;
         tag.innerHTML = "";
