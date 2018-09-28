@@ -1,14 +1,14 @@
 <hr><li id="c37"><a href="#c0">Classes using</a></li>
 <a href="https://kotlinlang.org/docs/reference/classes.html" target="_blank">weblink</a>
 <a href="https://www.javatpoint.com/kotlin-class-and-object" target="_blank">weblink</a>
-<br> Empty class declaration:
+<br> <marker>Empty class</marker> declaration:
 <codebox>
     <terminal>class</terminal> testName //class creation
     <br> var empty = <terminal>testName()</terminal> //class instance creation
     <br> println(empty) //MainKt$main$testName@1b6d3586
 </codebox>
 <hr>
-+ property and method:
+<br> + <marker>property</marker> and <marker>method</marker> :
 <codebox>
     <br> class testName{
         <bin>1</bin>var <terminal>testProperty</terminal>:Int = 8
@@ -20,7 +20,7 @@
     <br> println( test<terminal>.testMethod( 4 )</terminal> ) //32
 </codebox>
 <hr>
-+ prebuild <marker>primary constructor</marker> <terminal>( ... )</terminal> using, without annotations or visibility modifiers:
+<br> + prebuild <marker>primary constructor</marker> <terminal>( ... )</terminal> using, without annotations or visibility modifiers:
 <codebox>
     <br> class testName<terminal>( val x:Int, var y:Int )</terminal>{
         <bin>1</bin>var testProperty:Int = 8
@@ -32,7 +32,7 @@
     <br> println( test.testMethod( 4 ) ) //192
 </codebox>
 <hr>
-Use <terminal>init</terminal> block's that addon <marker>initialisation code</marker> after using prebuild primary constructor:
+<br> Use <terminal>init</terminal> block's that addon <marker>initialisation code</marker> after using prebuild primary constructor:
 <codebox>
     class testName( val x:Int, var y:Int ){
         <bin>1</bin> //<eterminal>println("testprint")</eterminal> //error
@@ -53,7 +53,7 @@ Use <terminal>init</terminal> block's that addon <marker>initialisation code</ma
     <br> println(test.testMethod( 4 ) ) //1152
 </codebox>
 <hr>
-The class can also declare <marker>secondary constructors</marker> , which are prefixed with <terminal>constructor</terminal> :
+<br> The class can also declare <marker>secondary constructors</marker> , which are prefixed with <terminal>constructor</terminal> :
 <codebox>
     class TestName{
         <bin>1</bin> var xx:Int = 0
@@ -74,7 +74,7 @@ The class can also declare <marker>secondary constructors</marker> , which are p
     <br> println(test.testMethod(4)) //768
 </codebox>
 <hr>
-In case of both <marker>primary and secondary constructors</marker> , the secondary constructor needs to authorize to primary constructor, uses <terminal>this( ... )</terminal> keyword.
+<br> In case of both <marker>primary and secondary constructors</marker> , the secondary constructor needs to authorize to primary constructor, uses <terminal>this( ... )</terminal> keyword.
 <codebox>
     <br> class TestName<terminal>(val x:Int, var y:Int)</terminal>{ //primary constructor
         <bin>1</bin> var xx:Int = 0
@@ -111,3 +111,41 @@ In case of both <marker>primary and secondary constructors</marker> , the second
     <br> println( test.zz ) //0
     <br> println(test.testMethod(4)) //1152
 </codebox>
+<hr>
+<br> Calling one <marker>secondary constructor</marker> from another <marker>secondary constructor</marker> of same class.
+<codebox>
+    class TestName{
+        <bin>1</bin> var xx:Int = 0
+        <bin>1</bin> var yy:Int = 0
+        <bin>1</bin> var zz:Int = 0
+        <bin>1</bin> 
+        <bin>1</bin> <terminal>constructor(x:Int, y:Int)</terminal> <terminal>: this(x,y, 333)</terminal>{ //first call x3 incoming parameters constructor bottom, than continue this code
+        <bin>2</bin>     xx = x * 2
+        <bin>2</bin>     yy = y * 2
+        <bin>2</bin>     println ("inside x2 parameters constructor xx=$xx yy=$yy zz=$zz")
+        <bin>1</bin> }
+        <bin>1</bin> 
+        <bin>1</bin> <terminal>constructor(x:Int, y:Int, z:Int)</terminal>{
+        <bin>2</bin>     zz = z * 2
+        <bin>2</bin>     println ("inside x3 parameters constructor xx=$xx yy=$yy zz=$zz")
+        <bin>1</bin> }
+        <bin>1</bin> 
+        <bin>1</bin> var testProperty:Int = 8
+        <bin>1</bin> fun testMethod(multi:Int):Int{ return testProperty * multi * xx * yy }
+    <br> }
+    <br> 
+    <br> var test = <terminal>TestName( 2, 3 )</terminal> //create class instance uses 2 incoming parameters
+    <codeout>
+        inside x3 parameters constructor xx=0 yy=0 zz=666
+        <br> inside x2 parameters constructor xx=4 yy=6 zz=666
+    </codeout>
+    println(test.testMethod(4)) //768
+    <br> 
+    <br> test = <terminal>TestName( 2, 3, 4 )</terminal> //create class instance uses 3 incoming parameters
+    <codeout>
+        inside x3 parameters constructor xx=0 yy=0 zz=8
+    </codeout>
+    println(test.testMethod(4)) //0
+</codebox>
+<hr>
+<br>Calling supper class secondary constructor from derived class secondary constructor.
