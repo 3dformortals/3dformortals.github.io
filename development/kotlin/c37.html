@@ -148,4 +148,65 @@
     println(test.testMethod(4)) //0
 </codebox>
 <hr>
-<br>Calling supper class secondary constructor from derived class secondary constructor.
+<br>Calling <marker>super class secondary constructor</marker> from <marker>derived class secondary constructor</marker> .
+<codebox>
+    <terminal>open</terminal> class TestName{
+        <bin>1</bin>var xx:Int = 0
+        <bin>1</bin>var yy:Int = 0
+        <bin>1</bin>var zz:Int = 0
+        <bin>1</bin>
+        <bin>1</bin>constructor(x:Int, y:Int): this(x,y, 333){ //first call x3 incoming parameters constructor bottom, than continue this code
+        <bin>2</bin>     xx = x * 2
+        <bin>2</bin>     yy = y * 2
+        <bin>2</bin>     println ("inside x2 parameters constructor xx=$xx yy=$yy zz=$zz")
+        <bin>1</bin> }
+        <bin>1</bin> 
+        <bin>1</bin> constructor(x:Int, y:Int, z:Int){
+        <bin>2</bin>     zz = z * 2
+        <bin>2</bin>     println ("inside x3 parameters constructor xx=$xx yy=$yy zz=$zz")
+        <bin>1</bin> }
+        <bin>1</bin> 
+        <bin>1</bin> var testProperty:Int = 8
+        <bin>1</bin> fun testMethod(multi:Int):Int{ return testProperty * multi * xx * yy }
+    <br> }
+    <br> 
+    <br> class ChildTestName : TestName{
+        <bin>1</bin> var cxx:Int = 789
+        <bin>1</bin> var cyy:Int = 789
+        <bin>1</bin> var czz:Int = 789
+        <bin>1</bin> constructor(x:Int, y:Int) <terminal>: super( x, y )</terminal>{
+        <bin>2</bin>     cxx = <terminal>this.xx</terminal> * 2
+        <bin>2</bin>     cyy = <terminal>this.yy</terminal> * 2
+        <bin>2</bin>     println("inside Child constructor x2 parameters")
+        <bin>2</bin>     println("xx = $xx yy = $yy zz = $zz")
+        <bin>1</bin> }
+        <bin>1</bin> 
+        <bin>1</bin> constructor(x:Int, y:Int, z:Int) <terminal>: super( x, y, z )</terminal>{
+        <bin>2</bin>     cyy = <terminal>this.yy</terminal> * 3
+        <bin>2</bin>     czz = <terminal>this.zz</terminal> * 3
+        <bin>2</bin>     println("inside Child constructor x3 parameters")
+        <bin>2</bin>     println("xx=$xx yy=$yy zz=$zz")
+        <bin>1</bin> }
+        <bin>1</bin> 
+        <bin>1</bin> fun childTestMethod():Unit{ println("cxx=$cxx cyy=$cyy czz=$czz") }
+    <br> }
+    <br> 
+    <br> var test = ChildTestName( 2, 3 ) //create class instance uses 2 incoming parameters
+    <codeout>
+        inside x3 parameters constructor xx=0 yy=0 zz=666
+        <br> inside x2 parameters constructor xx=4 yy=6 zz=666
+        <br> inside Child constructor x2 parameters
+        <br> xx=4 yy=6 zz=666
+    </codeout>
+    <br> println(test.testMethod(4)) //768
+    <br> test.childTestMethod() //cxx=8 cyy=12 czz=789
+    <br> 
+    <br> test = ChildTestName( 2, 3, 4 ) //create class instance uses 3 incoming parameters
+    <codeout>
+        inside x3 parameters constructor xx=0 yy=0 zz=8
+        <br> inside Child constructor x3 parameters
+        <br> xx=0 yy=0 zz=8
+    </codeout>
+    <br> println(test.testMethod(4)) //0
+    <br> test.childTestMethod() //cxx=789 cyy=0 czz=24
+</codebox>
