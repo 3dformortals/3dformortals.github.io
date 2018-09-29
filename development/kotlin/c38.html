@@ -1,0 +1,90 @@
+<hr><li id="c38"><a href="#c0">Class <marker>instance</marker> . Class <marker>inheritance</marker> uses <terminal>open</terminal> keyword</a></li>
+<br>Class <marker>instance</marker> creation and using:
+<codebox>
+    class TestName(x:Int, y:Int){
+        <bin>1</bin>var xx:Int = x * x
+        <bin>1</bin>var yy:Int = y * y
+        <bin>1</bin>var testProperty:Int = 8
+        <bin>1</bin>fun testMethod(multi:Int):Unit{ println( testProperty * multi * xx * yy ) }
+    <br> }
+    <br> 
+    <br> var test = TestName(1, 2)
+    <br> test.testMethod(3) //96
+</codebox>
+<hr>
+<br>Class inheritance possible only for classes declared uses <terminal>open</terminal> keyword.
+<a href="https://kotlinlang.org/docs/reference/classes.html#inheritance" target="_blank">weblink</a>
+<codebox>
+    class NoOpen{
+    <bin>1</bin>    var testProperty:Int = 8
+    <bin>1</bin>    fun testMethod(multi:Int):Unit{ println( testProperty * multi  ) }
+    <bin>0</bin>}
+    <bin>0</bin>
+    <bin>0</bin><terminal>open</terminal> class HaveOpen{
+    <bin>1</bin>    var testProperty:Int = 8
+    <bin>1</bin>    fun testMethod(multi:Int):Unit{ println( testProperty * multi ) }
+    <bin>0</bin>}
+    <bin>0</bin>
+    <bin>0</bin>// class testClass : NoOpen(){ } //error
+    <bin>0</bin>class testClass : HaveOpen(){ }
+</codebox>
+<hr>
+<br>If the <marker>Derived</marker> class has a <terminal>primary constructor</terminal>, the <marker>Base</marker> class must be initialized right there, using the parameters of the primary constructor:
+<codebox>
+    open class <marker>Base( p: Int )</marker>
+    <br> class <marker>Derived</marker> <terminal>( p: Int )</terminal> : <marker>Base( p )</marker>
+</codebox>
+
+<br>If the <marker>Derived</marker> class <marker>has no primary constructor</marker>, then each secondary constructor has to initialize the <marker>Base</marker> type using the <terminal>super</terminal> keyword, that make possible call different constructors of the <marker>Base</marker> type:
+<codebox>
+    open class <marker>Base</marker>{
+        <bin>1</bin>var x:Int = 0
+        <bin>1</bin>var y:Int = 0
+        <bin>1</bin>constructor( x:Int, y:Int ){
+        <bin>2</bin>    this.x = x * x
+        <bin>2</bin>    this.y = y * y
+        <bin>1</bin>}
+        <bin>1</bin>
+        <bin>1</bin>constructor( x:Int ){
+        <bin>2</bin>    this.x = x
+        <bin>1</bin>}
+        <bin>1</bin>
+        <bin>1</bin>var testProperty:Int = 8
+        <bin>1</bin>fun testMethod():Unit{ println( "x=$x y=$y" ) }
+    <br> }
+    <br> 
+    <br> class Derived : Base{
+        <bin>1</bin>constructor( x:Int, y:Int ) : <terminal>super( x, y )</terminal>
+        <bin>1</bin>constructor( x:Int ) : <terminal>super( x )</terminal>
+    <br> }
+    <br> 
+    <br> var testxy = Derived( 1, 2 )
+    <br> testxy.testMethod() //x=1 y=4
+    <br> var testx = Derived( 1 )
+    <br> testx.testMethod() //x=1 y=0
+</codebox>
+<br>For <marker>Base class have primary constructor</marker> but <marker>Derived class has no primary constructor</marker> case, <marker>Derived</marker> class code will be same:
+<codebox>
+    open class <marker>Base</marker> <terminal>( x:Int )</terminal>{
+        <bin>1</bin>var x:Int = 0
+        <bin>1</bin>var y:Int = 0
+        <bin>1</bin><terminal>init{ this.x = x }</terminal>
+        <bin>1</bin>constructor( x:Int, y:Int ) : <terminal>this( x )</terminal>{
+        <bin>2</bin>    this.x = x * x
+        <bin>2</bin>    this.y = y * y
+        <bin>1</bin>}
+        <bin>1</bin>
+        <bin>1</bin>var testProperty:Int = 8
+        <bin>1</bin>fun testMethod():Unit{ println( "x=$x y=$y" ) }
+    <br> }
+    <br> 
+    <br> class Derived : Base{
+        <bin>1</bin>constructor(x:Int, y:Int) : super( x, y )
+        <bin>1</bin>constructor(x:Int) : super( x )
+    <br> }
+    <br> 
+    <br> var testxy = Derived( 1, 2 )
+    <br> testxy.testMethod() //x=1 y=4
+    <br> var testx = Derived( 1 )
+    <br> testx.testMethod() //x=1 y=0
+</codebox>
