@@ -8,5 +8,31 @@ Statements:
 <bin>1</bin>-properties can be <terminal>override</terminal>n inside <terminal>primary constructor</terminal>
 <bin>1</bin>- <terminal>val</terminal> can be <terminal>override</terminal>n uses <terminal>var</terminal> , but not vice versa
 <codebox>
-    
+<terminal>open</terminal> class Base{
+    <bin>2</bin>    var testProperty:Int = 8 //final default
+    <bin>2</bin>    <terminal>open</terminal> var openProperty:String = "openProperty"
+    <bin>2</bin>    fun testMethod():Unit{ println( "testMethod" ) }
+    <bin>2</bin>    <terminal>open</terminal> fun openMethod():Unit{ println( "openMethod" ) }
+    <bin>1</bin>}
+    <bin>1</bin>
+    <bin>1</bin>// class Derived : Base(){ //error , need <terminal>open</terminal> prefix for AgainDerived declaration
+    <bin>1</bin><terminal>open</terminal> class Derived : Base(){
+    <bin>2</bin>    // override var testProperty = 10 //error , because final default
+    <bin>2</bin>    <terminal>override</terminal> var openProperty = "openProperty overriden"
+    <bin>2</bin>    <terminal>final override</terminal> fun openMethod():Unit{ println("openMethod overriden") }
+    <bin>1</bin>}
+    <bin>1</bin>
+    <bin>1</bin>class AgainDerived : Derived(){
+    <bin>2</bin>    // <eterminal>override</eterminal> fun openMethod():Unit{ println( "openMethod overriden again" ) } //error , because <terminal>final</terminal> manually
+    <bin>2</bin>    // <eterminal>override</eterminal> var openProperty:Int = 123 //error , <terminal>String</terminal> vs <terminal>Int</terminal>
+    <bin>2</bin>    <terminal>override</terminal> var openProperty:String = "openProperty overriden again"
+    <bin>1</bin>}
+    <bin>1</bin>
+    <bin>1</bin>var test = Derived()
+    <bin>1</bin>test.testMethod() //testMethod
+    <bin>1</bin>test.openMethod() //openMethod overriden
+    <bin>1</bin>println( test.openProperty ) //openProperty overriden
+    <bin>1</bin>
+    <bin>1</bin>var testAgain = AgainDerived()
+    <bin>1</bin>println( testAgain.openProperty ) //openProperty overriden again
 </codebox>
