@@ -22,7 +22,7 @@ Statements:
     <bin>1</bin>    <terminal>final override</terminal> fun openMethod():Unit{ println("openMethod overriden") }
     <bin>0</bin>}
     <bin>0</bin>
-    <bin>0</bin>class AgainDerived( <terminal>override</terminal> var openProperty:String = "openProperty overriden again" ) : Derived(){
+    <bin>0</bin>class AgainDerived( <terminal>override var openProperty:String = "openProperty overriden again"</terminal> ) : Derived(){
     <bin>1</bin>    // <eterminal>override</eterminal> fun openMethod():Unit{ println( "openMethod overriden again" ) } //error , because <terminal>final</terminal> manually
     <bin>1</bin>    // <eterminal>override</eterminal> var openProperty:Int = 123 //error , <terminal>String</terminal> vs <terminal>Int</terminal>
     <bin>0</bin>}
