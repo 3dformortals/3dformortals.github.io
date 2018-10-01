@@ -37,3 +37,56 @@ Statements:
 </codebox>
 When designing a base class, you <marker>should therefore avoid</marker> using <terminal>open</terminal> members in the <terminal>constructors</terminal>, property initializers, and <terminal>init</terminal> blocks.
 <a href="https://kotlinlang.org/docs/reference/classes.html#derived-class-initialization-order" target="_blank">weblink</a>
+<hr>
+<br><a href="https://kotlinlang.org/docs/reference/classes.html#calling-the-superclass-implementation" target="_blank">Calling the superclass implementation</a> uses <terminal>super</terminal> keyword:
+<codebox>
+    open class Base{
+    <bin>1</bin>     open val openProperty:String = "openProperty"
+    <bin>1</bin>     open fun openMethod():Unit{ println( "openMethod" ) }
+    <bin>0</bin> }
+    <bin>0</bin> 
+    <bin>0</bin> class Derived : Base(){
+    <bin>1</bin>     override var openProperty = "overriden " + <terminal>super.openProperty</terminal>
+    <bin>1</bin>     override fun openMethod():Unit{ print("overriden "); <terminal>super.openMethod()</terminal> }
+    <bin>0</bin> }
+    <bin>0</bin> 
+    <bin>0</bin> var test = Derived()
+    <bin>0</bin> println( test.openProperty ) //overriden openProperty
+    <bin>0</bin> test.openMethod() //overriden openMethod
+</codebox>
+<hr>
+<br><a href="https://kotlinlang.org/docs/reference/classes.html#overriding-rules" target="_blank">Overriding Rules</a> uses <terminal>super&lt;SuperType&gt;</terminal> syntax:
+<bin>1</bin>- <terminal>interface</terminal> always declared on global level (must be not local)
+<bin>1</bin>- <terminal>interface</terminal> members default <terminal>open</terminal>
+<bin>1</bin>- <terminal>interface</terminal> must have only methods <terminal>fun</terminal> (properties <terminal>val</terminal> or <terminal>var</terminal> will arise error)
+<codebox>
+    <terminal>interface</terminal> Face{
+    <bin>1</bin>     <terminal>fun</terminal> method():Unit{ println( "faceMethod" ) }
+    <bin>0</bin> }
+    <bin>0</bin> 
+    <bin>0</bin> fun main(args: Array&lt;String&gt;) {
+    <bin>1</bin>     
+    <bin>1</bin>     <terminal>open class</terminal> Base{
+    <bin>2</bin>         val baseProperty:String = "baseProperty"
+    <bin>2</bin>         <terminal>open fun</terminal> method():Unit{ println( "baseMethod" ) }
+    <bin>1</bin>     }
+    <bin>1</bin>     
+    <bin>1</bin>     class Derived : Base(), Face{
+    <bin>2</bin>         override fun method():Unit{
+    <bin>3</bin>             print( "overriden " ); <terminal>super&lt;Base&gt;</terminal>.method()
+    <bin>3</bin>             print( "overriden " ); <terminal>super&lt;Face&gt;</terminal>.method()
+    <bin>2</bin>         }
+    <bin>1</bin>     }
+    <bin>1</bin>     
+    <bin>1</bin>     var test = Derived()
+    <bin>1</bin>     println( test.baseProperty ) //baseProperty
+    <bin>1</bin>     test.method()
+    <codeout>
+        overriden baseMethod
+        <br> overriden faceMethod
+    </codeout>
+    <bin>0</bin> }
+</codebox>
+<hr>
+<a href="https://www.javatpoint.com/kotlin-abstract-class" target="_blank"><terminal>abstarct</terminal> class for dominate and punish developers, who use your libs.</a>
+<br> <a href="https://www.javatpoint.com/kotlin-interface"><terminal>interface</terminal> for masters who prefer using <terminal>abstract</terminal> .</a>
