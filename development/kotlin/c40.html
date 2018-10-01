@@ -1,1 +1,32 @@
 <hr><li id="c40"><a href="#c0">Nested class and <terminal>inner</terminal> class</a></li>
+<a href="https://kotlinlang.org/docs/reference/nested-classes.html#nested-and-inner-classes" target="_blank">weblink</a>
+<codebox>
+    open class Base{
+    <bin>1</bin>    <terminal>private</terminal> val <terminal>baseProperty</terminal>:String = "baseProperty"
+    <bin>1</bin>    open fun method():Unit{ println( "baseMethod" ) }
+    <bin>1</bin>    
+    <bin>1</bin>    <terminal>class</terminal> nestedClass{
+    <bin>2</bin>        // fun callBaseProperty(){ println( "<eterminal>$baseProperty</eterminal> from nestedClass" ) } //error
+    <bin>2</bin>        var nestedProperty:String = "nested property from nestedClass"
+    <bin>1</bin>    }
+    <bin>1</bin>    
+    <bin>1</bin>    <terminal>inner class</terminal> innerClass{
+    <bin>2</bin>        fun callBaseProperty(){ println( "<terminal>$baseProperty</terminal> from innerClass" ) }
+    <bin>1</bin>    }
+    <bin>0</bin>}
+    <bin>0</bin>
+    <bin>0</bin>fun main(args: Array<String>) {
+    <bin>1</bin>    
+    <bin>1</bin>    var test = Base()
+    <bin>1</bin>    // println( test<eterminal>.baseProperty</eterminal> ) //error , because <terminal>private</terminal> manually
+    <bin>1</bin>    test.method() //baseMethod
+    <bin>1</bin>    
+    <bin>1</bin>    var nestedObj = Base.nestedClass()
+    <bin>1</bin>    println( nestedObj.nestedProperty ) //nested property from nestedClass
+    <bin>1</bin>    println( Base.nestedClass().nestedProperty ) //nested property from nestedClass
+    <bin>1</bin>    
+    <bin>1</bin>    var innerObj = Base().innerClass()
+    <bin>1</bin>    innerObj.callBaseProperty() //baseProperty from innerClass
+    <bin>1</bin>    Base().innerClass().callBaseProperty() //baseProperty from innerClass
+    <bin>1</bin>}
+</codebox>
