@@ -1,9 +1,9 @@
 <hr><li id="c40"><a href="#c0">Nested class and <terminal>inner</terminal> class</a></li>
 <a href="https://kotlinlang.org/docs/reference/nested-classes.html#nested-and-inner-classes" target="_blank">weblink</a>
 <codebox>
-    open class Base{
+    class Base{
     <bin>1</bin>    <terminal>private</terminal> val <terminal>baseProperty</terminal>:String = "baseProperty"
-    <bin>1</bin>    open fun method():Unit{ println( "baseMethod" ) }
+    <bin>1</bin>    fun method():Unit{ println( "baseMethod" ) }
     <bin>1</bin>    
     <bin>1</bin>    <terminal>class</terminal> nestedClass{
     <bin>2</bin>        // fun callBaseProperty(){ println( "<eterminal>$baseProperty</eterminal> from nestedClass" ) } //error
