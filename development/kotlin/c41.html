@@ -1,0 +1,63 @@
+<hr><li id="c41"><a href="#c0">Visibility modifiers: <terminal>package</terminal> , <terminal>public</terminal> , <terminal>internal</terminal> , <terminal>protected</terminal> , <terminal>private</terminal></a></li>
+<a href="https://kotlinlang.org/docs/reference/visibility-modifiers.html#visibility-modifiers" target="_blank">weblink</a>
+<br>Rules for classes and Interfaces:
+<bin>1</bin>-local variables, functions and classes can not have visibility modifiers
+<bin>1</bin>- <terminal>protected</terminal> modifier cannot be declared at top level
+<bin>1</bin>-if a member of <terminal>class</terminal> is not specified then it is by default <terminal>public</terminal>
+<bin>1</bin>-if you will <terminal>override protected</terminal> member and do not specify the visibility explicitly, the overriding member will also have protected visibility
+<bin>1</bin>- <terminal>private</terminal> - visible inside this class only (including all its members)
+<bin>1</bin>- <terminal>protected</terminal> - same as <terminal>private</terminal> + visible in subclasses too
+<bin>1</bin>- <terminal>internal</terminal> - any client inside this module who sees the declaring class sees its internal members
+<bin>1</bin>- <terminal>public</terminal> - any client who sees the declaring class sees its public members
+<bin>1</bin>- all <terminal>constructors</terminal> are <terminal>public</terminal> by default
+<codebox>
+    <terminal>open class</terminal> Outer {
+    <bin>1</bin>    <terminal>private</terminal> val a = 1
+    <bin>1</bin>    <terminal>protected open</terminal> val b = 2
+    <bin>1</bin>    <terminal>internal</terminal> val c = 3
+    <bin>1</bin>    val d = 4  // <terminal>public</terminal> by default
+    <bin>1</bin>    
+    <bin>1</bin>    <terminal>protected class</terminal> Nested {
+    <bin>2</bin>        <terminal>public</terminal> val e: Int = 5
+    <bin>1</bin>    }
+    <bin>0</bin>}
+    <bin>0</bin>
+    <bin>0</bin><terminal>class</terminal> Subclass : Outer() {
+    <bin>1</bin>    // a is not visible
+    <bin>1</bin>    // b, c and d are visible
+    <bin>1</bin>    // Nested and e are visible
+    <bin>1</bin>    <terminal>override</terminal> val b = 5   // 'b' is <terminal>protected</terminal>
+    <bin>0</bin>}
+    <bin>0</bin>
+    <bin>0</bin><terminal>class</terminal> Unrelated(o: Outer) {
+    <bin>1</bin>    // o.a, o.b are not visible
+    <bin>1</bin>    // o.c and o.d are visible (same module)
+    <bin>1</bin>    // Outer.Nested is not visible, and Nested::e is not visible either 
+    <bin>0</bin>}
+</codebox>
+<hr>
+<br> A <terminal>primary constructor</terminal> visibility specifying, need modifier + <terminal>constructor</terminal> keyword:
+<codebox>
+    class C <terminal>private constructor(a: Int)</terminal> { ... }
+</codebox>
+<hr>
+<br>The <terminal>fun</terminal>ctions, properties () <terminal>var</terminal> , <terminal>val</terminal> ) <terminal>class</terminal>es, objects and <terminal>interface</terminal>s can be declared on the "top-level", i.e. directly inside a <terminal>package</terminal>:
+<codebox>
+    // file name: example.kt
+    <br> <terminal>package</terminal> foo
+    <br> 
+    <br> <terminal>fun</terminal> baz() { ... }
+    <br> <terminal>class</terminal> Bar { ... }
+</codebox>
+Inside <terminal>package</terminal> :
+<bin>1</bin>- <terminal>public</terminal> is used by default, and your declarations will be visible everywhere
+<bin>1</bin>-if you mark a declaration <terminal>private</terminal> , it will only be visible inside the file containing the declaration
+<bin>1</bin>-if you mark it <terminal>internal</terminal> , it is visible everywhere in the same <a href="https://kotlinlang.org/docs/reference/visibility-modifiers.html#modules" target="_blank">module</a>
+<bin>1</bin>- <terminal>protected</terminal> is not available for top-level declarations
+<br>
+<br> That use a visible top-level declaration from another package, you should still <a href="https://kotlinlang.org/docs/reference/packages.html#imports" target="_blank">import</a> it:
+<codebox>
+    <terminal>import</terminal> foo.* // everything in 'foo' becomes accessible
+    <br> <terminal>import</terminal> foo.Bar // Bar is accessible
+    <br> <terminal>import</terminal> foo.baz as fbaz // fbaz stands for 'foo.baz'
+</codebox>
