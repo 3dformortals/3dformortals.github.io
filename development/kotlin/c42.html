@@ -1,6 +1,8 @@
 <hr><li id="c42"><a href="#c0">Extension <terminal>fun</terminal>ction</a></li>
 <a href="https://kotlinlang.org/docs/reference/extensions.html#extensions" target="_blank">weblink</a>
 <a href="https://www.javatpoint.com/kotlin-extension-function" target="_blank">weblink</a>
+<br>Extensions do not actually modify classes they extend. By defining an extension, you do not insert new members into a class, but merely make new functions callable with the dot-notation on variables of this type.
+<br>Extension function being called is determined by the type of the expression on which the function is invoked, not by the type of the result of evaluating that expression at runtime.
 <br>Supports <marker>extension functions</marker> and <marker>extension properties</marker> .
 <br>If a <marker>class has a member function</marker> , and an extension function is defined which has the same receiver type, the same name is applicable to given arguments, the <marker>member always wins</marker> .
 <br>However, it's perfectly OK for extension functions to overload member functions which have the same name but a different signature.
