@@ -2,8 +2,46 @@
 <a href="https://kotlinlang.org/docs/reference/extensions.html#extensions" target="_blank">weblink</a>
 <a href="https://www.javatpoint.com/kotlin-extension-function" target="_blank">weblink</a>
 <br>Extensions do not actually modify classes they extend. By defining an extension, you do not insert new members into a class, but merely make new functions callable with the dot-notation on variables of this type.
-<br>Extension function being called is determined by the type of the expression on which the function is invoked, not by the type of the result of evaluating that expression at runtime.
-<br>Supports <marker>extension functions</marker> and <marker>extension properties</marker> .
-<br>If a <marker>class has a member function</marker> , and an extension function is defined which has the same receiver type, the same name is applicable to given arguments, the <marker>member always wins</marker> .
-<br>However, it's perfectly OK for extension functions to overload member functions which have the same name but a different signature.
-<br>The <terminal>this</terminal> keyword inside an extension function corresponds to the receiver object (the one that is passed before the dot).
+<hr>Extension function being called is determined by the type of the expression on which the function is invoked, not by the type of the result of evaluating that expression at runtime.
+<hr>Supports <marker>extension functions</marker> and <marker>extension properties</marker> .
+<hr>If a <marker>class has a member function</marker> , and an extension function is defined which has the same receiver type, the same name is applicable to given arguments, the <marker>member always wins</marker> .
+<hr>However, it's perfectly OK for extension functions to overload member functions which have the same name but a different signature.
+<hr>The <terminal>this</terminal> keyword inside an extension function corresponds to the receiver object (the one that is passed before the dot).
+<codebox>
+    <terminal>fun</terminal> MutableList&lt;Double&gt;<terminal>.swap</terminal>(index1: Int, index2: Int) {
+    <bin>1</bin>    val tmp = this[index1] // <terminal>this</terminal> corresponds to the list
+    <bin>1</bin>    this[index1] = this[index2]
+    <bin>1</bin>    this[index2] = tmp
+    <bin>0</bin>}
+    <bin>0</bin>
+    <bin>0</bin>var test:MutableList&lt;Double&gt; = mutableListOf(0.0, 1.0, 2.5, 3.3)
+    <bin>0</bin>test<terminal>.swap(0,3)</terminal> //[3.3, 1.0, 2.5, 0.0]
+    <bin>0</bin>
+    <bin>0</bin>var testInt:MutableList&lt;Int&gt; = mutableListOf(0,1,2,3) //OK at this moment
+    <bin>0</bin>// testInt<terminal>.swap(0,3)</terminal> // error , because need <terminal>Double</terminal> but given <terminal>Int</terminal>
+    <bin>0</bin>
+    <bin>0</bin><terminal>fun &lt;T&gt;</terminal> MutableList<terminal>&lt;T&gt;.swap</terminal>(index1: Int, index2: Int) {
+    <bin>1</bin>    val tmp = this[index1]
+    <bin>1</bin>    this[index1] = this[index2]
+    <bin>1</bin>    this[index2] = tmp
+    <bin>0</bin>}
+    <bin>0</bin>
+    <bin>0</bin>testInt<terminal>.swap(0,3)</terminal> // [3, 1, 2, 0] , OK for both ( <terminal>Int</terminal> , <terminal>Double</terminal> ) types at this time
+    <bin>0</bin>
+    <bin>0</bin>//...being called is determined by the type of the expression on which the function is invoked
+    <bin>0</bin>open class C
+    <bin>0</bin>class D: C()
+    <bin>0</bin><terminal>fun</terminal> C<terminal>.foo()</terminal> = println("c")
+    <bin>0</bin><terminal>fun</terminal> D<terminal>.foo()</terminal> = println("d")
+    <bin>0</bin>fun printFoo(c:C){ c<terminal>.foo()</terminal> }
+    <bin>0</bin>printFoo(D()) //c
+    <bin>0</bin>D()<terminal>.foo()</terminal> //d
+    <bin>0</bin>
+    <bin>0</bin>//...member always wins
+    <bin>0</bin>class M { fun foo() { println( "member win" ) } }
+    <bin>0</bin><terminal>fun</terminal> M<terminal>.foo()</terminal> { println( "extension" ) }
+    <bin>0</bin>M()<terminal>.foo()</terminal> // <marker>member win</marker> , because same receiver type
+    <bin>0</bin>//...but OK to overload member functions which have the same name but a different signature
+    <bin>0</bin><terminal>fun</terminal> M<terminal>.foo(i: Int)</terminal> { println("extension win") }
+    <bin>0</bin>M()<terminal>.foo(8)</terminal> // <marker>extension win</marker>
+</codebox>
