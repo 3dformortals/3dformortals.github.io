@@ -1,3 +1,25 @@
 <hr><li id="c43"><a href="#c0">Scope of Extensions</a></li>
 <a href="https://kotlinlang.org/docs/reference/extensions.html#scope-of-extensions" target="_blank">weblink</a>
-
+<br>
+Base file:
+<codebox>
+    // file name: <marker>example.kt</marker>
+    <br> <terminal>package</terminal> foo
+    <br> <terminal>class</terminal> <marker>Baz</marker> { ... }
+</codebox>
+Define extension directly under package:
+<codebox>
+    <terminal>package</terminal> foo.bar //<marker>foo.bar</marker> just a package name
+    <br> <terminal>import</terminal> foo //class <marker>Baz</marker> was imported from <marker>example.kt</marker>
+    <br> <terminal>fun</terminal> Baz<terminal>.goo()</terminal> { ... }
+</codebox>
+Using extension outside its declaring package uses <terminal>import</terminal> :
+<codebox>
+    package com.example.usage
+    <br> 
+    <br> <terminal>import</terminal> foo.bar.goo // importing all extensions by name "goo"
+    <br> // or
+    <br> <terminal>import</terminal> foo.bar.*   // importing everything from "foo.bar"
+    <br> 
+    <br> fun usage( baz: Baz ) { baz.goo() }
+</codebox>
