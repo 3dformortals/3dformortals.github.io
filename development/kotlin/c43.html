@@ -1,25 +1,29 @@
 <hr><li id="c43"><a href="#c0">Scope of Extensions</a></li>
 <a href="https://kotlinlang.org/docs/reference/extensions.html#scope-of-extensions" target="_blank">weblink</a>
 <br>
-Base file:
+Project structure:
+<bin>1</bin>-Main.kt
+<bin>1</bin>-foo/foo.kt
+<bin>1</bin>-foo/extended/extended.kt
+<br>
+<br> <marker>Main.kt</marker> file:
 <codebox>
-    // file name: <marker>example.kt</marker>
-    <br> <terminal>package</terminal> foo
-    <br> <terminal>class</terminal> <marker>Baz</marker> { ... }
+    import foo.*
+    <bin>0</bin>import foo.extended.*
+    <bin>0</bin>
+    <bin>0</bin>fun main(args:Array<String>){
+    <bin>1</bin>    Base().test() //Base test method complete
+    <bin>1</bin>    Base().newExt() //Base extended method complete
+    <bin>0</bin>}
 </codebox>
-Define extension directly under package:
+<br> <marker>foo.kt</marker> file:
 <codebox>
-    <terminal>package</terminal> foo.bar //<marker>foo.bar</marker> just a package name
-    <br> <terminal>import</terminal> foo //class <marker>Baz</marker> was imported from <marker>example.kt</marker>
-    <br> <terminal>fun</terminal> Baz<terminal>.goo()</terminal> { ... }
+    <terminal>package</terminal> foo
+    <br> <terminal>class</terminal> <marker>Base</marker> { fun test(){ println( "Base test method complete" ) } }
 </codebox>
-Using extension outside its declaring package uses <terminal>import</terminal> :
+<br> <marker>extended.kt</marker> file:
 <codebox>
-    package com.example.usage
-    <br> 
-    <br> <terminal>import</terminal> foo.bar.goo // importing all extensions by name "goo"
-    <br> // or
-    <br> <terminal>import</terminal> foo.bar.*   // importing everything from "foo.bar"
-    <br> 
-    <br> fun usage( baz: Baz ) { baz.goo() }
+    <terminal>package</terminal> foo.extended
+    <br> <terminal>import</terminal> foo.Base //class <marker>Base</marker> was imported from <marker>foo.kt</marker>
+    <br> <terminal>fun</terminal> Base<terminal>.newExt()</terminal> { println( "Base extended method complete" ) }
 </codebox>
