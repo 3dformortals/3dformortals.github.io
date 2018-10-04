@@ -27,3 +27,9 @@ Project structure:
     <br> <terminal>import</terminal> foo.Base //class <marker>Base</marker> was imported from <marker>foo.kt</marker>
     <br> <terminal>fun</terminal> Base<terminal>.newExt()</terminal> { println( "Base extended method complete" ) }
 </codebox>
+<hr>
+<a href="https://kotlinlang.org/docs/reference/extensions.html#declaring-extensions-as-members" target="_blank">Declaring Extensions as Members</a>.
+<br>Inside a class, is possible to declare extensions for another class.
+<br>Extensions declared as members can be declared as <terminal>open</terminal> and <terminal>override</terminal>n in subclasses.
+<br>An extension declared on top level of a file has access to the other <terminal>private</terminal> top-level declarations in the same file.
+<br>If an extension is declared outside its receiver type, such an extension cannot access the receiver's <terminal>private</terminal> members.
