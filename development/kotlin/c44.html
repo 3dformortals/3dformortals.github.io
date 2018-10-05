@@ -1,0 +1,19 @@
+<hr><li id="c44"><a href="#c0"><terminal>data class</terminal> for <terminal>fun</terminal>ction <terminal>return</terminal> multitype</a></li>
+<a href="https://kotlinlang.org/docs/reference/data-classes.html" target="_blank">weblink</a>
+<a href="https://www.javatpoint.com/kotlin-data-class" target="_blank">weblink</a>
+<br>
+All <terminal>data class</terminal> properties declared in the primary constructor, have next functionality:
+<bin>1</bin>- <terminal>equals()</terminal> / <terminal>hashCode()</terminal> pair
+<bin>1</bin>- <terminal>toString()</terminal> of the form "User(name=John, age=42)"
+<bin>1</bin>- <terminal><a href="https://kotlinlang.org/docs/reference/multi-declarations.html" target="_blank">componentN()</a></terminal> functions corresponding to the properties in their order of declaration
+<bin>1</bin>- <terminal>copy()</terminal> function
+<bin>1</bin>-<a href="https://kotlinlang.org/docs/reference/multi-declarations.html">destructuring declarations</a>
+<bin>1</bin>- <terminal>primary constructor</terminal> default and named arguments
+<hr>
+Requirements of <terminal>data class</terminal> :
+<bin>1</bin>-the <terminal>primary constructor</terminal> needs to have <marker>at least one parameter</marker>
+<bin>1</bin>-all primary constructor parameters need to be marked as <terminal>val</terminal> or <terminal>var</terminal>
+<bin>1</bin>-data classes cannot be <eterminal>abstract</eterminal> , <eterminal>open</eterminal> , <eterminal>sealed</eterminal> , <eterminal>inner</eterminal> 
+<bin>1</bin>-data classes may extend other classes
+<bin>1</bin>-to <marker>exclude a property</marker> from the generated implementations, declare it inside the class body
+<bin>1</bin>-excluded property hidden for <terminal>toString()</terminal> , <terminal>equals()</terminal> , <terminal>hashCode()</terminal> , <terminal>copy()</terminal> , <terminal>componentN()</terminal> functionality
