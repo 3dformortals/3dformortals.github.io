@@ -17,3 +17,22 @@ Requirements of <terminal>data class</terminal> :
 <bin>1</bin>-data classes may extend other classes
 <bin>1</bin>-to <marker>exclude a property</marker> from the generated implementations, declare it inside the class body
 <bin>1</bin>-excluded property hidden for <terminal>toString()</terminal> , <terminal>equals()</terminal> , <terminal>hashCode()</terminal> , <terminal>copy()</terminal> , <terminal>componentN()</terminal> functionality
+<codebox>
+    <terminal>data class</terminal> DataTest<terminal>(var a:Int = 0, val b:Int = 1)</terminal>{ <marker>var c:Int = 2</marker> }
+    <br> var test = DataTest()
+    <br> println( test.toString() ) //dataTest(a=0, b=1)
+    <br> println( test<terminal>.component1()</terminal> ) //0
+    <br> println( test<terminal>.component2()</terminal> ) //1
+    <br> // println( test<eterminal>.component3()</eterminal> ) //error
+    <br> println( test<terminal>.c</terminal> )//2
+    <br> 
+    <br> <terminal>data class</terminal> ReturnTest(var x:Int)
+    <br> fun testReturn():ReturnTest{ return ReturnTest( 8 ) }
+    <br> var testreturn = testReturn()
+    <br> println(testreturn.x) //8
+    <br> 
+    <br> <terminal>data class</terminal> ReturnTestMulti(var x:Int, var y:Int)
+    <br> fun testReturnMulti(a:Int, b:Int, c:Int):ReturnTestMulti{ return ReturnTestMulti(a-c, b-c) }
+    <br> <terminal>var ( test1, test2 )</terminal> = testReturnMulti( 8, 9, 1 ) //<terminal>destructuring declarations</terminal>
+    <br> println( "test1=$test1 test2=$test2" ) //test1=7 test2=8
+</codebox>
