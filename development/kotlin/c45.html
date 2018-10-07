@@ -1,0 +1,30 @@
+<hr><li id="c45"><a href="#c0"><terminal>enum class</terminal></a></li>
+<a href="https://kotlinlang.org/docs/reference/enum-classes.html#enum-classes" target="_blank">weblink</a>
+<a href="https://www.tutorialkart.com/kotlin/enum-classes-in-kotlin/" target="_blank">weblink</a>
+
+<codebox>
+    <terminal>enum class enumTest</terminal>(val value:Int){ ZERO(0), ONE(11), TWO(22) }
+    <bin>0</bin> data class dataTest( val name:String, val number:</terminal>enumTest</terminal> )
+    <bin>0</bin> 
+    <bin>0</bin> fun main(args:Array<String>){
+    <bin>1</bin>     val test1:dataTest = dataTest( "one", <terminal>enumTest.ONE</terminal> )
+    <bin>1</bin>     val test2:dataTest = dataTest( "two", <terminal>enumTest.TWO</terminal> )
+    <bin>1</bin>     
+    <bin>1</bin>     println( "test1.name=${test1.name}\ntest1.number=${test1.number}\ntest1.number.value=${test1.number.value}" )
+    <bin>1</bin>     println( "test2.name=${test2.name}\ntest2.number=${test2.number}\ntest2.number.value=${test2.number.value}" )
+    <bin>1</bin>     println( test2.number<terminal>.name</terminal> )
+    <bin>1</bin>     println( test2.number<terminal>.ordinal</terminal> )
+    <bin>0</bin> }
+</codebox>
+<codeout>
+    test1.name=one
+    <br> test1.number=ONE
+    <br> test1.number.value=11
+    <br> test2.name=two
+    <br> test2.number=TWO
+    <br> test2.number.value=22
+    <br> TWO
+    <br> 2
+</codeout>
+<br> Each enum constant is an object. Enum constants are separated with commas.
+<br> Every enum constant has properties to obtain its <terminal>.name</terminal> and <terminal>.ordinal</terminal> (for position in the enum class declaration).
