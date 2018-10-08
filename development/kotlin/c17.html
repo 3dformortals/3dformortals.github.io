@@ -1,1 +1,44 @@
-<hr><li id="c17"><a href="#c0">empty</a></li>
+<hr><li id="c17"><a href="#c0">Calling <marker>Java</marker> code from <marker>Kotlin</marker></a></li>
+<marker>Kotlin</marker> code is fully compatible with <marker>Java</marker> code.
+<a href="https://kotlinlang.org/docs/reference/java-interop.html#calling-java-code-from-kotlin" target="_blank">weblink</a>
+<a href="https://www.javatpoint.com/kotlin-java-interoperability-calling-java-from-kotlin">weblink</a>
+<hr>
+<br> Calling <marker>Java void</marker> method from <marker>Kotlin</marker> file.
+<br> While calling a <marker>Java</marker> code from <marker>Kotlin</marker> whose return types is <marker>void</marker> , it will return <marker>Unit</marker> in Kotlin file.
+<br><marker>Main.kt</marker> file:
+<codebox>
+    fun main( args:Array&lt;String&gt; ){
+    <bin>1</bin>    val sum= <terminal>MyJavaClass.add( 5, 10 )</terminal>  //printing inside Java class :15
+    <bin>1</bin>    println( "printing sum inside Kotlin file: " + sum ) //printing sum inside Kotlin file: <terminal>kotlin.Unit</terminal>
+    <bin>0</bin>}
+</codebox>
+<br><marker>MyJavaClass.java</marker> file:
+<codebox>
+    public class <terminal>MyJavaClass</terminal> {  
+    <bin>1</bin>    public static void main(String[ ] args){ }
+    <bin>1</bin>    public static <terminal>void add( int a, int b )</terminal>{
+    <bin>2</bin>        int result = a + b;
+    <bin>2</bin>        System.out.println( "printing inside Java class :" + result );
+    <bin>1</bin>    }
+    <bin>0</bin>}
+</codebox>
+<hr>
+<br> Calling <marker>Java int</marker> method from <marker>Kotlin</marker> file.
+<br>While calling a <marker>Java code of int type</marker> or other (rather than void) <marker>from Kotlin file</marker> , it returns the result in <marker>same types</marker> .
+<br><marker>Main.kt</marker> file:
+<codebox>
+    fun main( args:Array&lt;String&gt; ){
+    <bin>1</bin>    val sum= <terminal>MyJavaClass.add( 5, 10 )</terminal>
+    <bin>1</bin>    println( "printing sum inside Kotlin file: " + sum ) //printing sum inside Kotlin file: <terminal>15</terminal>
+    <bin>0</bin>}
+</codebox>
+<br><marker>MyJavaClass.java</marker> file:
+<codebox>
+    public class <terminal>MyJavaClass</terminal> {  
+    <bin>1</bin>    public static void main(String[ ] args){ }
+    <bin>1</bin>    public static <terminal>void add( int a, int b )</terminal>{
+    <bin>2</bin>        int result = a + b;
+    <bin>2</bin>        return result;
+    <bin>1</bin>    }
+    <bin>0</bin>}
+</codebox>
