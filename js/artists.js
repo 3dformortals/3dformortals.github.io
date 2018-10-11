@@ -8,6 +8,13 @@ var data;
 // data=[];db.push(data);
 // data=[[false,""],["",""]];db.push(data);
 data=[
+    [true,"DeT0mass0 / detomasso / Tom"],
+    ["web","https://www.detomasso.net/"],
+    ["web","https://vimeo.com/detomasso"],
+    ["twitter","https://twitter.com/tom_detomasso"],
+    ["deviantart","https://www.deviantart.com/det0mass0"]
+];db.push(data);
+data=[
     [false,"hews / hews-hack"],
     ["twitter","https://twitter.com/hews__"],
     ["facebook","http://www.facebook.com/hewsgraphicsSAFE"],
