@@ -7,12 +7,13 @@ var data;
 // ];db.push(data);
 // data=[];db.push(data);
 // data=[[false,""],["",""]];db.push(data);
-data=[
-    [false,"DYTM / Dont You Tell Me / I do not mind (DYTM)"],
-    ["web","https://fantia.jp/fanclubs/4570"],
-    ["twitter","https://twitter.com/DYTM_"],
-    ["pixiv","https://www.pixiv.net/member.php?id=1773262"]
-];db.push(data);
+
+// data=[
+//     [false,"DYTM / Dont You Tell Me / I do not mind (DYTM)"],
+//     ["web","https://fantia.jp/fanclubs/4570"],
+//     ["twitter","https://twitter.com/DYTM_"],
+//     ["pixiv","https://www.pixiv.net/member.php?id=1773262"]
+// ];db.push(data);
 data=[
     [true,"DeT0mass0 / detomasso / Tom"],
     ["web","https://www.detomasso.net/"],
