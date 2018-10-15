@@ -23,6 +23,7 @@
         <li><a class="up" href="#c4" >audacity UG | microphone not work, but tested and work on windows etc</a></li>
         <li><a class="up" href="#c5" >audacity UG &rarr; Effect &rarr; Noise Reduction</a></li>
         <li><a class="up" href="#c6" >LMMS | use vst created for windows</a></li>
+        <li><a class="up" href="#c7" >LMMS | change color of pianoroll net lines</a></li>
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
@@ -68,6 +69,27 @@
     <br>-- terminal <codebox>sudo dpkg --add-architecture i386</codebox> &rarr; Enter
     <br>-- terminal <codebox>sudo add-apt-repository ppa:wine/wine-builds &amp;&amp; sudo apt-get update</codebox> &rarr; Enter
     <br>-- terminal <codebox>sudo apt-get install --install-recommends winehq-devel</codebox> &rarr; Enter
+    
+    <hr><li id="c7"><a href="#c0">LMMS | change color of pianoroll net lines</a></li>
+    That use own theme, for appimage build you need:
+    <br> 1 - run lmms appimage
+    <br> 2 - nautilus(dolphin for kubuntu 18.04) open tmp/
+    <br> 3 - show hidden files (in dolphin this <terminal>Alt+.</terminal>)
+    <br> 4 - open .mount_lmms_someletters
+    <br> 5 - copy /tmp/.mount_lmms-1H7a5vL/usr/share/lmms/themes/default folder to new themes directory
+    <br> 6 - edit style.css as you need
+    <codebox>
+        PianoRoll {
+            <bin>1</bin> ...some xml code
+            <bin>1</bin> /* Grid colors */
+            <bin>1</bin> qproperty-lineColor: #225335;/*note steps net color*/ <terminal>This is what you need</terminal>
+            <bin>1</bin> qproperty-beatLineColor: #2d6b45; /*octave step lines*/
+            <bin>1</bin> qproperty-barLineColor: #42a065; /*vertical numbered steps*/
+            <bin>1</bin> ...some xml code
+        <br> }
+    </codebox>
+    <br> 7 - restart lmms appimage
+    <br> now themes will be yours edited
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>
