@@ -1,0 +1,180 @@
+<hr><li id="c"><a href="#c0">libGDX Kotlin Admob banner hide show implementation</a></li>
+<a href="https://youtu.be/OvgOscOWOCE" target="_blank">youtube video tutorial</a>
+<br>
+1 -  create libGDX project with kotlin
+<br> 4 - default build and test
+<br> 5 - convert to kotlin
+<br> 6 - AdHandler interface
+<br> 7 - AndroidManifest.xml
+<br> 8-9 - gradle add admob source
+<br> 10 - DemoAdmobKotlin.kt modify
+<br> 11 - AndroidLauncher.kt modify
+<br> 
+<br> 2018 nov
+<hr>
+<br> 0 - example configuration:
+<br> 
+<br> libGDX 1.9.8
+<br> 
+<br> homtom ht17pro (chinese android 6.0 smartphone) screen size 1280*720
+<br> ... android emulator fail with admob in my case, and i can't solve this
+<br> 
+<br> kubuntu 18.04 (freeware desktop linux based on KDE)
+<br> 
+<br> Intellij IDEA Community 2018.3 BETA ... installed as snap package
+<br> (intellij-idea-community  2018.3-EAP  94  edge  jetbrains✓  classic)
+<br> 
+<br> kotlin 1.3.0 ... installed as snap package
+<br> (kotlin  1.3.0  27  stable  jetbrains✓  classic)
+<br> 
+<br> Java 8 JDK ... installed manually and linked to "java" terminal command  , because kubuntu 18.04 java default version is 9+ which is not supported by libgdx at 2018
+<br> (java version "1.8.0_181"
+<br> Java(TM) SE Runtime Environment (build 1.8.0_181-b13)
+<br> Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode) )
+<br> 
+<br> adb ... installed as apt package
+<br> Android Debug Bridge version 1.0.36
+<br> Revision 1:7.0.0+r33-2
+<br> 
+<br> working internet connection ... in my case wifi access on desktop and on homtom both
+<hr>
+1 - create libgdx project for android only targeting with <terminal>Use Kotlin</terminal> and <terminal>IDEA</terminal> checkboxes inside <marker>advanced</marker> section
+<hr>
+2 - turn on your testing device (real smartphone) and <terminal>allow USB debug</terminal> mode in <marker>settings - developer section</marker>
+<hr>
+3 - connect working device to pc uses usb cable 
+<hr>
++ 4 - open project uses Intellij IDEA Community uses *.ipr file, wait all processes/indexing/downloads done, then build project, RESTART IDEA(this create android configuration, before restart you will see nothing), and "run-Run...- android" configuration uses connected testing device. Now you will see the default android app on your device.
+At this moment all libgdx default file is java files. Later will be recoded uses IDEA to Kotlin, with manually fix some dirty places.
+<hr>
++ 5 - convert to kotlin "AndroidLauncher.java" and "DemoAdmobKotlin.java" uses "Ctrl+Alt+Shift+K" IDEA shortcut and fix any dirty places/bugs... null safety etc. Then again test uses "run-android" result must look similar, but at this step all source is kotlin
+<hr>
++ 6 - add kotlin "AdHandler" interface on DemoAdmobKotlin level
+create AdHandler.kt interface uses IDEA menu com.demo.admobkotlin - rmouse "New-Kotlin File/Class ... name= AdHandler | type= interface ... ok
+Then add method to interface:
+"fun showAds(show:Boolean)"
+<hr>
++ 7 - modify "AndroidManifest.xml"
+(android - AndroidManifest.xml - lmousedouble)
+
+change:
+&lt;uses-sdk android:minSdkVersion="14" android:targetSdkVersion="28" /&gt;
+next string add:
+&lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+
+inside &lt;application&gt; tag, add after closed &lt;/activity&gt; tag, a new tag:
+&lt;meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="ca-app-pub-3940256099942544~3347511713"/&gt;
+(... this is good google official testing ads id (ca-app-pub-39****), not break any rules in testing time. In work app you should insert your banner number/id , generated inside your admob account. Or no money, because ads is dummy : ) )
+<hr>
++ 8 - modify project level(highest... core and android folder level) "build.gradle"
+open project "build.gradle"
+
+add to "allprojects{ext{...}}" parameter
+admobVersion = "17.0.0"
+
+add to "project(":android") { ... dependencies { ... }}" parameter
+compile "com.google.android.gms:play-services-ads:$admobVersion"
+
+ok to Sync gradle notification ... it show error minSdkVersion 9 (in android level gradle)
+<hr>
++ 9 - modify android level(inside android folder level) "build.gradle"
+change
+minSdkVersion 14
+
+ok to Sync gradle notification ... at this time no errors
+<hr>
++ 10 - modify "DemoAdmobKotlin.kt"
+
+change class declaration to:
+class DemoAdmobKotlin(internal var handler: AdHandler) : ApplicationAdapter() {
+
+add to top of "override fun render()" method body new syntax:
+        if (Gdx.input.justTouched()) {
+            if(Gdx.input.x &lt; 640 ) { handler.showAds(true) }
+            else { handler.showAds(false) }
+        }
+... it will do " if left screen half touched then show banner, if right side touched then hide banner. Screen of testing device is 1280*720px. 1280/2=640px
+<hr>
++ 11 - modify "AndroidLauncher.kt"
+
+add next imports on top. (It can be added semiautomatic later uses IDEA function - caret positioning to unresolved type and "Alt+Enter" key press):
+import android.os.Handler
+import android.os.Message
+import android.util.Log
+import android.view.View
+import android.widget.RelativeLayout
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+
+add AdHandler interface to AndroidLauncher class declaration:
+class AndroidLauncher : AndroidApplication(), AdHandler {
+
+add new property "adView" to class AndroidLauncher:
+protected var adView: AdView? = null
+
+next string create construction which will handler for manipulate adView state:
+    private val SHOW_ADS = 1
+    private val HIDE_ADS = 0
+    internal var myhandler: Handler = object : Handler() {
+        override fun handleMessage(msg: Message) {
+            when (msg.what) {
+                SHOW_ADS -&gt; adView!!.visibility = View.VISIBLE
+                HIDE_ADS -&gt; adView!!.visibility = View.GONE
+            }
+        }
+    }
+it will interact with "showAds(show:Boolean)" method of "AdHandler" interface
+
+change code of "override fun onCreate(savedInstanceState: Bundle?) {}" method body to:
+        super.onCreate(savedInstanceState)
+
+        val layout = RelativeLayout(this)
+        val config = AndroidApplicationConfiguration()
+        val gameView = initializeForView(DemoAdmobKotlin(this), config)
+        layout.addView(gameView)
+
+
+        adView = AdView(this)
+
+        adView!!.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                val visibility = adView!!.visibility
+                adView!!.visibility = View.GONE
+                adView!!.visibility = visibility
+                Log.i(TAG, "Ad Loaded ...")
+            }
+        }
+        adView!!.adSize = AdSize.SMART_BANNER
+        adView!!.adUnitId = "ca-app-pub-3940256099942544/6300978111"
+
+        val builder = AdRequest.Builder()
+        val adParams = RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        layout.addView(adView, adParams)
+        adView!!.loadAd(builder.build())
+        setContentView(layout)
+...this create relative layout and add separeted game view and banner view above game view, configure banner parameters and addon to banner object message "Ad Loaded" and visibility behavior/control commands
+
+add overriden "showAds" method implementation to AndroidLauncher class:
+    override fun showAds(show:Boolean) {
+        if(show) {
+            myhandler.sendEmptyMessage(SHOW_ADS)
+        }else{
+            myhandler.sendEmptyMessage(HIDE_ADS)
+        }
+    }
+
+add companion object to AndroidLauncher class:
+    companion object {
+        private val TAG = "AndroidLauncher"
+    }
+... this part(companion object) was in  originally java tutorial by "Brent Aureli's - Code School" youtube video result, converted to kotlin uses IDEA, and need only in "Log.i(TAG, "Ad Loaded ...")" and look's like can be replaced by strait using String. But not tested at this moment : )
+<hr>
+Done.
+Now run-android again and show banner with hide/show controls depend of screen touch side right/left
