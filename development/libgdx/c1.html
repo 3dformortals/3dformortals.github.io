@@ -44,137 +44,151 @@
 <hr>
 3 - connect working device to pc uses usb cable 
 <hr>
-+ 4 - open project uses Intellij IDEA Community uses *.ipr file, wait all processes/indexing/downloads done, then build project, RESTART IDEA(this create android configuration, before restart you will see nothing), and "run-Run...- android" configuration uses connected testing device. Now you will see the default android app on your device.
-At this moment all libgdx default file is java files. Later will be recoded uses IDEA to Kotlin, with manually fix some dirty places.
+4 - open project uses Intellij IDEA Community uses <marker>*.ipr</marker> file, wait all processes/indexing/downloads done, then <terminal>build project</terminal>, <terminal>RESTART IDEA</terminal> (this create android configuration, before restart you will see nothing), and <terminal>run-Run...- android</terminal> configuration uses connected testing device. Now you will see the default android app on your device.
+<br> At this moment all libgdx default file is java files. Later will be recoded uses IDEA to Kotlin, with manually fix some dirty places.
 <hr>
-+ 5 - convert to kotlin "AndroidLauncher.java" and "DemoAdmobKotlin.java" uses "Ctrl+Alt+Shift+K" IDEA shortcut and fix any dirty places/bugs... null safety etc. Then again test uses "run-android" result must look similar, but at this step all source is kotlin
+5 - convert to kotlin <marker>AndroidLauncher.java</marker> and <marker>DemoAdmobKotlin.java</marker> uses <terminal>Ctrl+Alt+Shift+K</terminal> IDEA shortcut and fix any dirty places/bugs... <marker>null safety</marker> etc. Then again test uses <terminal>run-android</terminal> result must look similar, but at this step all source is kotlin now
 <hr>
-+ 6 - add kotlin "AdHandler" interface on DemoAdmobKotlin level
-create AdHandler.kt interface uses IDEA menu com.demo.admobkotlin - rmouse "New-Kotlin File/Class ... name= AdHandler | type= interface ... ok
-Then add method to interface:
-"fun showAds(show:Boolean)"
+6 - add kotlin <marker>AdHandler</marker> interface on <marker>DemoAdmobKotlin</marker> level:
+<br> create <marker>AdHandler.kt</marker> interface uses IDEA, inside project tab menu <marker>com.demo.admobkotlin</marker> - rmouse <terminal>New</terminal> -&gt; <terminal>Kotlin File/Class</terminal> ... name= AdHandler | type= interface ... <terminal>ok</terminal>
+<br> Then add method to interface:
+<codebox>fun showAds(show:Boolean)</codebox>
 <hr>
-+ 7 - modify "AndroidManifest.xml"
-(android - AndroidManifest.xml - lmousedouble)
+7 - modify </marker>AndroidManifest.xml</marker> :
+<br> (IDEA project tab ... android - AndroidManifest.xml - lmousedouble)
+<br> 
+<br> change
+<br> <codebox>&lt;uses-sdk android:minSdkVersion="14" android:targetSdkVersion="28" /&gt;</codebox>
 
-change:
-&lt;uses-sdk android:minSdkVersion="14" android:targetSdkVersion="28" /&gt;
-next string add:
-&lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+<br> next string add
+<br> <codebox>&lt;uses-permission android:name="android.permission.INTERNET" /&gt;</codebox>
 
-inside &lt;application&gt; tag, add after closed &lt;/activity&gt; tag, a new tag:
+<br> inside <marker>&lt;application&gt;</marker> tag, add after closed <marker>&lt;/activity&gt;</marker> tag, a new tag:
+<codebox>
 &lt;meta-data
-                android:name="com.google.android.gms.ads.APPLICATION_ID"
-                android:value="ca-app-pub-3940256099942544~3347511713"/&gt;
+    <bin>1</bin>android:name="com.google.android.gms.ads.APPLICATION_ID"
+    <bin>1</bin>android:value="ca-app-pub-3940256099942544~3347511713"/&gt;
+</codebox>
 (... this is good google official testing ads id (ca-app-pub-39****), not break any rules in testing time. In work app you should insert your banner number/id , generated inside your admob account. Or no money, because ads is dummy : ) )
 <hr>
-+ 8 - modify project level(highest... core and android folder level) "build.gradle"
-open project "build.gradle"
+8 - modify project level(highest... core and android folder level) <marker>build.gradle</marker> :
+<br> open project "build.gradle"
+<br> 
+<br> add to <marker>allprojects{ ext{ ... } }</marker> parameter
+<br> <codebox>admobVersion = "17.0.0"</codebox>
 
-add to "allprojects{ext{...}}" parameter
-admobVersion = "17.0.0"
+<br> add to <marker>project(":android") { ... dependencies { ... }}</marker> parameter
+<br> <codebox>compile "com.google.android.gms:play-services-ads:$admobVersion"</codebox>
 
-add to "project(":android") { ... dependencies { ... }}" parameter
-compile "com.google.android.gms:play-services-ads:$admobVersion"
-
-ok to Sync gradle notification ... it show error minSdkVersion 9 (in android level gradle)
+<br> <terminal>ok</terminal> to Sync gradle notification ... it show error <eterminal>minSdkVersion 9</eterminal> (in android level <marker>build.gradle</marker> )
 <hr>
-+ 9 - modify android level(inside android folder level) "build.gradle"
-change
-minSdkVersion 14
+9 - modify android level(inside android folder level) <marker>build.gradle</marker> :
+<br> change
+<br> <codebox>minSdkVersion 14</codebox>
 
-ok to Sync gradle notification ... at this time no errors
+<br> <terminal>ok</terminal> to Sync gradle notification ... at this time no errors
 <hr>
-+ 10 - modify "DemoAdmobKotlin.kt"
+10 - modify <marker>DemoAdmobKotlin.kt</marker> :
 
 change class declaration to:
-class DemoAdmobKotlin(internal var handler: AdHandler) : ApplicationAdapter() {
+<codebox>class DemoAdmobKotlin(internal var handler: AdHandler) : ApplicationAdapter() {</codebox>
 
-add to top of "override fun render()" method body new syntax:
-        if (Gdx.input.justTouched()) {
-            if(Gdx.input.x &lt; 640 ) { handler.showAds(true) }
-            else { handler.showAds(false) }
-        }
-... it will do " if left screen half touched then show banner, if right side touched then hide banner. Screen of testing device is 1280*720px. 1280/2=640px
+<br> add to top of <marker>override fun render()</marker> method body new syntax:
+<codebox>
+    if (Gdx.input.justTouched()) {
+    <bin>1</bin>    if(Gdx.input.x &lt; 640 ) { handler.showAds(true) }
+    <bin>1</bin>    else { handler.showAds(false) }
+    <bin>0</bin>}
+</codebox>
+... it will do "if left screen half touched then show banner, if right side touched then hide banner". Screen of testing device is 1280*720px. 1280/2=640px
 <hr>
-+ 11 - modify "AndroidLauncher.kt"
-
-add next imports on top. (It can be added semiautomatic later uses IDEA function - caret positioning to unresolved type and "Alt+Enter" key press):
+11 - modify <marker>AndroidLauncher.kt</marker> :
+<br> 
+<br> add next imports on top. (It can be added semiautomatic later uses IDEA function - caret positioning to unresolved type and <terminal>Alt+Enter</terminal> keys press):
+<codebox>
 import android.os.Handler
-import android.os.Message
-import android.util.Log
-import android.view.View
-import android.widget.RelativeLayout
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
+<br> import android.os.Message
+<br> import android.util.Log
+<br> import android.view.View
+<br> import android.widget.RelativeLayout
+<br> import com.google.android.gms.ads.AdListener
+<br> import com.google.android.gms.ads.AdRequest
+<br> import com.google.android.gms.ads.AdSize
+<br> import com.google.android.gms.ads.AdView
+</codebox>
 
-add AdHandler interface to AndroidLauncher class declaration:
-class AndroidLauncher : AndroidApplication(), AdHandler {
+<br> add AdHandler interface to AndroidLauncher class declaration:
+<codebox>class AndroidLauncher : AndroidApplication(), AdHandler {</codebox>
 
-add new property "adView" to class AndroidLauncher:
-protected var adView: AdView? = null
+<br> add new property "adView" to class AndroidLauncher:
+<codebox>protected var adView: AdView? = null</codebox>
 
-next string create construction which will handler for manipulate adView state:
+<br> next string create construction which will be handler for manipulate <marker>adView</marker> state:
+<codebox>
     private val SHOW_ADS = 1
-    private val HIDE_ADS = 0
-    internal var myhandler: Handler = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            when (msg.what) {
-                SHOW_ADS -&gt; adView!!.visibility = View.VISIBLE
-                HIDE_ADS -&gt; adView!!.visibility = View.GONE
-            }
-        }
-    }
-it will interact with "showAds(show:Boolean)" method of "AdHandler" interface
-
-change code of "override fun onCreate(savedInstanceState: Bundle?) {}" method body to:
-        super.onCreate(savedInstanceState)
-
-        val layout = RelativeLayout(this)
-        val config = AndroidApplicationConfiguration()
-        val gameView = initializeForView(DemoAdmobKotlin(this), config)
-        layout.addView(gameView)
-
-
-        adView = AdView(this)
-
-        adView!!.adListener = object : AdListener() {
-            override fun onAdLoaded() {
-                val visibility = adView!!.visibility
-                adView!!.visibility = View.GONE
-                adView!!.visibility = visibility
-                Log.i(TAG, "Ad Loaded ...")
-            }
-        }
-        adView!!.adSize = AdSize.SMART_BANNER
-        adView!!.adUnitId = "ca-app-pub-3940256099942544/6300978111"
-
-        val builder = AdRequest.Builder()
-        val adParams = RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        )
-        layout.addView(adView, adParams)
-        adView!!.loadAd(builder.build())
-        setContentView(layout)
+    <bin>0</bin>private val HIDE_ADS = 0
+    <bin>0</bin>internal var myhandler: Handler = object : Handler() {
+    <bin>1</bin>    override fun handleMessage(msg: Message) {
+    <bin>2</bin>        when (msg.what) {
+    <bin>3</bin>            SHOW_ADS -&gt; adView!!.visibility = View.VISIBLE
+    <bin>3</bin>            HIDE_ADS -&gt; adView!!.visibility = View.GONE
+    <bin>2</bin>        }
+    <bin>1</bin>    }
+    <bin>0</bin>}
+</codebox>
+it will interact with <marker>showAds(show:Boolean)</marker> method of <marker>AdHandler</marker> interface
+<br>
+<br> change code of <marker>override fun onCreate(savedInstanceState: Bundle?) {}</marker> method body to:
+<codebox>
+    super.onCreate(savedInstanceState)
+    <bin>0</bin>
+    <bin>0</bin>val layout = RelativeLayout(this)
+    <bin>0</bin>val config = AndroidApplicationConfiguration()
+    <bin>0</bin>val gameView = initializeForView(DemoAdmobKotlin(this), config)
+    <bin>0</bin>layout.addView(gameView)
+    <bin>0</bin>
+    <bin>0</bin>adView = AdView(this)
+    <bin>0</bin>
+    <bin>0</bin>adView!!.adListener = object : AdListener() {
+    <bin>1</bin>    override fun onAdLoaded() {
+    <bin>2</bin>        val visibility = adView!!.visibility
+    <bin>2</bin>        adView!!.visibility = View.GONE
+    <bin>2</bin>        adView!!.visibility = visibility
+    <bin>2</bin>        Log.i(TAG, "Ad Loaded ...")
+    <bin>1</bin>    }
+    <bin>0</bin>}
+    <bin>0</bin>adView!!.adSize = AdSize.SMART_BANNER
+    <bin>0</bin>adView!!.adUnitId = "ca-app-pub-3940256099942544/6300978111"
+    <bin>0</bin>
+    <bin>0</bin>val builder = AdRequest.Builder()
+    <bin>0</bin>val adParams = RelativeLayout.LayoutParams(
+    <bin>1</bin>        RelativeLayout.LayoutParams.WRAP_CONTENT,
+    <bin>1</bin>        RelativeLayout.LayoutParams.WRAP_CONTENT
+    <bin>0</bin>)
+    <bin>0</bin>layout.addView(adView, adParams)
+    <bin>0</bin>adView!!.loadAd(builder.build())
+    <bin>0</bin>setContentView(layout)
+</codebox>
 ...this create relative layout and add separeted game view and banner view above game view, configure banner parameters and addon to banner object message "Ad Loaded" and visibility behavior/control commands
-
-add overriden "showAds" method implementation to AndroidLauncher class:
+<br> 
+<br> add overriden <marker>showAds</marker> method implementation to AndroidLauncher class:
+<codebox>
     override fun showAds(show:Boolean) {
-        if(show) {
-            myhandler.sendEmptyMessage(SHOW_ADS)
-        }else{
-            myhandler.sendEmptyMessage(HIDE_ADS)
-        }
-    }
+    <bin>1</bin>    if(show) {
+    <bin>2</bin>        myhandler.sendEmptyMessage(SHOW_ADS)
+    <bin>1</bin>    }else{
+    <bin>2</bin>        myhandler.sendEmptyMessage(HIDE_ADS)
+    <bin>1</bin>    }
+    <bin></bin>}
+</codebox>
 
-add companion object to AndroidLauncher class:
+<br> add companion object to AndroidLauncher class:
+<codebox>
     companion object {
-        private val TAG = "AndroidLauncher"
-    }
-... this part(companion object) was in  originally java tutorial by "Brent Aureli's - Code School" youtube video result, converted to kotlin uses IDEA, and need only in "Log.i(TAG, "Ad Loaded ...")" and look's like can be replaced by strait using String. But not tested at this moment : )
+    <bin>1</bin>    private val TAG = "AndroidLauncher"
+    <bin>0</bin>}
+</codebox>
+... this part(companion object) was in originally java tutorial by "Brent Aureli's - Code School" youtube video result, converted to kotlin uses IDEA, used only in <marker>Log.i(TAG, "Ad Loaded ...")</marker> and look's like can be replaced by strait using String. But not tested at this moment : )
 <hr>
 Done.
-Now run-android again and show banner with hide/show controls depend of screen touch side right/left
+<br> Now <terminal>run-android</terminal> again and test banner with hide/show controls depend of screen touch side right/left
