@@ -272,7 +272,9 @@ data=[
 ];db.push(data);
 data=[
     [false,"lvl"],
-    ["pixiv","https://www.pixiv.net/member.php?id=5176060"]
+    ["pixiv","https://www.pixiv.net/member.php?id=5176060"],
+    ["deviantart","https://www.deviantart.com/lvlapple/"],
+    ["picarto","https://picarto.tv/lvl"]
 ];db.push(data);
 data=[
     [false,"calm / calmdraws"],
