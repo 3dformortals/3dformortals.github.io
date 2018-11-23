@@ -41,14 +41,14 @@
         <br>-- ctrl+alt+t (open terminal)
         <br>-- terminal <codebox>xrandr</codebox> Enter, and save the device name <codebox>HDMI-0</codebox> or <codebox>eDP-1</codebox> etc . In my case my device name is <codebox>HDMI-0</codebox>
         <br>-- terminal <codebox>cvt 1900 800</codebox> or any you want use (my monitor 2560x1080 and i want close 1900x800), Enter
-        <br>-- copy Modeline value, in my case this <codebox>"1904x800_60.00"  124.25  1904 2008 2200 2496  800 803 813 831 -hsync +vsync</codebox>
-        <br>-- terminal <codebox>sudo xrandr --newmode "1904x800_60.00"  124.25  1904 2008 2200 2496  800 803 813 831 -hsync +vsync</codebox> Enter (sudo xrandr --newmode your_modeline_value)
-        <br>-- terminal <codebox>sudo xrandr --addmode HDMI-0 "1904x800_60.00"</codebox> Enter (sudo xrandr --addmode your_device_name your_new_mode_name).
+        <br>-- copy Modeline value, in my case this <codebox>"1904x800_60.00"  124.25  1904 2008 2200 2496  800 803 813 831 -hsync +vsync</codebox> , and recommended cut the <codebox>_60.00</codebox> part, at least because it crush any regex patterns of development tools based on java. Like libgdx desktop application etc
+        <br>-- terminal <codebox>sudo xrandr --newmode "1904x800"  124.25  1904 2008 2200 2496  800 803 813 831 -hsync +vsync</codebox> Enter (sudo xrandr --newmode your_modeline_value)
+        <br>-- terminal <codebox>sudo xrandr --addmode HDMI-0 "1904x800"</codebox> Enter (sudo xrandr --addmode your_device_name your_new_mode_name).
         <br>Now you can set new resolution in display settings. If you want that ubuntu gnome save this resolution after next start
         <br>-- terminal <codebox>gedit ~/.profile</codebox> Enter (this open text editor)
         <br>-- add to the end of file strings
-        <codebox><br>xrandr --newmode "1904x800_60.00"  124.25  1904 2008 2200 2496  800 803 813 831 -hsync +vsync
-        <br>xrandr --addmode HDMI-0 "1904x800_60.00"</codebox> , and save file <codebox>ctrl+s</codebox>.
+        <codebox><br>xrandr --newmode "1904x800"  124.25  1904 2008 2200 2496  800 803 813 831 -hsync +vsync
+        <br>xrandr --addmode HDMI-0 "1904x800"</codebox> , and save file <codebox>ctrl+s</codebox>.
         
         <hr><li id="c4"><a href="#c0">readme.md edit with preview</a></li>
         - builder - UG - SC<br>click markdown text -> split screen -> preview as HTML
