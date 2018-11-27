@@ -1,0 +1,40 @@
+<hr><li id="c2"><a href="#c0">if something go wrong</a></li>
+If project work done yesterday, but today it crush without any reason with error or without, for example compiler just can't found main class, which is on place, after code was converted from <marker>Java</marker> to <marker>Kotlin</marker>, or any other strange behavior/situation, then next actions can be used that solve the issue, but no guarantee.
+<br>
+<br> [2018]
+<br>
+<br>Strongly recommended for berinners:
+<codeout>
+- <terminal>make full copy of project</terminal>
+<codeout>
+    before any manipulation (if your code is not only testing scrap) , this allow safe time and health sometimes
+</codeout>
+<br> - <terminal>try always use stable versions of IDE</terminal>
+<codeout>
+    <eterminal>idea EAP</eterminal> and <eterminal>anst canary</eterminal> etc is bad way for beginner, because it is 99% romantic adventure for pro.
+</codeout>
+<br> - <terminal>try to open with another IDE</terminal>
+<codeout>
+    for example if <marker>idea</marker> fail then use <marker>anst</marker>. In 2018 this allow detect silent fail with <marker>idea</marker> , with default libGDX 1.9.8 project , because only <marker>anst</marker> show message about deprecation of <terminal>minSdk</terminal> and <terminal>targetSdk</terminal> declaration inside <marker>AndroidManifest.xml</marker> file of libGDX project, created uses released stable version of <marker>jdx-setup.jar</marker> official tool. Gradle (android section) file have settings for <terminal>minSdk</terminal> and <terminal>targetSdk</terminal> parameters.
+</codeout>
+</codeout>
+
+<br> - delete <marker>AndroidManifest.xml</marker> tag with <terminal>minSdk</terminal> and <terminal>targetSdk</terminal> declaration
+<codeout>android gradle have similar settings, and xml tag deprecated, but <marker>idea</marker> can not show you notification about this, which you can see inside <marker>anst</marker></codeout>
+
+<br> - choose <terminal>REMIND ME TOMORROW</terminal>
+<codeout>when <marker>anst</marker> , at first project opening, ask you once about <marker>stroungly recommended update</marker> for gradle plugin, because this is very good update, <eterminal>OR YOUR PROJECT WILL BE BROKEN</eterminal> without any fast recover actions</codeout>
+
+<br> - <terminal>File -&gt; invalidate Caches/Restart...</terminal> inside <marker>anst</marker> or <marker>idea</marker>
+<codeout>
+    Process need some time (all will be cleaned and rebuilded) and, for example, can solve situation when, after recoding from <marker>Java</marker> to <marker>Kotlin</marker>, your correct project without errors fail in time of <terminal>Run -&gt; DesktopLauncher</terminal> command, with error <eterminal>can't found main class</eterminal> etc . <br> Funally you need recreate <marker>desktop</marker> runnable configuration, usual way from official <marker>libgdx</marker> <a href="https://libgdx.badlogicgames.com/documentation/gettingstarted/Running%20and%20Debugging.html#running-desktop-project-in-intellij-android-studio" target="_blank">site tutorial</a> . That create runnable configuration use <terminal>Run -&gt; Edit Configurations... -&gt; + -&gt; Application</terminal>
+    <br><img class="h200px" src="img/libgdx/201811271954_idea_desktop_runnable.png">
+</codeout>
+
+<br> - <terminal>Tools -&gt; Kotlin -&gt; Configure Kotlin Plugin Updates</terminal> inside <marker>anst</marker> or <marker>idea</marker>
+<codeout>
+    You can update, and see <marker>Kotlin</marker> version number. For example <marker>1.3.10</marker>-release-IJ2018.2-1 , that use it later for compare/change with <marker>build.gradle</marker> project level file settings:
+    <br> <img class="h200px" src="img/libgdx/201811271914_idea_kotlin_version.png">
+</codeout>
+
+<br> - <terminal>File -&gt; Settings... -&gt; Build, Execution, Deployment -&gt; Compiler -&gt; Kotlin Compiler</terminal> change <marker>target JVM version</marker> from 1.6 to 1.8 . Theoretically, if this not break something, then it can allow some new language opportunities
