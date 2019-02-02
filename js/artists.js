@@ -194,8 +194,9 @@ data=[
     ["twitter","https://twitter.com/akisukarasu"]
 ];db.push(data);
 data=[
-    [false,"munio / munioworld (careful, real insane theme, but artist can drawing good)"],
-    ["web","http://munioworld.muvc.net/index.html"]
+    [false,"munio / munioworld / むにお (careful, real insane theme, but artist can drawing good)"],
+    ["web","http://munioworld.muvc.net/index.html"],
+    ["pixiv","https://www.pixiv.net/member.php?id=3143635"]
 ];db.push(data);
 data=[
     [false,"sakimichan / sushi"],
