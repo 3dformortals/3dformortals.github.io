@@ -8,12 +8,13 @@ var data;
 // data=[];db.push(data);
 // data=[[false,""],["",""]];db.push(data);
 
-// data=[
-//     [false,"DYTM / Dont You Tell Me / I do not mind (DYTM)"],
-//     ["web","https://fantia.jp/fanclubs/4570"],
-//     ["twitter","https://twitter.com/DYTM_"],
-//     ["pixiv","https://www.pixiv.net/member.php?id=1773262"]
-// ];db.push(data);
+data=[
+    [false,"煙ハク / kemuri haku / smoke organ / smoke haku"],
+    ["twitter","https://twitter.com/kemuri_haku"],
+    ["pixiv","https://www.pixiv.net/member.php?id=3720688"],
+    ["web","http://kemurihaku.blog.fc2.com/"],
+    ["web","https://fantia.jp/fanclubs/11620"]
+];db.push(data);
 data=[
     [true,"DeT0mass0 / detomasso / Tom"],
     ["web","https://www.detomasso.net/"],
