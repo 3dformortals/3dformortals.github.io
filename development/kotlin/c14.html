@@ -34,10 +34,10 @@
     <br> var mMapAA<terminal>:MutableMap&lt;Any, Any&gt; = mutableMapOf()</terminal> //{ } any type declaration
     <br>
     <br> /*add to mutable map element from other mutable map */
-    <br> val map:MutableMap<String, String> = mutableMapOf()
-    <br> val map1 = mutableMapOf<String, String>("test1" to "value1")
-    <br> val map2 = mutableMapOf<String, String>("test2" to "value2", "test3" to "value3")
-    <br> val map3 = mutableMapOf<String, String>("test4" to "value4", "test5" to "value5")
+    <br> val map:MutableMap&lt;String, String&gt; = mutableMapOf()
+    <br> val map1 = mutableMapOf&lt;String, String&gt;("test1" to "value1")
+    <br> val map2 = mutableMapOf&lt;String, String&gt;("test2" to "value2", "test3" to "value3")
+    <br> val map3 = mutableMapOf&lt;String, String&gt;("test4" to "value4", "test5" to "value5")
     <br> //<eterminal>map.put("test1", map1["test1"])</eterminal> //error
     <br> map.put("test1", map1["test1"]!!) //correct dirty, can throw exception, if map1 have no "test1" key
     <br> map.put("test1", map1["test1"] ?: "") //correct with default empty string "" as value, if map1 have no "test1" key
