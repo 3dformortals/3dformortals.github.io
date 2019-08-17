@@ -42,5 +42,5 @@
     <br> map.put("test1", map1["test1"]!!) //correct dirty, can throw exception, if map1 have no "test1" key
     <br> map.put("test1", map1["test1"] ?: "") //correct with default empty string "" as value, if map1 have no "test1" key
     <br> for ((key,value) in map2) map.put("new_"+key, value) //correct and clean, no need use <terminal>?:</terminal> or <terminal>!!</terminal>
-    <br> for ((key,value) in map3) map["new_"+key] = value) //correct and clean, no need use <terminal>?:</terminal> or <terminal>!!</terminal>
+    <br> for ((key,value) in map3) map["new_"+key] = value //correct and clean, no need use <terminal>?:</terminal> or <terminal>!!</terminal>
 </codebox>
