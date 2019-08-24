@@ -101,12 +101,25 @@ a:active{color:#e8e0ba;text-decoration: none;}
 .steps li:hover:before{box-shadow: 0 0 0 10px rgba(39,144,196,.8)}
 .steps li:last-child:after {content: none;}
 
-div.code{
-  border:3px dotted;
+div.codebox{
+  border-width:1px;
+  border-style:solid solid none;
   border-radius:10px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   padding:10px;
   padding-left: 2em;
+  padding-bottom:20px;
 }
+div.codeout{
+  border-width:3px ;
+  border-style:double double ;
+  border-radius:10px;
+  padding:10px;
+  padding-left: 4em;
+  margin-top:-10px;
+}
+
 
 img.h200px{max-height: 200px;}
 
@@ -120,6 +133,7 @@ marker{
   border: 1px solid #bae8c1;
   border-radius: 4px;
   padding:2px;
+  background: black;
 }
 terminal{
   color: #E3DEDC;

@@ -27,7 +27,7 @@ function textindent(text){
     var tags = el.getElementsByTagName("codebox");
     for (var i=0;i<tags.length;i++){
         var div = document.createElement('div');
-        div.className = "code";
+        div.className = "codebox";
         div.title = "code";
         var tag = tags[i];
         var text = tag.innerHTML;
@@ -39,7 +39,7 @@ function textindent(text){
     var tags = el.getElementsByTagName("codeout");
     for (var i=0;i<tags.length;i++){
         var div = document.createElement('div');
-        div.className = "code";
+        div.className = "codeout";
         div.title = "output";
         var tag = tags[i];
         var text = tag.innerHTML;
