@@ -1,0 +1,24 @@
+<hr><li id="c11"><a href="#c0">filter dict of dicts by value of dicts members with same key</a></li>
+<codebox>
+    od=dict()
+    <br> od['a']=dict()
+    <br> od[2]=dict()
+    <br> od[3]=dict()
+    <br> <marker>od</marker>
+    <codeout> {'a': {}, 2: {}, 3: {}} </codeout>
+    od['a']['value']='40'
+    <br> od[2]['value']='20'
+    <br> od[3]['value']='80'
+    <br> <marker>'80' &gt; '40'</marker>
+    <codeout> True </codeout>
+    <marker>'80' &lt; '40'</marker>
+    <codeout> False </codeout>
+    <terminal>[s for s in sorted(od.items(), key=lambda k_v: k_v[1]['value'])]</terminal>
+    <codeout> [(2, {'value': '20'}), ('a', {'value': '40'}), (3, {'value': '80'})] </codeout>
+    import operator
+    <br> <terminal>sorted(od.items(),key=lambda x:operator.getitem(x[1],'value'))</terminal>
+    <codeout> [(2, {'value': '20'}), ('a', {'value': '40'}), (3, {'value': '80'})] </codeout>
+    <marker>od</marker>
+    <codeout> {'a': {'value': '40'}, 2: {'value': '20'}, 3: {'value': '80'}} </codeout>
+</codebox>
+<!-- <codebox>codebox</codebox> <terminal>terminal</terminal> <eterminal>eterminal</eterminal> <marker>marker</marker> <codeout>codeout</codeout> -->
