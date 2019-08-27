@@ -447,16 +447,13 @@ data=[
 data=[
     [false,"sciamano240 / mirkovich2 / mirco cabbia"],
     ["deviantart","https://sciamano240.deviantart.com/"],
-    ["artstation","https://mircosciamart.artstation.com/"],
-    ["artstation","https://www.artstation.com/mircosciamart"],
     ["email","mailto:newmirco@gmail.com"],
-    ["facebook","https://www.facebook.com/artMircoCabbia"],
-    ["twitter","https://twitter.com/mircosciamart"],
-    ["patreon","https://www.patreon.com/artMircoCabbia"],
-    ["tumblr","http://mircosciamart.tumblr.com/"],
-    ["instagram","https://www.instagram.com/mircosciamart/"],
-    ["web","https://www.redbubble.com/people/mircosciamart"],
-    ["web","https://gumroad.com/mircosciamart"]
+    ["facebook","https://www.facebook.com/sciamano240/"],
+    ["twitter","https://twitter.com/sciamano240"],
+    ["patreon","https://www.patreon.com/sciamano240"],
+    ["tumblr","https://sciamano240.tumblr.com/"],
+    ["instagram","https://www.instagram.com/sciamano240/"],
+    ["web","https://gumroad.com/sciamano240"]
 ];db.push(data);
 data=[
     [false,"olga narhova / prywinko / prywinko art / perovy / iprywinko"],
