@@ -1,0 +1,24 @@
+<hr><li id="c9"><a href="#c0">create package in subfolder of script.py level(script.py folder)</a></li>
+- create subfolder inside <marker>script.py</marker> folder level, with name f.e. <marker>package</marker> and inside this new <marker>package</marker> folder create file named <marker>packagescript.py</marker> or other allowed name with code:
+<codebox>
+    def packageFunction(): Print("test text")
+</codebox>
+- create file named <terminal>__init__.py</terminal> ( NOT <eterminal>_init_.py</eterminal> ) inside folder <marker>package</marker> with code:
+<codebox>
+    from .package import packageFunction
+</codebox>
+- add next syntax to <marker>script.py</marker>:
+<codebox>
+    import package
+    <br> package.packageFunction()
+</codebox>
+now <marker>script.py</marker> execution will print:
+<codeout>test text</codeout>
+Finally file structure can be similar as:
+<codebox>
+    /home/user/script.py
+    <br> /home/user/package/<terminal>__init__.py</terminal>
+    <br> /home/user/package/packagescript.py
+</codebox>
+
+<!-- <codebox>codebox</codebox> <terminal>terminal</terminal> <eterminal>eterminal</eterminal> <marker>marker</marker> <codeout>codeout</codeout> -->

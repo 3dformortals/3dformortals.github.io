@@ -1,0 +1,8 @@
+<hr><li id="c8"><a href="#c0">get script.py path(way to folder) of server environment</a></li>
+<codebox>
+    from pathlib import Path  # for detect script place
+    <br> path = Path(__file__).parent.absolute()  # detect script place
+    <br> pathString = str(path)  # convert to string. Can be used too in open()
+</codebox>
+
+<!-- <codebox>codebox</codebox> <terminal>terminal</terminal> <eterminal>eterminal</eterminal> <marker>marker</marker> <codeout>codeout</codeout> -->

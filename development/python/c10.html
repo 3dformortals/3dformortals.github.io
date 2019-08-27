@@ -1,0 +1,12 @@
+<hr><li id="c10"><a href="#c0">read -&gt; erase all -&gt; write text to one file</a></li>
+No way to do this compact and easy in one operation. Easiest way is:
+<codebox>
+    file = open("way/to/file.txt","r") # open for read
+    <br> text = file.read() # read all file as text
+    <br> file.close()
+    <br> file = open("way/to/file.txt","w") # open(create new if no file) for write + erase all text from file if file not empty
+    <br> file.write("new text\n"+text)
+    <br> file.close()
+</codebox>
+
+<!-- <codebox>codebox</codebox> <terminal>terminal</terminal> <eterminal>eterminal</eterminal> <marker>marker</marker> <codeout>codeout</codeout> -->
