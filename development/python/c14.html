@@ -1,0 +1,10 @@
+<hr><li id="c14"><a href="#c0">slice dict</a></li>
+<codebox>
+    import itertools
+    <br> d = {1: 11, 2: 22, 3: 33, 4: 44}
+    <br> <terminal>dict(itertools.islice(d.items(),3))</terminal>
+    <codeout>{1: 11, 2: 22, 3: 33}</codeout>
+    <terminal>dict(itertools.islice(d.items(),100))</terminal>
+    <codeout>{1: 11, 2: 22, 3: 33, 4: 44}</codeout>
+</codebox>
+<!-- <codebox>codebox</codebox> <terminal>terminal</terminal> <eterminal>eterminal</eterminal> <marker>marker</marker> <codeout>codeout</codeout> -->
