@@ -1,0 +1,8 @@
+<hr><li id="c12"><a href="#c0">get key of dict by value of nested(internal/child) dict</a></li>
+<codebox>
+    d= {0: {'key': 'abc'}, 1: {'key': 'abd'}, 2: {'key': 'abe'}, 3: {'key': 'abf'}}
+    <br> [dkey for dkey in d.keys() if d[dkey]["key"]=="abe"][0]
+</codebox>
+<codeout>2</codeout>
+
+<!-- <codebox>codebox</codebox> <terminal>terminal</terminal> <eterminal>eterminal</eterminal> <marker>marker</marker> <codeout>codeout</codeout> -->
