@@ -13,11 +13,15 @@
     <codeout> True </codeout>
     <marker>'80' &lt; '40'</marker>
     <codeout> False </codeout>
+    # sort dict to list of tuples
     <terminal>[s for s in sorted(od.items(), key=lambda k_v: k_v[1]['value'])]</terminal>
     <codeout> [(2, {'value': '20'}), ('a', {'value': '40'}), (3, {'value': '80'})] </codeout>
+    # sort dict to dict
+    <terminal>dict( [s for s in sorted(od.items(), key=lambda k_v: k_v[1]['value'])] )</terminal>
+    <codeout>{2: {'value': '20'}, 'a': {'value': '40'}, 3: {'value': '80'}}</codeout>
     import operator
-    <br> <terminal>sorted(od.items(),key=lambda x:operator.getitem(x[1],'value'))</terminal>
-    <codeout> [(2, {'value': '20'}), ('a', {'value': '40'}), (3, {'value': '80'})] </codeout>
+    <br> <terminal>dict( sorted(od.items(),key=lambda x:operator.getitem(x[1],'value')) )</terminal>
+    <codeout> {2: {'value': '20'}, 'a': {'value': '40'}, 3: {'value': '80'}} </codeout>
     <marker>od</marker>
     <codeout> {'a': {'value': '40'}, 2: {'value': '20'}, 3: {'value': '80'}} </codeout>
 </codebox>
