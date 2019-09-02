@@ -1,0 +1,44 @@
+<hr><li id="c4"><a href="#c0">libGDX Kotlin client: parsing <marker>JSON</marker> created on <marker>python&nbsp;server</marker> side</a></li>
+python 3 server side syntax: create dict of dicts -&gt; json text
+<codebox>
+    import json
+    <br> d = dict()  # empty dictionary
+    <br> team1 = {"name":"team1","points":"10"}  # nested dictionary
+    <br> team2 = {"name":"team2","points":"20"} 
+    <br> d["first"]=team1
+    <br> d["second"]=team2
+    <br> d["teamKeys"]=" ".join(list(d.keys()))  # collect keys into dict item, that later comfort iterate on libGDX client side
+    <br> jsonText = json.dumps(d)  # convert python dict into json syntax string
+    <br> <marker>d</marker>
+    <codeout>{'first': {'name': 'team1', 'points': '10'}, 'second': {'name': 'team2', 'points': '20'}, 'teamKeys': 'first second'}</codeout>
+    <marker>jsonText</marker>
+    <codeout>'{"first": {"name": "team1", "points": "10"}, "second": {"name": "team2", "points": "20"}, "teamKeys": "first second"}'</codeout>
+    <marker>type(d)</marker>
+    <codeout>&lt;class 'dict'&gt;</codeout>
+    <marker>type(jsonText)</marker>
+    <codeout>&lt;class 'str'&gt;</codeout>
+</codebox>
+libGDX kotlin syntax: parsing JSON text
+<codebox>
+    //imports section
+    <br> import com.badlogic.gdx.utils.JsonReader
+    <br> import com.badlogic.gdx.utils.JsonValue
+    <br>
+    <br> //method syntax.
+    <br> /* We have jsonText:String variable with python server response */
+    <br> val jsonReader = JsonReader() /*create reader instance*/
+    <br> val jsonParsed = jsonReader.parse(jsonText) /*parse jsonText to libGDX JSON object*/
+    <br> val teamKeys = jsonParsed.getString("teamKeys").split(" ") /*output will List&lt;String&gt;*/
+    <br> for (key in teamKeys){
+        <bin>1</bin> val team = jsonParsed.get(key)
+        <bin>1</bin> val name = team['name'].asString()
+        <bin>1</bin> val points = team['points'].asString()
+        <bin>1</bin> println(name + " have " + points + " points")
+    <br> }
+</codebox>
+<codeout>
+    team1 have 10 points
+    <br> team2 have 20 points
+</codeout>
+
+<!-- <codebox>codebox</codebox> <terminal>terminal</terminal> <eterminal>eterminal</eterminal> <marker>marker</marker> <codeout>codeout</codeout> -->
