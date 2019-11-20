@@ -10,6 +10,10 @@
     font-family: "RBM";
     src: url("RobotoMono-Regular.ttf");
     }
+  @font-face {
+    font-family: "YEAR";
+    src: url("calculatorNumbers.ttf");
+    }
       
 body { font-family: "VAR";font-size: 16; background:black; color:#bae8c1; line-height: 2;}
 code { font-family: "VAM";font-size: 16; }
@@ -169,4 +173,8 @@ in{
 }
 bin{
   color:black;
+}
+year{
+  color:#bae8c188;
+  font-family: "YEAR";
 }
