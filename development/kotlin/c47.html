@@ -1,0 +1,14 @@
+<hr><li id="c47"><a href="#c0">getter | <terminal>get()</terminal> | additional functionality of get value process</a></li>
+<a href="https://kotlinlang.org/docs/reference/properties.html#getters-and-setters" target="_blank">weblink</a>
+<hr>
+One shot <terminal>Boolean</terminal> return <terminal>true</terminal>, and then return always <terminal>false</terminal> :
+Uses executing additional actions:
+<codebox>
+    var once: Boolean = true
+    <bin>1</bin> get() = field.also { field = false }
+</codebox>
+Uses <terminal>when</terminal> construction:
+<codebox>
+    var once: Boolean = true
+    <bin>1</bin> get() = when{ field -&gt;{ beforeMatch = false; true } else -> false }
+</codebox>

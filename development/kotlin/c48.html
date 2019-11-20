@@ -1,0 +1,37 @@
+<hr><li id="c46"><a href="#c0"><terminal>object</terminal></a></li>
+<terminal>object</terminal> is a slight modification of some class instance, without explicitly declaring a new subclass for it, or separated object with properties.
+<a href="https://kotlinlang.org/docs/reference/object-declarations.html" target="_blank">weblink</a>
+<hr>
+Just an <terminal>object</terminal> :
+<codebox>
+    fun main(args:Array<String>){
+    <bin>1</bin>    val testobj = <terminal>object</terminal> { <terminal>val</terminal> i:Int = 1; <terminal>var</terminal> d:Double = 2.0 }
+    <bin>1</bin>    println("testobj.i=${testobj<terminal>.i</terminal>} testobj.d=${testobj<terminal>.d</terminal>}") //testobj.i=1 testobj.d=2.0
+    <bin>0</bin>}
+</codebox>
+<hr>
+From class with constructor, parameters must be passed to it:
+<codebox>
+    open class testClass(val x:Int){ public open val testProperty:Int = x }
+    <br> var aobj:testClass = <terminal>object : testClass( 8 )</terminal>{ override val testProperty = 16 }
+    <br> println(aobj.testProperty) //16
+</codebox>
+<a href="https://kotlinlang.org/docs/reference/object-declarations.html#object-expressions" target="_blank">Many supertypes</a> ( <terminal>class</terminal> , <terminal>interface</terminal> , <terminal>interface</terminal> ) may be specified as a comma-separated list after the colon.
+<hr>
+As <a href="https://kotlinlang.org/docs/reference/object-declarations.html#object-declarations" target="_blank"><terminal>object</terminal> declaration</a>, which cannot be used on the right hand side of an assignment statement and can't be local (i.e. be nested directly inside a function), but they can be nested into other object declarations or non-inner classes.
+<codebox>
+    <terminal>object</terminal> testObject{
+    <bin>1</bin>     fun testFun(){ println( "testFun complete" ) }
+    <bin>1</bin>     val testProperty:Int = 55
+    <bin>0</bin> }
+    <bin>0</bin> 
+    <bin>0</bin> fun main(args:Array<String>){
+    <bin>1</bin>     testObject.testFun() //testFun complete
+    <bin>1</bin>     println( testObject.testProperty ) //55
+    <bin>1</bin>     
+    <bin>1</bin>     // <eterminal>object</eterminal> localTestObject{ val testProperty:Int = 55 } //error , object declaration can't be local
+    <bin>0</bin> }
+</codebox>
+<hr>
+<a href="https://kotlinlang.org/docs/reference/object-declarations.html#object-expressions" target="_blank">Anonymous objects</a> can be used as types only in local and private declarations.
+<br><a href="https://kotlinlang.org/docs/reference/object-declarations.html#companion-objects"><terminal>companion object</terminal></a> members can be called by using simply the class name as the qualifier.
