@@ -10,5 +10,5 @@ One shot <terminal>Boolean</terminal> return <terminal>true</terminal>, and then
 Uses <terminal>when</terminal> construction:
 <codebox>
     var once: Boolean = true
-    <bin>1</bin> get() = when{ field -&gt;{ beforeMatch = false; true } else -> false }
+    <bin>1</bin> get() = when{ field -&gt;{ once = false; true } else -> field }
 </codebox>
