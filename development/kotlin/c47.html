@@ -4,11 +4,16 @@
 One shot <terminal>Boolean</terminal> return <terminal>true</terminal>, and then return always <terminal>false</terminal> :
 <br> Uses executing additional actions:
 <codebox>
-    var once: Boolean = true
+    var once = true
     <bin>1</bin> get() = field.also { field = false }
 </codebox>
 Uses <terminal>when</terminal> construction:
 <codebox>
     var once: Boolean = true
     <bin>1</bin> get() = when{ field -&gt;{ once = false; true } else -> field }
+</codebox>
+Uses <terminal>field</terminal> only:
+<codebox>
+    var once = true
+    <bin>1</bin> get() = when{ field -&gt;{ field = false; true } else -> field }
 </codebox>
