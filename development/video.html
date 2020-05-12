@@ -20,6 +20,7 @@
         <li><a class="up" href="#c1" >short names</a></li>
         <li><a class="up" href="#c2" >kdenlive &rarr; move and scale png</a></li>
         <li><a class="up" href="#c3" >kdenlive reverse clip</a></li>
+        <li><a class="up" href="#c4" >ffmpeg change container that embed into web</a></li>
         <!--<li><a class="up" href="#c" ></a></li>-->
     </ol>
     <ol class="cover">
@@ -39,6 +40,10 @@
     
     <hr><li id="c3"><a href="#c0">kdenlive reverse clip</a></li>
     Clip jobs -&gt; duplicate clip with speed change -&gt; -100%
+    
+    <hr><li id="c4"><a href="#c0">ffmpeg change container that embed into web</a></li>
+    <terminal>ffmpeg -i vid.mkv -c copy vid.mp4</terminal> . Fast, looks like no need recoding.
+    <terminal>mkv</terminal> to <terminal>webm</terminal> fail when tested, some of container restrictions. Looks like needed recoding
     
     <!--<hr><li id="c"><a href="#c0">covertext</a></li><pre><code class="haxe"></code></pre>-->
     </ol>
