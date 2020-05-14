@@ -14,12 +14,10 @@
     <body>
             <script src="css/switchfont/switchfont.js"></script><br>
     <a class="up" id="c0" href="index.html">development &lt;&lt;&lt; design</a>
-    <br>
-    <a href="#gimp_planet_gas">gimp draw gas planet</a> |
-    <a href="#gimp_planet_rings">gimp draw planetary rings</a> |
-    <a href="#gimp_nebula_starspace">gimp draw nebula star space</a> |
     <hr>
-    <a href="inkscape.html" target="_blank">inkscape</a>
+    | <a href="inkscape.html" target="_blank">inkscape</a>
+    | <a href="gimp.html" target="_blank">gimp</a>
+    | <a href="krita.html" target="_blank">krita</a>
     <hr>
     COLORS
     
@@ -40,7 +38,7 @@
     <br><div class="colorbox" style="background:rgb(255, 0, 255);" ></div> #ff00ff rgb(255, 0, 255);
     <br><div class="colorbox" style="background:rgb(200, 200, 200);" ></div> #c8c8c8 rgb(200, 200, 200);
     <hr>
-    <img class="h200px" src="img/beachline.png" >
+    <img class="h200px" src="img/design/beachline.png" >
     <br><div class="colorbox" style="background:rgb(0, 80, 255);" ></div> #0050ff rgb(0, 80, 255);
     <br><div class="colorbox" style="background:rgb(0, 157, 255);" ></div> #009dff rgb(0, 157, 255);
     <br><div class="colorbox" style="background:rgb(0, 255, 255);" ></div> #00ffff rgb(0, 255, 255);
@@ -53,228 +51,6 @@
     <br><div class="colorbox" style="background:rgb(255, 202, 101);" ></div> #ffca65 rgb(255, 202, 101);
     <!--<hr>
     <br><div class="colorbox" style="background:" ></div>  -->
-    
-    <hr>
-    INKSCAPE
-    <br><br>- обязательно следить за масштабом документа при создании обычно 1 ... если масштаб  маленький то фильтры гигантские пиксели показывают
-    <br>- set file preference Shift+Ctrl+D ... unit px(grids, page), scale 1, set export... File - Export Png Image(Shift+Ctrl+E) ... unit px, save file
-    <br>- переключать единицы измерения на пиксели ... сетка, страница, экспорт, а потом сохранять
-    <br>- разрешение экспорта 96 dpi
-    <br>- редактирование радиального градиента (или F2 черная стрелка выделить объект) при нажатии Ctrl+Shift+Leftmouse от центра в сторону, смещает центр градиента по цветам, но рычаги овала остаются на месте. В результате можно смещать и деформировать овал градиента + смещать центр радиальных цветов.
-    
-    <hr>
-    KRITA
-    <br><br>
-    <br>Fx_blur_light - кисть фильтрующая - что то вроде размытия, настраивается
-    <br>Fx_splat_starfield - кисть звездное небо, выглядит удобно
-    <br>цветная размазывающая - Smudge_soft - инструмент палец, размазывать
-    
-    <hr>
-    GIMP
-    <hr>
-    
-    <a name="gimp_planet_gas"></a>
-    <br><br>draw gas planet 3D looks
-    <br>GIMP 2.10
-    <br><a href="https://youtu.be/wWb9G_ck4dY" target="_blank" title="tutorial video on youtube"><img class="h200px" src="img/planet_gas.png"></a>
-    <br>-create document 400x400px
-    <br>-create new layer "planet" and select it
-    <br>-Filters - Render - Noise - Plasma...
-    <br>--Random seed 3273878914
-    <br>--Turbulence 1
-    <br>--ok
-    <br>-Filters - Map - Map Object...
-    <br>--Preview
-    <br>---Update preview live
-    <br>--Options
-    <br>---Map to: Sphere
-    <br>---Transparent background
-    <br>--Light
-    <br>---Lightsource type: Directional light
-    <br>---Direction Vector: 1 1 1
-    <br>--Material
-    <br>---Specular: 0
-    <br>--Orientation
-    <br>---Position Z: 0.9
-    <br>--ok
-    <hr>
-    
-    <a name="gimp_planet_rings"></a>
-    <br><br>draw planetary rings
-    <br>GIMP 2.10
-    <br><img class="h200px" src="img/planet_gas_rings.png">
-    <a href="https://youtu.be/OnQ5lfeVYNA" target="_blank" title="tutorial video on youtube"><img class="h200px" src="img/planetary_rings.png"></a>
-    <br>-imagine you have planet picture size 400x400px
-    <br>-create layer rings size 1200x1200px and select it
-    <br>-draw radial gradient from center to border
-    <br>--<a href="txt/planetary_ring_1_3_x5.ggr" target="_blank">gradient</a> should be placed into user gradient path from <codebox>Edit - Preferences - Folders - Gradients</codebox>
-    <br>-Filters - Noise - Spread...
-    <br>--Horisontal: 35
-    <br>--Vertical: 35
-    <br>--ok
-    <br>-perspective rings horisontal , increase bottom width line of rings, close to trapezoid shape. "Tools - Transform Tools - Perspective"
-    <br>-scale rings vertical uses toolbox instrument "Scale Tool", hold "Ctrl" that lock center of scaling
-    <br>-rotate ring around planet uses toolbox instrument "Rotate Tool"
-    <br>-erase back pixels which insane cover the planet uses toolbox instrument "Eraser Tool", hold "Shift" that erase strait line
-    <br>-colorize rings <codebox>Colors - Colorize...</codebox>
-    <br>-duplicate "rings" layer <codebox>rmouse - Duplicate layer</codebox>, rename it to "mask", and select it
-    <br>-switch foreground color to white
-    <br>-switch gradient to "FG to Transparent"
-    <br>-draw gradient from visual area of ring to shadowed(back side of planet)
-    <br>-select layer "rings" and create mask for this layer <codebox>rmouse - Add Layer Mask... Black(full transparency)</codebox>
-    <br>-select layer "mask" <codebox>Edit - Copy</codebox>
-    <br>-select mask box of layer "rings" <codebox>Edit - Paste</codebox>
-    <br>-hide "mask" layer (can be deleted for decrease file size)
-    <hr>
-    
-    <a name="gimp_nebula_starspace"></a>
-    <br><br>drawing a starspace
-    <br>GIMP 2.10
-    <br><img class="h200px" src="img/nebula_starspace1.png">
-    <a href="https://youtu.be/MqVrdNLw-uw" target="_blank" title="tutorial video on youtube"><img class="h200px" src="img/nebula_starspace2.png"></a>
-    <br>4000x2000 px can generate effects (sparkle, etc) few minutes.
-
-    <br><br>example tested on 400x400px size image
-    <br>final image will have 7 layers. Create layer step by step. Each new layer on top. Later layers will be reordered.
-
-    <br><br>---------------------
-    <br>"face stars" layer
-    <br>(foreground white , background black)
-    <br>- Tools - Paint Tools - Bucket Fill
-    <br>-- BG color fill
-    <br>-- fill black (which is background)
-
-    <br><br>- Filters - Noise - CIE ich Noise...
-    <br>-- Dulling 8
-    <br>-- Lightness 100
-    <br>-- Chroma 0
-    <br>-- Hue 0
-    <br>-- press "new seed" to looks good
-    <br>-- ok
-
-    <br><br>- Colors - Brightness-Contrast...
-    <br>-- Contrast 63
-    <br>-- Brightness -20...0...20 (number of stars)
-    <br>-- ok
-
-    <br><br>- Filters - Light and Shadow - Sparkle...
-    <br>-- luminosity threshold 0.001
-    <br>-- Flare intensity 1.0
-    <br>-- Spike length 10
-    <br>-- Spike points 4
-    <br>-- Spike angle -1
-    <br>-- Spike density 1
-    <br>-- Transparency 0
-    <br>-- Random hue 0
-    <br>-- Random saturation 0
-    <br>-- Foreground color (white)
-    <br>-- ok
-    
-    <br><br>-----------------------
-    <br>"back stars" layer
-    <br>(foreground white , background black)
-    <br>- Tools - Paint Tools - Bucket Fill
-    <br>-- BG color fill
-    <br>-- fill black (which is background)
-    
-    <br><br>- Filters - Noise - CIE ich Noise...
-    <br>-- Dulling 8
-    <br>-- Lightness 75
-    <br>-- Chroma 0
-    <br>-- Hue 0
-    <br>-- press "new seed" to looks good
-    <br>-- ok
-    
-    <br><br>- Filters - Light and Shadow - Sparkle...
-    <br>-- luminosity threshold 0.006
-    <br>-- Flare intensity 0.5
-    <br>-- Spike length 10
-    <br>-- Spike points 4
-    <br>-- Spike angle -1
-    <br>-- Spike density 1
-    <br>-- Transparency 0
-    <br>-- Random hue 0
-    <br>-- Random saturation 0
-    <br>-- Foreground color (white)
-    <br>-- ok
-    <br>
-    <br>--------------------------
-    <br>"color plasma" layer
-    <br>- Filters - Render - Noise - Plasma...
-    <br>-- New Seed ... to looks good
-    <br>-- ok
-    <br>
-    <br>-------------------------
-    <br>"black" layer
-    <br>(foreground white , background black)
-    <br>- Tools - Paint Tools - Bucket Fill
-    <br>-- BG color fill
-    <br>-- fill black (which is background)
-    <br>
-    <br>------------------
-    <br>"nebula plasma" layer
-    <br>- Filters - Render - Noise - Plasma...
-    <br>-- Turbulence 0.5
-    <br>-- New Seed ... to looks good
-    <br>-- ok
-    <br>
-    <br>--------------------
-    <br>"nebula noise" layer
-    <br>- Filters - Render - Noise - Solid Noise...
-    <br>-- X Size 4
-    <br>-- Y Size 4
-    <br>-- Detail 15
-    <br>-- ok
-    <br>
-    <br>-----------------------
-    <br>"supernova" layer (transparent)
-    <br>- Filters - Light and Shadow - Supernova...
-    <br>-- Radius 3...4
-    <br>-- Number of spokes 100
-    <br>-- Random hue 0
-    <br>-- color similar to highlighted area
-    <br>-- color alpha 0
-    <br>(use it after arrangement and addition of effects to all other layers(next step), that highlights any areas uses similar <br>color with alpha 0. That decrease light - decrease the rgb component)
-    <br>-- ok
-    <br>
-    <br>
-    <br>--------------------------
-    <br>Arrange the layers in the following order from top to bottom:
-    <br>- 1 color plasma
-    <br>- 2 face stars
-    <br>- 3 back stars
-    <br>- 4 supernova
-    <br>- 5 nebula noise
-    <br>- 6 nebula plasma
-    <br>- 7 black
-    <br>
-    <br>---------------------------
-    <br>configure view mode for layers:
-    <br>- color plasma - Mode Overlay
-    <br>- face stars - Mode Addition
-    <br>- back stars - Mode Addition
-    <br>- supernova - Mode Normal
-    <br>- nebula noise - Mode Linear burn
-    <br>- nebula plasma - Mode Normal
-    <br>- black - Mode Normal
-    <br>
-    <br>done ... now you can use File - Export As... to export result to PNG image
-    <br>
-    <br>----------------------------------
-    <br>after Brightness and Contrast the sparkle - Flare Intensity and other parameters change the result different than before
-
-    <hr>
-    
-    <br><br>фильтры - свет и тени - Xach эффект
-    <br>буквы на пустом делает прозрачными и с тенью, потом только оригинал удалить и все
-    
-    <br><br>some interesting patterns:
-    <br>-Filters - Render - Clouds - Plasma - seed=3431924410 (фильтры - визуализация - облака - плазма - зерно=3431924410)
-    <br>-Filters - Render - Pattern - Sinus - x=15 y=15 c=1 seed=2799433581 Distorted (фильтры - визуализация - текстура - синус - x=15 y=15 c=1 зерно=2799433581 искаженный)
-    
-    <br><br>GIMP 2.10 gmic portal effects:
-    <br>-render - lightning
-    <br>-pattern - satin
     
     <hr>
     BUTTONS 1280 720
