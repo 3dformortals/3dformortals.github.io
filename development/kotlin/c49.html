@@ -1,0 +1,37 @@
+<hr><li id="c49"><a href="#c0">sorting <terminal>Map()</terminal> by values | <terminal>compareBy()</terminal> <terminal>sortedBy()</terminal></a></li>
+<a href="https://stackoverflow.com/questions/45375988/how-to-sort-linkedhashmap-by-values-in-kotlin" target="_blank">weblink</a>
+<hr>
+Sorting map by values, without droping elements with similar values, and with only one element from group with unique values(other will droped).
+<codebox>
+val map = mapOf("player1" to 100f, "player2" to 100f, "player3" to 300f, "player4" to 200f)
+<br> /*from min to max values*/
+<br> val smap1 = map.toList().sortedBy{ (_, value) -> value }.toMap()
+<br> val smap2 = map.toList().sortedBy{ it.second }.toMap()
+<br> val smap3 = map.toSortedMap(compareBy{map[it]}) /*in case of similar values only one(first shot) item will in result map, other will droped out*/
+<br>
+<br> /*from max to min values*/
+<br> val smap4 = map.toList().sortedByDescending{ (_, value) -> value }.toMap()
+<br> val smap5 = map.toList().sortedByDescending{ it.second }.toMap()
+<br> val smap6 = map.toSortedMap(compareByDescending{map[it]}) /*in case of similar values only one(first shot) item will in result map, other will droped out*/
+<br>
+<br> println("map.keys = ${map.keys}")
+<br> println("sorted from min to max values")
+<br> println("smap1.keys = ${smap1.keys}")
+<br> println("smap2.keys = ${smap2.keys}")
+<br> println("smap3.keys = ${smap3.keys}")
+<br> println("sorted from max to min values")
+<br> println("smap4.keys = ${smap4.keys}")
+<br> println("smap5.keys = ${smap5.keys}")
+<br> println("smap6.keys = ${smap6.keys}")
+</codebox>
+<codeout>
+map.keys = [player1, player2, player3, player4]
+<br> sorted from min to max values
+<br> smap1.keys = [player1, player2, player4, player3]
+<br> smap2.keys = [player1, player2, player4, player3]
+<br> smap3.keys = [player1, player4, player3]
+<br> sorted from max to min values
+<br> smap4.keys = [player3, player4, player1, player2]
+<br> smap5.keys = [player3, player4, player1, player2]
+<br> smap6.keys = [player3, player4, player1]
+</codeout>
