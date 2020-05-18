@@ -2,7 +2,7 @@
 1 -  create libGDX project with kotlin
 <br> 4 - default build and test
 <br> 5 - convert to kotlin
-<br> 6 - AdHandler interface
+<br> <a href="#c3-6">6 - AdHandler interface</a>
 <br> 7 - AndroidManifest.xml
 <br> 8-9 - gradle add admob source
 <br> 10 - DemoAdmobKotlin.kt modify
@@ -47,8 +47,8 @@
 <hr>
 5 - convert to kotlin <marker>AndroidLauncher.java</marker> and <marker>DemoAdmobKotlin.java</marker> uses <terminal>Ctrl+Alt+Shift+K</terminal> IDEA shortcut and fix any dirty places/bugs... <marker>null safety</marker> etc. Then again test uses <terminal>run-android</terminal> result must look similar, but at this step all source is kotlin now
 <hr>
-6 - add kotlin <marker>AdHandler</marker> interface on <marker>DemoAdmobKotlin</marker> level:
-<br> create <marker>AdHandler.kt</marker> interface uses IDEA, inside project tab menu <marker>com.demo.admobkotlin</marker> - rmouse <terminal>New</terminal> -&gt; <terminal>Kotlin File/Class</terminal> ... name= AdHandler | type= interface ... <terminal>ok</terminal>
+<a id="c3-6" href="#c3">6 - add kotlin <marker>AdHandler</marker> interface on <marker>DemoAdmobKotlin</marker> level</a>:
+<br> create <marker>AdHandler.kt</marker> interface uses IDEA, inside project tab menu <marker>core-&gt;src-&gt;com.demo.admobkotlin</marker> - rmouse <terminal>New</terminal> -&gt; <terminal>Kotlin File/Class</terminal> ... name= AdHandler | type= interface ... <terminal>ok</terminal>
 <br> Then add method to interface:
 <codebox>fun showAds(show:Boolean)</codebox>
 <hr>
