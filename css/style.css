@@ -48,6 +48,7 @@ body{
     text-align: center;
     font-family: 'body';
 }
+
 div{text-align: left;display: inline-block;}
 div.commission{
     background-color:hsla(129, 50%, 82%,0.4);
