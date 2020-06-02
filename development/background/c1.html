@@ -55,7 +55,7 @@ and Japan flag implementation, before render to screen.
 
 In case of flags, can be enough two files <marker>round.png</marker> (with transparent area) and <marker>rectangle.png</marker> , both of white pixels which later can be colored.
 
-<br><br>If screen have vertical layered stack of textures, which should be rendered in same time, as logical group etc, as possible , final(which include all prependered "layers") texture should be prepared using <marker>Frame Buffer Object / texture buffering</marker> (this maximize the performance).
+<br><br>If screen have vertical layered stack of textures, which should be rendered in same time, as logical group etc, as possible , final(which include all prependered "layers") texture should be prepared using <marker>fbo / Frame Buffer Object / texture buffering</marker> (this maximize the performance).
 
 <br>F.e. for case of <marker>round.png</marker> and <marker>rectangle.png</marker> files:
 
@@ -105,5 +105,5 @@ In case of flags, can be enough two files <marker>round.png</marker> (with trans
         
     </li>
 </ul>
-Using fbo looks like best solution, but fbo limited in max size, depend of hardware/software ristrictions, and can be not safe, or hard for implement safe, with keep quality of picture close to original, for crossplatforming, if your resulted fbo texture size greater than 1024px(this size is supported on lot of devices even ancient which is not in production few years).
+<br> Using fbo looks like best solution, but fbo limited in max size, depend of hardware/software restrictions, and can be not safe, or hard for implement safe, with keep quality of picture close to original, for crossplatforming, if your resulted fbo texture size greater than 1024px(this size is supported on lot of devices even ancient which is not in production few years).
 <br><br>Full background buffering using fbo , can be normal solution for game which not allow change screen size often, because f.e. if screen background textures is binded to right and left corner than you must full recreate fbo texture every moment when screen size was changed, to keep expected look, which is no needed when you use few textures prepared using separated small sized fbo instances, or texutre atlases.
