@@ -7,7 +7,7 @@
 <br><br>Next recommendation can help make background more lightweight for rendering on screen , and keep the background quality close to original.
 
 <hr>
-Single layered textures(png files etc).
+Single layered textures(png files etc) on screen.
 
 <br><br>If screen(game level) have few static single layered textures, which should be rendered in same time, as logical group etc, as possible , these textures should be joined in one texture atlas, and texture atlas should be single page as possible(this maximize the performance).
 <br>F.e. for case of <marker>img1.png</marker> and <marker>img2.png</marker> files:
@@ -26,4 +26,25 @@ Single layered textures(png files etc).
             </li>
         </ul>
     </li>
+    <li>
+        using of texture atlas created using same files:
+        <ul>
+            <li>once load atlas on initialization</li>
+            <li>every render loop will be next steps:
+                <ul>
+                    <li>switch to atlas texture(altas is single page, and will only one switch)</li>
+                    <li>render <marker>img1.png</marker> texture from atlas as atlas texture region</li>
+                    <li>render <marker>img2.png</marker> texture from atlas as atlas texture region</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
 </ul>
+Every additional switch texture step is enough high coast, and get cpu sources , finally increase time of rendering.
+Every additional switch of texture atlas pages is enough high coast, but less coast, if atlas page include few rendered texture regions from logical grouped textures, f.e. level1 , level2 etc.
+
+<hr>
+Vertical layered stack of textures(png files etc) on screen. Similar as multilayered picture.
+<br>Can be used f.e. for easy coloring of textures on the fly, or for change some "layers" colors, as in case of Bangladesh
+and Japan flag
+<img class="h200px" src="https://en.wikipedia.org/wiki/Flag_of_Bangladesh#/media/File:Flag_of_Bangladesh.svg"/>

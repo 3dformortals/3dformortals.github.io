@@ -61,6 +61,7 @@ a:active{color:#e8e0ba;text-decoration: none;}
   list-style: none;
 }
 .steps li {
+  list-style-type: none; /*no additional square etc marker left on animated circle marker , which enough*/
   position: relative;
   padding: 10px 0 10px 40px !important;
   color: #bae8c1;
