@@ -1,0 +1,29 @@
+<hr><li id="c1"><a href="#c0">static 2D background optimization</a></li><pre><code class="haxe"></code></pre>
+
+<year>2020</year> Development process of mobile game, can be comfort using desktop pc up to polishing/testing stage, which anyways need that mobile device was used.
+<br> After general development stuff complete, and game will work as expected on desktop pc, there is big chance that weak mobile devices will have huge lags, because not strong hardware etc.
+<br> Massive background can be the reason of lags. Lot of cases this situation can be fixed, less or more, enough to remove lags , without loose the background quality.
+
+<br><br>Next recommendation can help make background more lightweight for rendering on screen , and keep the background quality close to original.
+
+<hr>
+Single layered textures(png files etc).
+
+<br><br>If screen(game level) have few static single layered textures, which should be rendered in same time, as logical group etc, as possible , these textures should be joined in one texture atlas, and texture atlas should be single page as possible(this maximize the performance).
+<br>F.e. for case of <marker>img1.png</marker> and <marker>img2.png</marker> files:
+<ul>
+    <li>
+        strictly using of files from file system will have next steps:
+        <ul>
+            <li>once load files into memory as textures</li>
+            <li>every render loop will be next steps:
+                <ul>
+                    <li>switch to <marker>img1.png</marker> texture</li>
+                    <li>render <marker>img1.png</marker> texture</li>
+                    <li>switch to <marker>img2.png</marker> texture</li>
+                    <li>render <marker>img2.png</marker> texture</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
