@@ -15,8 +15,8 @@ Single layered textures(png files etc) on screen.
     <li>
         strictly using of files from file system will have next steps:
         <ul>
-            <li>once load files into memory as textures</li>
-            <li>every render loop will be next steps:
+            <li>once loaded files into memory as textures</li>
+            <li>every render loop will have next steps:
                 <ul>
                     <li>switch to <marker>img1.png</marker> texture</li>
                     <li>render <marker>img1.png</marker> texture</li>
@@ -29,8 +29,8 @@ Single layered textures(png files etc) on screen.
     <li>
         using of texture atlas created using same files:
         <ul>
-            <li>once load atlas on initialization</li>
-            <li>every render loop will be next steps:
+            <li>once loaded texture atlas on initialization</li>
+            <li>every render loop will have next steps:
                 <ul>
                     <li>switch to atlas texture(altas is single page, and will only one switch)</li>
                     <li>render <marker>img1.png</marker> texture from atlas as atlas texture region</li>
@@ -45,6 +45,65 @@ Every additional switch of texture atlas pages is enough high coast, but less co
 
 <hr>
 Vertical layered stack of textures(png files etc) on screen. Similar as multilayered picture.
-<br>Can be used f.e. for easy coloring of textures on the fly, or for change some "layers" colors, as in case of Bangladesh
-and Japan flag
-<img class="h200px" src="https://en.wikipedia.org/wiki/Flag_of_Bangladesh#/media/File:Flag_of_Bangladesh.svg"/>
+<br>Can be used f.e. for easy coloring of textures on the fly, or for change some "layers" colors, as in case of
+
+Bangladesh flag
+<img class="h200px" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg"></img>
+
+and Japan flag implementation, before render to screen.
+<img class="svgh200px" src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg"></img>
+
+In case of flags, can be enough two files <marker>round.png</marker> (with transparent area) and <marker>rectangle.png</marker> , both of white pixels which later can be colored.
+
+<br><br>If screen have vertical layered stack of textures, which should be rendered in same time, as logical group etc, as possible , final(which include all prependered "layers") texture should be prepared using <marker>Frame Buffer Object / texture buffering</marker> (this maximize the performance).
+
+<br>F.e. for case of <marker>round.png</marker> and <marker>rectangle.png</marker> files:
+
+<ul class="steps">
+    <li>strictly using of files from file system will have next steps:
+        <ul>
+            <li>once loaded files into memory as textures</li>
+            <li>every render loop will have next steps:
+                <ul>
+                    <li>switch to <marker>rectangle.png</marker> texture</li>
+                    <li>render <marker>rectangle.png</marker> texture</li>
+                    <li>switch to <marker>round.png</marker> texture</li>
+                    <li>render <marker>round.png</marker> texture</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>using of texture atlas created using same files:
+        <ul>
+            <li>once loaded texture atlas on initialization</li>
+            <li>every render loop will have next steps:
+                <ul>
+                    <li>switch to atlas texture(altas is single page, and will only one switch)</li>
+                    <li>render <marker>rectangle.png</marker> texture from atlas as atlas texture region</li>
+                    <li>render <marker>round.png</marker> texture from atlas as atlas texture region</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>using prerendered texture(using texture buffering):
+        <ul>
+            <li>once loaded atlas on initialization (can be used strait file access, but texture atlas is good point for using)</li>
+            <li>once rendering into <marker>Frame Buffer Object</marker> will have next steps:
+                <ul>
+                    <li>switch to atlas texture(altas is single page, and will only one switch)</li>
+                    <li>render into fbo <marker>rectangle.png</marker> texture atlas region</li>
+                    <li>render into fbo <marker>round.png</marker> texture atlas region</li>
+                </ul>
+            </li>
+            <li>every render loop will have next steps:
+                <ul>
+                    <li>switch to fbo texture(<marker>Frame Buffer Object</marker> include summary resulted texture, and will only one switch)</li>
+                    <li>render fbo texture(or texture region of fbo texture,depend of your needs)</li>
+                </ul>
+            </li>
+        </ul>
+        
+    </li>
+</ul>
+Using fbo looks like best solution, but fbo limited in max size, depend of hardware/software ristrictions, and can be not safe, or hard for implement safe, with keep quality of picture close to original, for crossplatforming, if your resulted fbo texture size greater than 1024px(this size is supported on lot of devices even ancient which is not in production few years).
+<br><br>Full background buffering using fbo , can be normal solution for game which not allow change screen size often, because f.e. if screen background textures is binded to right and left corner than you must full recreate fbo texture every moment when screen size was changed, to keep expected look, which is no needed when you use few textures prepared using separated small sized fbo instances, or texutre atlases.

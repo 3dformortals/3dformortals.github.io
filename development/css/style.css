@@ -120,6 +120,10 @@ div.codeout{
 
 
 img.h200px{max-height: 200px;}
+img.svgh200px{
+  max-height: 200px;
+  height:100%;
+}
 
 codebox{
   color: #E3DEDC;
