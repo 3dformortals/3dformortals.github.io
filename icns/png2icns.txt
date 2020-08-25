@@ -1,0 +1,1 @@
+png2icns llll.icns 1024.png 512.png 256.png 128.png 48.png 32.png 16.png
