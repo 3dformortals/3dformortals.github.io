@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>cb</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/style.css" rel="stylesheet">
+  <script>
+    var hide = false;
+    function hideMaker() {
+      if (hide) {
+        hide = false;
+        document.getElementById('rawText').setAttribute('type', 'text');
+        document.getElementById('hide').textContent = "hide";
+      } else {
+        hide = true;
+        document.getElementById('rawText').setAttribute('type', 'password');
+        document.getElementById('hide').textContent = "show";
+      }
+    }
+    function clearAll() { document.getElementById('bigBox').innerHTML = ""; }
+    function resetRawText() {
+      var raw = document.getElementById("rawText");
+      raw.value = "";
+      raw.focus();
+    }
+    function newText(rawText) {
+      return rawText + rawText;
+    }
+    function bangMaker() {
+      var div = document.getElementById("bigBox");
+
+      var item = document.createElement('div');
+      item.style = "clear:both;float:left;"
+
+      var rawText = document.getElementById('rawText').value;
+      var text = newText(rawText);
+
+      var rawDiv = document.createElement('div');
+      rawDiv.textContent = rawText;
+
+      var textDiv = document.createElement('div');
+      textDiv.textContent = text;
+
+      var copyBtn = document.createElement('button');
+      copyBtn.textContent = "copy"
+      copyBtn.onclick = function () { navigator.clipboard.writeText(text); }
+      copyBtn.addEventListener("keyup", function (e) {
+        if (e.code === 'Enter') {
+          copyBtn.click();
+        }
+      });
+
+      var delBtn = document.createElement('button');
+      delBtn.textContent = "delete"
+      delBtn.onclick = function () { delBtn.parentNode.parentNode.removeChild(delBtn.parentNode); }
+      if (!hide) {
+        item.appendChild(rawDiv);
+        item.appendChild(textDiv);
+      }
+      item.appendChild(copyBtn);
+      item.appendChild(delBtn);
+
+      div.appendChild(item);
+      copyBtn.focus();
+    }
+  </script>
+</head>
+
+<body>
+  <button onclick="resetRawText()">reset</button>
+  <button onclick="clearAll()">clear all data</button>
+  <br>
+  <input type="text" value="Hello World" id="rawText">
+  <br>
+  <button onclick="bangMaker()" id="bang">bang</button>
+  <button onclick="hideMaker()" id="hide">hide</button>
+  <br>
+  <div id="bigBox">
+
+  </div>
+</body>
+
+<script>
+  document.getElementById("rawText")
+    .addEventListener("keyup", function (e) {
+      if (e.code === 'Enter') {
+        document.getElementById("bang").click();
+      }
+    });
+</script>
+
+</html>
